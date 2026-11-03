@@ -1,7 +1,7 @@
 import os
 import logging
 from typing import Optional, List
-from fastapi import FastAPI, HTTPException, Query, Body, UploadFile, File
+from fastapi import FastAPI, HTTPException, Query, Body, Request
 import shutil
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -127,29 +127,13 @@ def run_company_research(request: ResearchQueryRequest):
     return financial_analyzer.analyze_company(request)
 
 @app.post("/api/research/upload")
-def upload_primary_document(file: UploadFile = File(...), ticker: Optional[str] = Query(None)):
-    if not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Only PDF files are supported for primary document indexing")
+async def upload_primary_document(request: Request, filename: Optional[str] = Query(None), ticker: Optional[str] = Query(None)):
+    pdf_bytes = await request.body()
+    if not pdf_bytes:
+        raise HTTPException(status_code=400, detail="Empty request body. Please provide PDF file bytes.")
     
-    from backend.config import PRIMARY_DOCS_DIR
-    target_filename = file.filename
-    if ticker and ticker.upper() not in target_filename.upper():
-        target_filename = f"{ticker.upper()}_{target_filename}"
-    
-    save_path = os.path.join(PRIMARY_DOCS_DIR, target_filename)
-    with open(save_path, "wb") as f:
-        shutil.copyfileobj(file.file, f)
-    
-    # Re-index all primary documents immediately
-    document_fetcher.index_primary_documents()
-    inferred_ticker = document_fetcher._infer_ticker(target_filename)
-    
-    return {
-        "status": "success",
-        "doc_id": target_filename,
-        "ticker": inferred_ticker,
-        "message": f"Successfully indexed primary document {target_filename}. Ready for immediate RAG research."
-    }
+    result = document_fetcher.save_and_index_pdf(filename=filename, pdf_bytes=pdf_bytes, ticker=ticker)
+    return result
 
 @app.get("/api/research/documents/{ticker}")
 def get_documents_for_ticker(ticker: str):

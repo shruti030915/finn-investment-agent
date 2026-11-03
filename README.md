@@ -33,7 +33,7 @@ FINN operates in two complementary interaction modalities:
 
 ### A. Push — Proactive Financial Intelligence
 * **Mock Portfolio**: 18 NSE-listed companies across 8 core sectors (`RELIANCE`, `TCS`, `INFY`, `WIPRO`, `HDFCBANK`, `ICICIBANK`, `SBIN`, `BAJFINANCE`, `JIOFIN`, `ONGC`, `TATAMOTORS`, `MARUTI`, `ITC`, `HINDUNILVR`, `SUNPHARMA`, `DRREDDY`, `BHARTIARTL`, `LT`).
-* **Announcement Classification**: Classifies filings across all 16 reference categories: `results`, `M&A`, `fund_raise`, `management_change`, `litigation`, `insider_trading`, `earnings_call`, `investor_meetings`, `credit_rating`, `dividend`, `bonus_split`, `capex`, `press_release`, `postal_ballot`, `agm_egm`, `pledging`, and `unclassified`.
+* **Announcement Classification**: Classifies filings across all 17 reference categories from the ENAM Challenge Specification: `results`, `M&A`, `fund_raise`, `management_change`, `litigation`, `insider_trading`, `earnings_call`, `investor_meetings`, `credit_rating`, `dividend`, `bonus_split`, `capex`, `press_release`, `postal_ballot`, `agm_egm`, `pledging`, and `unclassified`.
 * **Priority Engine**:
   * **HIGH**: Quarterly/Annual results, M&A/demergers, leadership shifts (CEO/CFO), critical litigation (FDA warnings).
   * **MEDIUM**: Interim dividends, capital expenditure, debt ratings, insider buying.
@@ -177,6 +177,7 @@ npm run dev
 | `/api/alerts/settings` | `GET/POST` | Read or update price and volume thresholds |
 | `/api/digest?window_hours=24` | `GET` | Windowed 4-part portfolio intelligence digest |
 | `/api/research/query` | `POST` | On-demand primary-grounded Pull research |
+| `/api/research/upload` | `POST` | Upload and index any genuine primary PDF into RAG corpus |
 | `/api/research/documents/{ticker}` | `GET` | Catalog of primary documents indexed for a ticker |
 | `/api/research/document/{id}/page/{n}` | `GET` | Inspect raw extracted text for a specific page citation |
 
@@ -184,7 +185,7 @@ npm run dev
 
 ## 6. Running the Test Suite
 
-Run the full automated test suite covering portfolio calculations, announcement classification, threshold triggers, PyMuPDF extraction, and retrieval accuracy:
+Run the full automated test suite (21 unit and data-integrity audit tests) covering portfolio math reconciliation, all 17 filing categories, alert triggers, PyMuPDF extraction, dynamic TF-IDF retrieval, and the PDF upload pipeline:
 
 ```bash
 python -m unittest discover -s tests
@@ -192,16 +193,26 @@ python -m unittest discover -s tests
 
 Expected output:
 ```
-Ran 16 tests in 0.044s
+Ran 21 tests in 0.17s
 OK
 ```
 
 ---
 
-## 7. Financial Accuracy Rules & Anti-Hallucination Design
+## 7. Financial Accuracy Rules & Data Integrity Disclosures
 
-1. **Primary Grounding**: Analysis is strictly derived from indexed primary PDFs (Annual Reports, Concall Transcripts, and Result Filings).
-2. **Explicit Confidence Tagging**: Findings explicitly indicate whether a metric is **Reported**, **Calculated**, or **Interpreted**.
-3. **Disclosure of Missing Data**: If a document does not contain data for a requested metric, FINN explicitly displays: `"Evidence missing from primary documents on record"` rather than fabricating estimates.
-4. **Direct Page Verification**: Every finding references a specific document name and 1-based page number that can be inspected directly in the UI.
+1. **Reconciled Portfolio Calculations**:
+   * Total Portfolio Value: **₹81,93,516.00** (displayed as **₹81.94 lakh**).
+   * Total Invested Capital: **₹75,26,800.00**.
+   * Unrealized Gain/Loss: **₹6,66,716.00** (**+8.86%**).
+   * Intraday P&L: **₹52,441.00** (**+0.64%**).
+   * All figures across backend models, SQLite/JSON seed, API responses, automated tests, and the terminal dashboard are strictly derived from identical holdings and EOD market prices.
+2. **Transparent Market Data Labeling**:
+   * Market closing data is as of **October 31, 2024 (Historical EOD Close)**. It is explicitly labelled as historical closing data, never misrepresented as real-time live trading feeds.
+3. **Primary Document Characterization**:
+   * The baseline documents in `data/primary_documents/` (`TCS_Q2_FY25_Earnings_Call_Transcript.pdf`, `RELIANCE_Q2_FY25_Financial_Results_Notes.pdf`, `HDFCBANK_FY24_Annual_Report_Excerpts.pdf`) are **Curated Demonstration Excerpt Documents** compiled from authentic company disclosures, preserving authentic reported figures and page structures.
+   * Full 200+ page official PDFs can be uploaded anytime via the UI or `POST /api/research/upload`, which immediately extracts and indexes all pages with PyMuPDF.
+4. **Zero-Hallucination for Unindexed Tickers**:
+   * If a user queries a ticker without an indexed primary document (e.g. `MARUTI` or `ZOMATO`), FINN returns an explicit warning (`"Primary document corpus missing on record"`) with zero hallucinated figures.
+5. **Direct Page Verification**: Every finding references a specific document name and 1-based page number that can be inspected directly in the UI modal.
 

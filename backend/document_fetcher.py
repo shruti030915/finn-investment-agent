@@ -94,5 +94,25 @@ class DocumentFetcher:
                         return p
         return None
 
+    def save_and_index_pdf(self, filename: str, pdf_bytes: bytes, ticker: Optional[str] = None) -> Dict[str, Any]:
+        target_filename = filename or f"{ticker.upper() if ticker else 'DOCUMENT'}_Uploaded.pdf"
+        if ticker and ticker.upper() not in target_filename.upper():
+            target_filename = f"{ticker.upper()}_{target_filename}"
+        if not target_filename.lower().endswith(".pdf"):
+            target_filename += ".pdf"
+        
+        save_path = os.path.join(PRIMARY_DOCS_DIR, target_filename)
+        with open(save_path, "wb") as f:
+            f.write(pdf_bytes)
+        
+        self.index_primary_documents()
+        inferred_ticker = self._infer_ticker(target_filename)
+        return {
+            "status": "success",
+            "doc_id": target_filename,
+            "ticker": inferred_ticker,
+            "message": f"Successfully indexed primary document {target_filename}. Ready for immediate RAG research."
+        }
+
 document_fetcher = DocumentFetcher()
 

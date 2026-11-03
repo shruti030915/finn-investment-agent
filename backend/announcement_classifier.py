@@ -2,8 +2,10 @@ import re
 from typing import Tuple
 
 KEYWORD_CATEGORY_RULES = [
+    # earnings_call (Must precede generic results)
+    (r"\b(earnings call|concall|conference call|audio recording|transcript.*call|webcast.*call)\b", "earnings_call"),
     # results
-    (r"\b(financial results|unaudited results|audited results|board meeting.*results|q[1-4]\s*(fy\d{2})?|results press release|quarterly results|annual results)\b", "results"),
+    (r"\b(financial results|unaudited results|audited results|board meeting.*results|results press release|quarterly results|annual results|q[1-4]\s*results|results for (the )?(quarter|year))\b", "results"),
     # M&A
     (r"\b(merger|acquisition|amalgamation|demerger|joint venture|scheme of arrangement|strategic investment|stake sale|acqui\w+)\b", "M&A"),
     # fund_raise
@@ -14,8 +16,6 @@ KEYWORD_CATEGORY_RULES = [
     (r"\b(warning letter|fda 483|show cause notice|litigation|lawsuit|arbitration|penalty|fine imposed|sebi order|nclt|insolvency|regulatory action)\b", "litigation"),
     # insider_trading
     (r"\b(pit regulations|insider trading|promoter acquisition|promoter disposal|regulation 7\(2\)|insider buying)\b", "insider_trading"),
-    # earnings_call
-    (r"\b(earnings call|concall|conference call.*results|audio recording.*call|transcript.*call)\b", "earnings_call"),
     # investor_meetings
     (r"\b(investor meet|analyst meet|institutional investor|investor conference|schedule of analyst)\b", "investor_meetings"),
     # credit_rating
@@ -31,7 +31,7 @@ KEYWORD_CATEGORY_RULES = [
     # agm_egm
     (r"\b(annual general meeting|extraordinary general meeting|agm|egm|notice of agm|proceedings of agm)\b", "agm_egm"),
     # pledging
-    (r"\b(pledge of shares|release of pledge|encumbrance|sast regulation 31)\b", "pledging"),
+    (r"\b(pledge|pledging|encumbrance|sast regulation 31)\b", "pledging"),
     # press_release
     (r"\b(press release|media release|product launch|partnership agreement|mou|memorandum of understanding)\b", "press_release"),
     # unclassified
@@ -50,4 +50,3 @@ class AnnouncementClassifier:
         return "unclassified"
 
 classifier = AnnouncementClassifier()
-

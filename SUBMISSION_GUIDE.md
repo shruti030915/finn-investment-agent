@@ -129,9 +129,9 @@ Please find my submission for the ENAM Holdings AI Engineer Build Challenge belo
 FINN is a mobile-first financial intelligence layer engineered for public-market investors that operates in two primary modes:
 
 A. PUSH — Proactive Market Intelligence:
-• Monitors a mock portfolio of 18 NSE large-cap companies across 8 core sectors.
-• Tracks daily price movements and volume multiples against 20-day historical moving averages.
-• Hybrid classification across all 16 corporate announcement categories from the reference brief.
+• Monitors a mock portfolio of 18 NSE large-cap companies across 8 core sectors with reconciled portfolio math (NAV: ₹81,93,516.00 / ₹81.94L, Invested: ₹75,26,800.00, P&L: ₹6,66,716.00 / +8.86%, Day's Gain: ₹52,441.00 / +0.64%).
+• Tracks historical EOD closing prices (as of October 31, 2024) and volume multiples against 20-day historical moving averages.
+• Hybrid classification across all 17 corporate announcement categories from the reference brief.
 • Heuristic materiality ranking (HIGH, MEDIUM, LOW) that prioritizes results, M&A, leadership changes, and litigation, while filtering routine compliance paperwork.
 • Enriched presentation: extracts incoming executive bios for management changes and headline quarterly cuts (Revenue, EBITDA margin, PAT) with QoQ and YoY comparisons.
 • Windowed daily portfolio digest (24h/3d/7d) answering: What happened? Which company? Why should an investor care? What is the source?
@@ -139,10 +139,11 @@ A. PUSH — Proactive Market Intelligence:
 
 B. PULL — Primary-Grounded Company Research:
 • Researches ANY NSE ticker (works for both portfolio stocks and ad-hoc tickers like TCS, RELIANCE, HDFCBANK, TITAN, ZOMATO).
-• Grounded strictly in primary company documents (audited Annual Reports, quarterly results, and concall transcripts extracted page-by-page via PyMuPDF).
-• Scikit-learn / pure-Python TF-IDF vector retrieval over chunked pages with exact document and 1-based page citations.
+• Grounded strictly in primary company documents: initial curated demonstration excerpts for TCS, Reliance, and HDFC Bank, plus a working in-browser/API PDF upload engine (`POST /api/research/upload`) to index any authentic 200+ page company Annual Report.
+• Pure-Python TF-IDF vector retrieval over chunked pages with exact document and 1-based page citations.
 • Synthesizes an 8-part institutional research report: Business Snapshot, Financial Snapshot, Trajectory, Balance Sheet, Cash Quality, Narrative vs. Numbers (promised guidance vs. actual execution), and Bull vs. Bear cases.
-• Complies with financial accuracy rules: explicitly flags missing data, differentiates reported vs. calculated vs. interpreted figures, and includes an in-app primary filing inspector modal.
+• Complies with financial accuracy rules: returns explicit warning for unindexed tickers without hallucinating figures, differentiates reported vs. calculated vs. interpreted figures, and includes an in-app primary filing inspector modal.
+• Verified with 21 automated unit, integration, and data-integrity audit tests.
 
 3. KEY ARCHITECTURAL DECISIONS & TRADE-OFFS
 --------------------------------------------------
