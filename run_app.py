@@ -38,9 +38,10 @@ def main():
     print("  -> Application Terminal:  http://localhost:8000")
     print("  -> Interactive API Docs:  http://localhost:8000/docs")
     print("=" * 70)
-    print("Starting server on http://0.0.0.0:8000 ... Press Ctrl+C to stop.")
+    port = int(os.environ.get("PORT", os.environ.get("FINN_PORT", 8000)))
+    print(f"Starting server on http://0.0.0.0:{port} ... Press Ctrl+C to stop.")
     
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=False)
 
 if __name__ == "__main__":
     main()
