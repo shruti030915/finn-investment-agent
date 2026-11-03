@@ -95,3 +95,4 @@ class DocumentFetcher:
         return None
 
 document_fetcher = DocumentFetcher()
+

@@ -204,3 +204,4 @@ OK
 2. **Explicit Confidence Tagging**: Findings explicitly indicate whether a metric is **Reported**, **Calculated**, or **Interpreted**.
 3. **Disclosure of Missing Data**: If a document does not contain data for a requested metric, FINN explicitly displays: `"Evidence missing from primary documents on record"` rather than fabricating estimates.
 4. **Direct Page Verification**: Every finding references a specific document name and 1-based page number that can be inspected directly in the UI.
+

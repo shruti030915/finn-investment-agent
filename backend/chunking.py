@@ -51,3 +51,4 @@ class FinancialChunker:
         return chunks
 
 chunker = FinancialChunker()
+

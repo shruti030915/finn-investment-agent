@@ -45,8 +45,10 @@ class DigestGenerator:
                 what_happened=ann.raw_text,
                 affected_entity=f"{ann.company_name} ({ann.ticker}.NS)",
                 why_investor_should_care=why_care,
-                source=ann.source,
+                source=f"{ann.source} [DEMO FIXTURE]",
                 timestamp=ann.timestamp,
+                original_filing_date=ann.original_filing_date,
+                is_demo_data=ann.is_demo_data,
                 metrics=ann.headline_numbers
             ))
 
@@ -75,3 +77,4 @@ class DigestGenerator:
         )
 
 digest_generator = DigestGenerator()
+

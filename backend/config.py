@@ -39,3 +39,4 @@ DEFAULT_MONITORED_CATEGORIES = [
     "results", "M&A", "management_change", "litigation", "fund_raise",
     "dividend", "capex", "credit_rating", "bonus_split"
 ]
+

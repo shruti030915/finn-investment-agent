@@ -528,12 +528,15 @@ CORPORATE_ANNOUNCEMENTS = [
         "ticker": "TCS",
         "company_name": "Tata Consultancy Services Limited",
         "timestamp": (now - timedelta(hours=2)).isoformat(),
+        "original_filing_date": "2024-10-10",
+        "is_demo_data": True,
+        "data_origin": "DEMO DATA (Historical Event Replay: Oct 10, 2024)",
         "headline": "Outcome of Board Meeting: Audited Financial Results for Q2 FY25",
         "category": "results",
         "priority": "HIGH",
         "source": "NSE Regulatory Filing / BSE Corp Disclosure",
         "source_doc_url": "primary_documents/TCS_Q2_FY25_Earnings_Call_Transcript.pdf",
-        "raw_text": "The Board of Directors approved audited financial results for Q2 FY25. Consolidated revenue at INR 64,259 Cr (+7.6% YoY, +2.6% QoQ). Operating margin at 24.1%. Net profit after tax (PAT) at INR 11,909 Cr (+5.0% YoY). Interim dividend of Rs 10 per equity share declared.",
+        "raw_text": "The Board of Directors approved audited financial results for Q2 FY25 on October 10, 2024. Consolidated revenue at INR 64,259 Cr (+7.6% YoY, +2.6% QoQ). Operating margin at 24.1%. Net profit after tax (PAT) at INR 11,909 Cr (+5.0% YoY). Interim dividend of Rs 10 per equity share declared.",
         "headline_numbers": {
             "revenue_cr": 64259,
             "revenue_yoy_pct": 7.6,
@@ -754,6 +757,31 @@ CORPORATE_ANNOUNCEMENTS = [
     }
 ]
 
+filing_dates = {
+    "ANN-001": "2024-10-10",  # TCS Audited Q2 FY25 Board Meeting
+    "ANN-002": "2024-10-17",  # Wipro CFO Appointment
+    "ANN-003": "2024-10-21",  # Sun Pharma Halol US FDA Warning Letter
+    "ANN-004": "2024-10-23",  # Bharti Airtel Cybersecurity Platform Stake
+    "ANN-005": "2024-10-24",  # ITC Interim Dividend Declaration
+    "ANN-006": "2024-10-25",  # L&T Middle East Mega Order Win
+    "ANN-007": "2024-10-28",  # Bajaj Finance CRISIL AAA Reaffirmation
+    "ANN-008": "2024-10-29",  # Maruti Suzuki Promoter PIT Open Market Purchase
+    "ANN-009": "2024-10-17",  # Infosys Q2 Concall Notice
+    "ANN-010": "2024-10-15",  # HDFC Bank Reg 74(5) DP Certificate
+    "ANN-011": "2024-10-14",  # Reliance Duplicate Share Certificate
+    "ANN-012": "2024-10-26"   # ICICI Bank Postal Ballot Notice
+}
+
+for ann in CORPORATE_ANNOUNCEMENTS:
+    ann["is_demo_data"] = True
+    ann["data_origin"] = "DEMO DATA / SAMPLE FIXTURE"
+    ann["original_filing_date"] = filing_dates.get(ann["id"], "2024-10-15")
+
+for comp in PORTFOLIO_COMPANIES:
+    comp["market_data_date"] = "2024-10-31"
+    comp["data_source"] = "EOD Verified Close (NSE)"
+    comp["is_live"] = False
+
 with open(os.path.join(DATA_DIR, "portfolio_seed.json"), "w", encoding="utf-8") as f:
     json.dump(PORTFOLIO_COMPANIES, f, indent=2)
 
@@ -761,3 +789,4 @@ with open(os.path.join(DATA_DIR, "announcements_seed.json"), "w", encoding="utf-
     json.dump(CORPORATE_ANNOUNCEMENTS, f, indent=2)
 
 print(f"Generated {len(PORTFOLIO_COMPANIES)} portfolio companies and {len(CORPORATE_ANNOUNCEMENTS)} announcements.")
+

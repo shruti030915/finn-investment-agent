@@ -25,3 +25,4 @@ export const API = {
   getDocuments: (ticker) => fetch(`/api/research/documents/${ticker}`).then(r => r.json()),
   getPageText: (docId, pageNum) => fetch(`/api/research/document/${docId}/page/${pageNum}`).then(r => r.json())
 };
+

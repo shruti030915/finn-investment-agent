@@ -36,6 +36,9 @@ class StockQuote(BaseModel):
     current_value: float = 0.0
     pnl: float = 0.0
     pnl_pct: float = 0.0
+    market_data_date: str = "2024-10-31"
+    data_source: str = "EOD Verified Close (NSE)"
+    is_live: bool = False
     history_30d: Optional[List[StockHistoryPoint]] = None
 
 class PortfolioSummary(BaseModel):
@@ -69,6 +72,9 @@ class Announcement(BaseModel):
     ticker: str
     company_name: str
     timestamp: str
+    original_filing_date: Optional[str] = None
+    is_demo_data: bool = True
+    data_origin: str = "DEMO DATA / SAMPLE FIXTURE"
     headline: str
     category: str
     priority: str  # HIGH, MEDIUM, LOW
@@ -109,6 +115,8 @@ class DigestItem(BaseModel):
     why_investor_should_care: str
     source: str
     timestamp: str
+    original_filing_date: Optional[str] = None
+    is_demo_data: bool = True
     metrics: Optional[Dict[str, Any]] = None
 
 class DailyDigest(BaseModel):

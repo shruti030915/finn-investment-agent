@@ -94,3 +94,4 @@ class AnnouncementManager:
         return ann
 
 announcement_manager = AnnouncementManager()
+

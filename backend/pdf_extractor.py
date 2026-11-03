@@ -29,3 +29,4 @@ class PDFExtractor:
         return pages_data
 
 pdf_extractor = PDFExtractor()
+
