@@ -14,8 +14,8 @@ PRIMARY_DOCS_DIR.mkdir(exist_ok=True)
 STATIC_DIR.mkdir(exist_ok=True)
 
 # Server Config
-HOST = os.getenv("FINN_HOST", "0.0.0.0")
-PORT = int(os.getenv("FINN_PORT", 8000))
+HOST = os.getenv("HOST", os.getenv("FINN_HOST", "0.0.0.0"))
+PORT = int(os.getenv("PORT", os.getenv("FINN_PORT", 8000)))
 DEBUG = os.getenv("FINN_DEBUG", "True").lower() == "true"
 
 # API Keys (Optional)

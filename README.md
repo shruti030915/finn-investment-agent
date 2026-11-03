@@ -209,6 +209,26 @@ OK
    * If a user queries a ticker without an indexed primary document (e.g. `MARUTI` or `ZOMATO`), FINN returns an explicit warning (`"Primary document corpus missing on record"`) with zero hallucinated figures.
 5. **Direct Page Verification**: Every finding references a specific document name and 1-based page number that can be inspected directly in the UI modal.
 
-=======
-# finn-investment-agent
->>>>>>> 9d8a512910e74f5bf79baf7ee9f9b09176867e4a
+
+---
+
+## 8. Free Cloud Deployment (Render.com Web Service)
+
+FINN is fully configured for deployment on **Render's Free Web Service Tier**:
+
+### Deployment Steps:
+1. Push your repository to GitHub.
+2. Sign in to [Render.com](https://render.com) and create a **New Web Service**.
+3. Select your GitHub repository (`finn-investment-agent`).
+4. Configure the service:
+   * **Runtime**: `Python 3`
+   * **Build Command**: `pip install -r requirements.txt`
+   * **Start Command**: `python run_app.py` (or via `Procfile`)
+   * **Instance Type**: **Free** ($0 / month)
+5. *(Optional)* Add Environment Variables:
+   * `PORT`: Automatically assigned by Render (handled dynamically in `run_app.py` and `backend/config.py`).
+   * `GEMINI_API_KEY`: Optional. If not provided, FINN automatically operates via its autonomous deterministic extraction engine.
+
+### Runtime Storage Notice (Ephemeral Disk on Free Tier):
+> [!IMPORTANT]
+> **Ephemeral Disk on Free Tier**: Render's free web service tier operates with an ephemeral filesystem. The preloaded sample filings (`TCS`, `Reliance`, `HDFC Bank`) and demo data committed to the repository persist permanently. However, any new PDF documents uploaded at runtime via `+ Upload filing PDF` or `POST /api/research/upload` reside in container storage and will disappear after container restarts or when the free tier spins down due to 15 minutes of inactivity. For permanent multi-tenant document storage across cloud restarts, connect an S3/Cloud Storage bucket.

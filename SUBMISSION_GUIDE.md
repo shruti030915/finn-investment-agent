@@ -88,14 +88,19 @@ Open your browser to:
 
 FINN is engineered to deploy seamlessly to any cloud host:
 
-### Deploy to Render / Railway / DigitalOcean
+### Deploy to Render Free Web Service
 1. Push your repository to GitHub.
-2. Connect your repository on Render or Railway as a **Web Service**.
+2. Sign in to [Render.com](https://render.com) and create a **New Web Service** connected to your repo.
 3. Set:
+   * **Runtime**: `Python 3`
    * **Build Command**: `pip install -r requirements.txt`
-   * **Start Command**: `python run_app.py`
-   * **Environment Variables**: Set `FINN_PORT=8000` (or host-assigned port), and optionally `GEMINI_API_KEY`.
-4. Deploy. The web application will immediately serve the responsive mobile terminal.
+   * **Start Command**: `python run_app.py` (or via `Procfile`)
+   * **Plan**: `Free` ($0/month)
+   * **Environment Variables**: `PORT` is assigned automatically. `GEMINI_API_KEY` is optional.
+4. Deploy. The web application will serve the responsive mobile terminal at `https://<your-app>.onrender.com`.
+
+> [!NOTE]
+> **Ephemeral Storage on Render Free Tier**: Seed documents and demo data persist permanently from Git. Any additional PDFs uploaded via the web UI at runtime are stored in container disk memory while the instance is running, but will reset if the free tier container sleeps after 15 minutes of inactivity or restarts.
 
 ---
 

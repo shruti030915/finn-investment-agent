@@ -9,4 +9,5 @@ requests>=2.28.0
 python-dotenv>=0.21.0
 yfinance>=0.2.20
 reportlab>=3.6.0
+python-multipart>=0.0.6
 
