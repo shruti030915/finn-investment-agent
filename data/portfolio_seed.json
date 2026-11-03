@@ -1,0 +1,3314 @@
+[
+  {
+    "ticker": "RELIANCE",
+    "name": "Reliance Industries Limited",
+    "sector": "Energy & Conglomerate",
+    "exchange": "NSE",
+    "symbol": "RELIANCE.NS",
+    "price": 2742.5,
+    "prev_close": 2710.0,
+    "change": 32.5,
+    "change_pct": 1.2,
+    "day_high": 2755.0,
+    "day_low": 2708.1,
+    "fifty_two_week_high": 3217.9,
+    "fifty_two_week_low": 2220.3,
+    "volume": 7842000,
+    "avg_volume_20d": 5200000,
+    "market_cap_cr": 1855420,
+    "pe_ratio": 26.4,
+    "pb_ratio": 2.2,
+    "dividend_yield": 0.36,
+    "debt_to_equity": 0.38,
+    "roce": 10.4,
+    "roe": 9.2,
+    "shares_held": 250,
+    "avg_buy_price": 2580.0,
+    "portfolio_weight": 11.2,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 2684.94,
+        "volume": 3915558
+      },
+      {
+        "date": "2026-10-05",
+        "close": 2686.07,
+        "volume": 4337275
+      },
+      {
+        "date": "2026-10-06",
+        "close": 2708.88,
+        "volume": 5552177
+      },
+      {
+        "date": "2026-10-07",
+        "close": 2745.76,
+        "volume": 6443288
+      },
+      {
+        "date": "2026-10-08",
+        "close": 2782.77,
+        "volume": 6191325
+      },
+      {
+        "date": "2026-10-09",
+        "close": 2805.65,
+        "volume": 5027942
+      },
+      {
+        "date": "2026-10-10",
+        "close": 2806.02,
+        "volume": 4022748
+      },
+      {
+        "date": "2026-10-11",
+        "close": 2784.95,
+        "volume": 4099913
+      },
+      {
+        "date": "2026-10-12",
+        "close": 2752.27,
+        "volume": 5188493
+      },
+      {
+        "date": "2026-10-13",
+        "close": 2721.95,
+        "volume": 6287652
+      },
+      {
+        "date": "2026-10-14",
+        "close": 2705.74,
+        "volume": 6386828
+      },
+      {
+        "date": "2026-10-15",
+        "close": 2708.06,
+        "volume": 5394840
+      },
+      {
+        "date": "2026-10-16",
+        "close": 2724.43,
+        "volume": 4223716
+      },
+      {
+        "date": "2026-10-17",
+        "close": 2744.09,
+        "volume": 3950183
+      },
+      {
+        "date": "2026-10-18",
+        "close": 2755.54,
+        "volume": 4825725
+      },
+      {
+        "date": "2026-10-19",
+        "close": 2752.36,
+        "volume": 6045374
+      },
+      {
+        "date": "2026-10-20",
+        "close": 2736.31,
+        "volume": 6487789
+      },
+      {
+        "date": "2026-10-21",
+        "close": 2716.52,
+        "volume": 5746217
+      },
+      {
+        "date": "2026-10-22",
+        "close": 2704.94,
+        "volume": 4502455
+      },
+      {
+        "date": "2026-10-23",
+        "close": 2710.28,
+        "volume": 3900012
+      },
+      {
+        "date": "2026-10-24",
+        "close": 2733.4,
+        "volume": 4492772
+      },
+      {
+        "date": "2026-10-25",
+        "close": 2766.4,
+        "volume": 5735754
+      },
+      {
+        "date": "2026-10-26",
+        "close": 2795.85,
+        "volume": 6486165
+      },
+      {
+        "date": "2026-10-27",
+        "close": 2808.76,
+        "volume": 6054082
+      },
+      {
+        "date": "2026-10-28",
+        "close": 2798.58,
+        "volume": 4836759
+      },
+      {
+        "date": "2026-10-29",
+        "close": 2768.34,
+        "volume": 3953398
+      },
+      {
+        "date": "2026-10-30",
+        "close": 2729.52,
+        "volume": 4216156
+      },
+      {
+        "date": "2026-10-31",
+        "close": 2697.05,
+        "volume": 5383456
+      },
+      {
+        "date": "2026-11-01",
+        "close": 2682.85,
+        "volume": 6382086
+      },
+      {
+        "date": "2026-11-02",
+        "close": 2690.74,
+        "volume": 6293912
+      },
+      {
+        "date": "2026-11-03",
+        "close": 2742.5,
+        "volume": 7842000
+      }
+    ]
+  },
+  {
+    "ticker": "TCS",
+    "name": "Tata Consultancy Services Limited",
+    "sector": "Information Technology",
+    "exchange": "NSE",
+    "symbol": "TCS.NS",
+    "price": 4120.8,
+    "prev_close": 4185.0,
+    "change": -64.2,
+    "change_pct": -1.53,
+    "day_high": 4200.0,
+    "day_low": 4105.0,
+    "fifty_two_week_high": 4585.0,
+    "fifty_two_week_low": 3313.0,
+    "volume": 3120000,
+    "avg_volume_20d": 1950000,
+    "market_cap_cr": 1490210,
+    "pe_ratio": 30.8,
+    "pb_ratio": 14.2,
+    "dividend_yield": 1.77,
+    "debt_to_equity": 0.0,
+    "roce": 58.7,
+    "roe": 51.2,
+    "shares_held": 180,
+    "avg_buy_price": 3890.0,
+    "portfolio_weight": 12.1,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 4034.31,
+        "volume": 1468334
+      },
+      {
+        "date": "2026-10-05",
+        "close": 4036.02,
+        "volume": 1626478
+      },
+      {
+        "date": "2026-10-06",
+        "close": 4070.28,
+        "volume": 2082066
+      },
+      {
+        "date": "2026-10-07",
+        "close": 4125.69,
+        "volume": 2416233
+      },
+      {
+        "date": "2026-10-08",
+        "close": 4181.3,
+        "volume": 2321747
+      },
+      {
+        "date": "2026-10-09",
+        "close": 4215.68,
+        "volume": 1885478
+      },
+      {
+        "date": "2026-10-10",
+        "close": 4216.24,
+        "volume": 1508530
+      },
+      {
+        "date": "2026-10-11",
+        "close": 4184.59,
+        "volume": 1537467
+      },
+      {
+        "date": "2026-10-12",
+        "close": 4135.49,
+        "volume": 1945684
+      },
+      {
+        "date": "2026-10-13",
+        "close": 4089.92,
+        "volume": 2357869
+      },
+      {
+        "date": "2026-10-14",
+        "close": 4065.56,
+        "volume": 2395060
+      },
+      {
+        "date": "2026-10-15",
+        "close": 4069.06,
+        "volume": 2023065
+      },
+      {
+        "date": "2026-10-16",
+        "close": 4093.65,
+        "volume": 1583893
+      },
+      {
+        "date": "2026-10-17",
+        "close": 4123.18,
+        "volume": 1481318
+      },
+      {
+        "date": "2026-10-18",
+        "close": 4140.4,
+        "volume": 1809647
+      },
+      {
+        "date": "2026-10-19",
+        "close": 4135.61,
+        "volume": 2267015
+      },
+      {
+        "date": "2026-10-20",
+        "close": 4111.49,
+        "volume": 2432921
+      },
+      {
+        "date": "2026-10-21",
+        "close": 4081.77,
+        "volume": 2154831
+      },
+      {
+        "date": "2026-10-22",
+        "close": 4064.37,
+        "volume": 1688420
+      },
+      {
+        "date": "2026-10-23",
+        "close": 4072.38,
+        "volume": 1462504
+      },
+      {
+        "date": "2026-10-24",
+        "close": 4107.13,
+        "volume": 1684789
+      },
+      {
+        "date": "2026-10-25",
+        "close": 4156.71,
+        "volume": 2150907
+      },
+      {
+        "date": "2026-10-26",
+        "close": 4200.96,
+        "volume": 2432312
+      },
+      {
+        "date": "2026-10-27",
+        "close": 4220.35,
+        "volume": 2270280
+      },
+      {
+        "date": "2026-10-28",
+        "close": 4205.06,
+        "volume": 1813784
+      },
+      {
+        "date": "2026-10-29",
+        "close": 4159.63,
+        "volume": 1482524
+      },
+      {
+        "date": "2026-10-30",
+        "close": 4101.3,
+        "volume": 1581058
+      },
+      {
+        "date": "2026-10-31",
+        "close": 4052.51,
+        "volume": 2018796
+      },
+      {
+        "date": "2026-11-01",
+        "close": 4031.18,
+        "volume": 2393282
+      },
+      {
+        "date": "2026-11-02",
+        "close": 4043.02,
+        "volume": 2360217
+      },
+      {
+        "date": "2026-11-03",
+        "close": 4120.8,
+        "volume": 3120000
+      }
+    ]
+  },
+  {
+    "ticker": "INFY",
+    "name": "Infosys Limited",
+    "sector": "Information Technology",
+    "exchange": "NSE",
+    "symbol": "INFY.NS",
+    "price": 1825.4,
+    "prev_close": 1780.0,
+    "change": 45.4,
+    "change_pct": 2.55,
+    "day_high": 1838.0,
+    "day_low": 1775.5,
+    "fifty_two_week_high": 1991.45,
+    "fifty_two_week_low": 1358.35,
+    "volume": 8420000,
+    "avg_volume_20d": 5600000,
+    "market_cap_cr": 757890,
+    "pe_ratio": 28.5,
+    "pb_ratio": 8.9,
+    "dividend_yield": 2.52,
+    "debt_to_equity": 0.09,
+    "roce": 40.2,
+    "roe": 32.1,
+    "shares_held": 400,
+    "avg_buy_price": 1640.0,
+    "portfolio_weight": 11.9,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1787.09,
+        "volume": 4216755
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1787.84,
+        "volume": 4670912
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1803.02,
+        "volume": 5979268
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1827.57,
+        "volume": 6938926
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1852.2,
+        "volume": 6667581
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1867.43,
+        "volume": 5414707
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1867.68,
+        "volume": 4332190
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1853.66,
+        "volume": 4415291
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1831.91,
+        "volume": 5587608
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1811.72,
+        "volume": 6771317
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1800.93,
+        "volume": 6878123
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1802.48,
+        "volume": 5809828
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1813.37,
+        "volume": 4548617
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1826.46,
+        "volume": 4254043
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1834.08,
+        "volume": 5196935
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1831.96,
+        "volume": 6510402
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1821.28,
+        "volume": 6986850
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1808.11,
+        "volume": 6188233
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1800.4,
+        "volume": 4848797
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1803.95,
+        "volume": 4200013
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1819.34,
+        "volume": 4838370
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1841.31,
+        "volume": 6176965
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1860.91,
+        "volume": 6985101
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1869.5,
+        "volume": 6519781
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1862.73,
+        "volume": 5208818
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1842.6,
+        "volume": 4257506
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1816.76,
+        "volume": 4540476
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1795.15,
+        "volume": 5797568
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1785.7,
+        "volume": 6873016
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1790.95,
+        "volume": 6778059
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1825.4,
+        "volume": 8420000
+      }
+    ]
+  },
+  {
+    "ticker": "WIPRO",
+    "name": "Wipro Limited",
+    "sector": "Information Technology",
+    "exchange": "NSE",
+    "symbol": "WIPRO.NS",
+    "price": 548.2,
+    "prev_close": 526.0,
+    "change": 22.2,
+    "change_pct": 4.22,
+    "day_high": 554.0,
+    "day_low": 528.0,
+    "fifty_two_week_high": 580.0,
+    "fifty_two_week_low": 375.0,
+    "volume": 14250000,
+    "avg_volume_20d": 5800000,
+    "market_cap_cr": 286500,
+    "pe_ratio": 24.1,
+    "pb_ratio": 3.7,
+    "dividend_yield": 0.18,
+    "debt_to_equity": 0.22,
+    "roce": 15.6,
+    "roe": 14.5,
+    "shares_held": 800,
+    "avg_buy_price": 490.0,
+    "portfolio_weight": 7.1,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 536.69,
+        "volume": 4367354
+      },
+      {
+        "date": "2026-10-05",
+        "close": 536.92,
+        "volume": 4837730
+      },
+      {
+        "date": "2026-10-06",
+        "close": 541.48,
+        "volume": 6192813
+      },
+      {
+        "date": "2026-10-07",
+        "close": 548.85,
+        "volume": 7186745
+      },
+      {
+        "date": "2026-10-08",
+        "close": 556.25,
+        "volume": 6905709
+      },
+      {
+        "date": "2026-10-09",
+        "close": 560.82,
+        "volume": 5608089
+      },
+      {
+        "date": "2026-10-10",
+        "close": 560.9,
+        "volume": 4486911
+      },
+      {
+        "date": "2026-10-11",
+        "close": 556.69,
+        "volume": 4572980
+      },
+      {
+        "date": "2026-10-12",
+        "close": 550.15,
+        "volume": 5787165
+      },
+      {
+        "date": "2026-10-13",
+        "close": 544.09,
+        "volume": 7013150
+      },
+      {
+        "date": "2026-10-14",
+        "close": 540.85,
+        "volume": 7123770
+      },
+      {
+        "date": "2026-10-15",
+        "close": 541.32,
+        "volume": 6017321
+      },
+      {
+        "date": "2026-10-16",
+        "close": 544.59,
+        "volume": 4711068
+      },
+      {
+        "date": "2026-10-17",
+        "close": 548.52,
+        "volume": 4405973
+      },
+      {
+        "date": "2026-10-18",
+        "close": 550.81,
+        "volume": 5382540
+      },
+      {
+        "date": "2026-10-19",
+        "close": 550.17,
+        "volume": 6742917
+      },
+      {
+        "date": "2026-10-20",
+        "close": 546.96,
+        "volume": 7236380
+      },
+      {
+        "date": "2026-10-21",
+        "close": 543.01,
+        "volume": 6409242
+      },
+      {
+        "date": "2026-10-22",
+        "close": 540.69,
+        "volume": 5021969
+      },
+      {
+        "date": "2026-10-23",
+        "close": 541.76,
+        "volume": 4350014
+      },
+      {
+        "date": "2026-10-24",
+        "close": 546.38,
+        "volume": 5011169
+      },
+      {
+        "date": "2026-10-25",
+        "close": 552.98,
+        "volume": 6397571
+      },
+      {
+        "date": "2026-10-26",
+        "close": 558.86,
+        "volume": 7234569
+      },
+      {
+        "date": "2026-10-27",
+        "close": 561.44,
+        "volume": 6752630
+      },
+      {
+        "date": "2026-10-28",
+        "close": 559.41,
+        "volume": 5394847
+      },
+      {
+        "date": "2026-10-29",
+        "close": 553.37,
+        "volume": 4409559
+      },
+      {
+        "date": "2026-10-30",
+        "close": 545.61,
+        "volume": 4702636
+      },
+      {
+        "date": "2026-10-31",
+        "close": 539.12,
+        "volume": 6004624
+      },
+      {
+        "date": "2026-11-01",
+        "close": 536.28,
+        "volume": 7118481
+      },
+      {
+        "date": "2026-11-02",
+        "close": 537.85,
+        "volume": 7020132
+      },
+      {
+        "date": "2026-11-03",
+        "close": 548.2,
+        "volume": 14250000
+      }
+    ]
+  },
+  {
+    "ticker": "HDFCBANK",
+    "name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "exchange": "NSE",
+    "symbol": "HDFCBANK.NS",
+    "price": 1745.1,
+    "prev_close": 1730.0,
+    "change": 15.1,
+    "change_pct": 0.87,
+    "day_high": 1756.0,
+    "day_low": 1728.0,
+    "fifty_two_week_high": 1794.0,
+    "fifty_two_week_low": 1363.55,
+    "volume": 12850000,
+    "avg_volume_20d": 11200000,
+    "market_cap_cr": 1328000,
+    "pe_ratio": 19.8,
+    "pb_ratio": 2.7,
+    "dividend_yield": 1.12,
+    "debt_to_equity": 0.88,
+    "roce": 16.8,
+    "roe": 15.4,
+    "shares_held": 600,
+    "avg_buy_price": 1620.0,
+    "portfolio_weight": 17.1,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1708.47,
+        "volume": 8433511
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1709.2,
+        "volume": 9341825
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1723.71,
+        "volume": 11958536
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1747.17,
+        "volume": 13877852
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1770.72,
+        "volume": 13335163
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1785.28,
+        "volume": 10829415
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1785.52,
+        "volume": 8664380
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1772.11,
+        "volume": 8830582
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1751.32,
+        "volume": 11175216
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1732.02,
+        "volume": 13542635
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1721.71,
+        "volume": 13756246
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1723.19,
+        "volume": 11619656
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1733.6,
+        "volume": 9097235
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1746.11,
+        "volume": 8508087
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1753.4,
+        "volume": 10393870
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1751.37,
+        "volume": 13020805
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1741.16,
+        "volume": 13973700
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1728.57,
+        "volume": 12376467
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1721.2,
+        "volume": 9697595
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1724.6,
+        "volume": 8400027
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1739.31,
+        "volume": 9676740
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1760.31,
+        "volume": 12353931
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1779.05,
+        "volume": 13970203
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1787.26,
+        "volume": 13039562
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1780.78,
+        "volume": 10417636
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1761.54,
+        "volume": 8515012
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1736.84,
+        "volume": 9080953
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1716.18,
+        "volume": 11595136
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1707.15,
+        "volume": 13746032
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1712.16,
+        "volume": 13556118
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1745.1,
+        "volume": 12850000
+      }
+    ]
+  },
+  {
+    "ticker": "ICICIBANK",
+    "name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "exchange": "NSE",
+    "symbol": "ICICIBANK.NS",
+    "price": 1285.6,
+    "prev_close": 1272.0,
+    "change": 13.6,
+    "change_pct": 1.07,
+    "day_high": 1294.0,
+    "day_low": 1269.0,
+    "fifty_two_week_high": 1345.0,
+    "fifty_two_week_low": 915.0,
+    "volume": 9400000,
+    "avg_volume_20d": 8900000,
+    "market_cap_cr": 905400,
+    "pe_ratio": 18.2,
+    "pb_ratio": 3.1,
+    "dividend_yield": 0.78,
+    "debt_to_equity": 0.75,
+    "roce": 18.2,
+    "roe": 17.6,
+    "shares_held": 450,
+    "avg_buy_price": 1100.0,
+    "portfolio_weight": 9.4,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1258.62,
+        "volume": 6701629
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1259.15,
+        "volume": 7423414
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1269.84,
+        "volume": 9502765
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1287.13,
+        "volume": 11027936
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1304.48,
+        "volume": 10596692
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1315.2,
+        "volume": 8605517
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1315.37,
+        "volume": 6885088
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1305.5,
+        "volume": 7017159
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1290.18,
+        "volume": 8880305
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1275.97,
+        "volume": 10761558
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1268.37,
+        "volume": 10931303
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1269.46,
+        "volume": 9233476
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1277.13,
+        "volume": 7229053
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1286.34,
+        "volume": 6760890
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1291.71,
+        "volume": 8259415
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1290.22,
+        "volume": 10346890
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1282.7,
+        "volume": 11104101
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1273.42,
+        "volume": 9834871
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1268.0,
+        "volume": 7706125
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1270.5,
+        "volume": 6675021
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1281.33,
+        "volume": 7689553
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1296.8,
+        "volume": 9816963
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1310.61,
+        "volume": 11101322
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1316.66,
+        "volume": 10361795
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1311.89,
+        "volume": 8278300
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1297.71,
+        "volume": 6766393
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1279.52,
+        "volume": 7216114
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1264.3,
+        "volume": 9213992
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1257.64,
+        "volume": 10923186
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1261.34,
+        "volume": 10772272
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1285.6,
+        "volume": 9400000
+      }
+    ]
+  },
+  {
+    "ticker": "SBIN",
+    "name": "State Bank of India",
+    "sector": "Banking & Financials",
+    "exchange": "NSE",
+    "symbol": "SBIN.NS",
+    "price": 818.5,
+    "prev_close": 829.0,
+    "change": -10.5,
+    "change_pct": -1.27,
+    "day_high": 834.0,
+    "day_low": 814.5,
+    "fifty_two_week_high": 912.0,
+    "fifty_two_week_low": 555.2,
+    "volume": 15800000,
+    "avg_volume_20d": 14200000,
+    "market_cap_cr": 730400,
+    "pe_ratio": 10.6,
+    "pb_ratio": 1.8,
+    "dividend_yield": 1.68,
+    "debt_to_equity": 1.25,
+    "roce": 14.5,
+    "roe": 18.8,
+    "shares_held": 500,
+    "avg_buy_price": 740.0,
+    "portfolio_weight": 6.7,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 801.32,
+        "volume": 10692487
+      },
+      {
+        "date": "2026-10-05",
+        "close": 801.66,
+        "volume": 11844099
+      },
+      {
+        "date": "2026-10-06",
+        "close": 808.47,
+        "volume": 15161715
+      },
+      {
+        "date": "2026-10-07",
+        "close": 819.47,
+        "volume": 17595134
+      },
+      {
+        "date": "2026-10-08",
+        "close": 830.52,
+        "volume": 16907082
+      },
+      {
+        "date": "2026-10-09",
+        "close": 837.35,
+        "volume": 13730151
+      },
+      {
+        "date": "2026-10-10",
+        "close": 837.46,
+        "volume": 10985196
+      },
+      {
+        "date": "2026-10-11",
+        "close": 831.17,
+        "volume": 11195917
+      },
+      {
+        "date": "2026-10-12",
+        "close": 821.42,
+        "volume": 14168577
+      },
+      {
+        "date": "2026-10-13",
+        "close": 812.37,
+        "volume": 17170127
+      },
+      {
+        "date": "2026-10-14",
+        "close": 807.53,
+        "volume": 17440955
+      },
+      {
+        "date": "2026-10-15",
+        "close": 808.22,
+        "volume": 14732064
+      },
+      {
+        "date": "2026-10-16",
+        "close": 813.11,
+        "volume": 11533995
+      },
+      {
+        "date": "2026-10-17",
+        "close": 818.97,
+        "volume": 10787038
+      },
+      {
+        "date": "2026-10-18",
+        "close": 822.39,
+        "volume": 13177943
+      },
+      {
+        "date": "2026-10-19",
+        "close": 821.44,
+        "volume": 16508521
+      },
+      {
+        "date": "2026-10-20",
+        "close": 816.65,
+        "volume": 17716656
+      },
+      {
+        "date": "2026-10-21",
+        "close": 810.75,
+        "volume": 15691592
+      },
+      {
+        "date": "2026-10-22",
+        "close": 807.29,
+        "volume": 12295166
+      },
+      {
+        "date": "2026-10-23",
+        "close": 808.88,
+        "volume": 10650034
+      },
+      {
+        "date": "2026-10-24",
+        "close": 815.78,
+        "volume": 12268725
+      },
+      {
+        "date": "2026-10-25",
+        "close": 825.63,
+        "volume": 15663020
+      },
+      {
+        "date": "2026-10-26",
+        "close": 834.42,
+        "volume": 17712221
+      },
+      {
+        "date": "2026-10-27",
+        "close": 838.27,
+        "volume": 16532302
+      },
+      {
+        "date": "2026-10-28",
+        "close": 835.24,
+        "volume": 13208074
+      },
+      {
+        "date": "2026-10-29",
+        "close": 826.21,
+        "volume": 10795818
+      },
+      {
+        "date": "2026-10-30",
+        "close": 814.63,
+        "volume": 11513351
+      },
+      {
+        "date": "2026-10-31",
+        "close": 804.94,
+        "volume": 14700976
+      },
+      {
+        "date": "2026-11-01",
+        "close": 800.7,
+        "volume": 17428005
+      },
+      {
+        "date": "2026-11-02",
+        "close": 803.05,
+        "volume": 17187221
+      },
+      {
+        "date": "2026-11-03",
+        "close": 818.5,
+        "volume": 15800000
+      }
+    ]
+  },
+  {
+    "ticker": "BAJFINANCE",
+    "name": "Bajaj Finance Limited",
+    "sector": "Banking & Financials",
+    "exchange": "NSE",
+    "symbol": "BAJFINANCE.NS",
+    "price": 6840.0,
+    "prev_close": 7090.0,
+    "change": -250.0,
+    "change_pct": -3.53,
+    "day_high": 7120.0,
+    "day_low": 6810.0,
+    "fifty_two_week_high": 8192.0,
+    "fifty_two_week_low": 6365.0,
+    "volume": 2450000,
+    "avg_volume_20d": 1100000,
+    "market_cap_cr": 423500,
+    "pe_ratio": 29.4,
+    "pb_ratio": 5.4,
+    "dividend_yield": 0.53,
+    "debt_to_equity": 3.65,
+    "roce": 13.9,
+    "roe": 22.4,
+    "shares_held": 40,
+    "avg_buy_price": 6950.0,
+    "portfolio_weight": 4.5,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 6696.44,
+        "volume": 828291
+      },
+      {
+        "date": "2026-10-05",
+        "close": 6699.27,
+        "volume": 917500
+      },
+      {
+        "date": "2026-10-06",
+        "close": 6756.14,
+        "volume": 1174499
+      },
+      {
+        "date": "2026-10-07",
+        "close": 6848.12,
+        "volume": 1363003
+      },
+      {
+        "date": "2026-10-08",
+        "close": 6940.43,
+        "volume": 1309703
+      },
+      {
+        "date": "2026-10-09",
+        "close": 6997.49,
+        "volume": 1063603
+      },
+      {
+        "date": "2026-10-10",
+        "close": 6998.42,
+        "volume": 850965
+      },
+      {
+        "date": "2026-10-11",
+        "close": 6945.88,
+        "volume": 867289
+      },
+      {
+        "date": "2026-10-12",
+        "close": 6864.38,
+        "volume": 1097565
+      },
+      {
+        "date": "2026-10-13",
+        "close": 6788.75,
+        "volume": 1330080
+      },
+      {
+        "date": "2026-10-14",
+        "close": 6748.32,
+        "volume": 1351059
+      },
+      {
+        "date": "2026-10-15",
+        "close": 6754.12,
+        "volume": 1141216
+      },
+      {
+        "date": "2026-10-16",
+        "close": 6794.94,
+        "volume": 893478
+      },
+      {
+        "date": "2026-10-17",
+        "close": 6843.95,
+        "volume": 835615
+      },
+      {
+        "date": "2026-10-18",
+        "close": 6872.53,
+        "volume": 1020826
+      },
+      {
+        "date": "2026-10-19",
+        "close": 6864.58,
+        "volume": 1278829
+      },
+      {
+        "date": "2026-10-20",
+        "close": 6824.55,
+        "volume": 1372417
+      },
+      {
+        "date": "2026-10-21",
+        "close": 6775.21,
+        "volume": 1215545
+      },
+      {
+        "date": "2026-10-22",
+        "close": 6746.33,
+        "volume": 952442
+      },
+      {
+        "date": "2026-10-23",
+        "close": 6759.64,
+        "volume": 825002
+      },
+      {
+        "date": "2026-10-24",
+        "close": 6817.3,
+        "volume": 950394
+      },
+      {
+        "date": "2026-10-25",
+        "close": 6899.61,
+        "volume": 1213332
+      },
+      {
+        "date": "2026-10-26",
+        "close": 6973.05,
+        "volume": 1372073
+      },
+      {
+        "date": "2026-10-27",
+        "close": 7005.25,
+        "volume": 1280671
+      },
+      {
+        "date": "2026-10-28",
+        "close": 6979.86,
+        "volume": 1023160
+      },
+      {
+        "date": "2026-10-29",
+        "close": 6904.45,
+        "volume": 836295
+      },
+      {
+        "date": "2026-10-30",
+        "close": 6807.63,
+        "volume": 891879
+      },
+      {
+        "date": "2026-10-31",
+        "close": 6726.65,
+        "volume": 1138808
+      },
+      {
+        "date": "2026-11-01",
+        "close": 6691.24,
+        "volume": 1350056
+      },
+      {
+        "date": "2026-11-02",
+        "close": 6710.9,
+        "volume": 1331404
+      },
+      {
+        "date": "2026-11-03",
+        "close": 6840.0,
+        "volume": 2450000
+      }
+    ]
+  },
+  {
+    "ticker": "JIOFIN",
+    "name": "Jio Financial Services Limited",
+    "sector": "Banking & Financials",
+    "exchange": "NSE",
+    "symbol": "JIOFIN.NS",
+    "price": 314.8,
+    "prev_close": 308.5,
+    "change": 6.3,
+    "change_pct": 2.04,
+    "day_high": 318.5,
+    "day_low": 307.0,
+    "fifty_two_week_high": 394.7,
+    "fifty_two_week_low": 204.65,
+    "volume": 22400000,
+    "avg_volume_20d": 12800000,
+    "market_cap_cr": 200020,
+    "pe_ratio": 122.5,
+    "pb_ratio": 1.7,
+    "dividend_yield": 0.0,
+    "debt_to_equity": 0.01,
+    "roce": 2.1,
+    "roe": 1.4,
+    "shares_held": 1200,
+    "avg_buy_price": 275.0,
+    "portfolio_weight": 6.1,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 308.19,
+        "volume": 9638298
+      },
+      {
+        "date": "2026-10-05",
+        "close": 308.32,
+        "volume": 10676371
+      },
+      {
+        "date": "2026-10-06",
+        "close": 310.94,
+        "volume": 13666898
+      },
+      {
+        "date": "2026-10-07",
+        "close": 315.17,
+        "volume": 15860402
+      },
+      {
+        "date": "2026-10-08",
+        "close": 319.42,
+        "volume": 15240187
+      },
+      {
+        "date": "2026-10-09",
+        "close": 322.05,
+        "volume": 12376474
+      },
+      {
+        "date": "2026-10-10",
+        "close": 322.09,
+        "volume": 9902149
+      },
+      {
+        "date": "2026-10-11",
+        "close": 319.67,
+        "volume": 10092094
+      },
+      {
+        "date": "2026-10-12",
+        "close": 315.92,
+        "volume": 12771675
+      },
+      {
+        "date": "2026-10-13",
+        "close": 312.44,
+        "volume": 15477298
+      },
+      {
+        "date": "2026-10-14",
+        "close": 310.58,
+        "volume": 15721424
+      },
+      {
+        "date": "2026-10-15",
+        "close": 310.85,
+        "volume": 13279607
+      },
+      {
+        "date": "2026-10-16",
+        "close": 312.73,
+        "volume": 10396840
+      },
+      {
+        "date": "2026-10-17",
+        "close": 314.98,
+        "volume": 9723528
+      },
+      {
+        "date": "2026-10-18",
+        "close": 316.3,
+        "volume": 11878709
+      },
+      {
+        "date": "2026-10-19",
+        "close": 315.93,
+        "volume": 14880921
+      },
+      {
+        "date": "2026-10-20",
+        "close": 314.09,
+        "volume": 15969943
+      },
+      {
+        "date": "2026-10-21",
+        "close": 311.82,
+        "volume": 14144534
+      },
+      {
+        "date": "2026-10-22",
+        "close": 310.49,
+        "volume": 11082966
+      },
+      {
+        "date": "2026-10-23",
+        "close": 311.1,
+        "volume": 9600031
+      },
+      {
+        "date": "2026-10-24",
+        "close": 313.76,
+        "volume": 11059132
+      },
+      {
+        "date": "2026-10-25",
+        "close": 317.54,
+        "volume": 14118779
+      },
+      {
+        "date": "2026-10-26",
+        "close": 320.92,
+        "volume": 15965946
+      },
+      {
+        "date": "2026-10-27",
+        "close": 322.41,
+        "volume": 14902357
+      },
+      {
+        "date": "2026-10-28",
+        "close": 321.24,
+        "volume": 11905870
+      },
+      {
+        "date": "2026-10-29",
+        "close": 317.77,
+        "volume": 9731442
+      },
+      {
+        "date": "2026-10-30",
+        "close": 313.31,
+        "volume": 10378232
+      },
+      {
+        "date": "2026-10-31",
+        "close": 309.58,
+        "volume": 13251584
+      },
+      {
+        "date": "2026-11-01",
+        "close": 307.95,
+        "volume": 15709751
+      },
+      {
+        "date": "2026-11-02",
+        "close": 308.86,
+        "volume": 15492707
+      },
+      {
+        "date": "2026-11-03",
+        "close": 314.8,
+        "volume": 22400000
+      }
+    ]
+  },
+  {
+    "ticker": "ONGC",
+    "name": "Oil & Natural Gas Corporation Limited",
+    "sector": "Energy & Conglomerate",
+    "exchange": "NSE",
+    "symbol": "ONGC.NS",
+    "price": 268.4,
+    "prev_close": 264.0,
+    "change": 4.4,
+    "change_pct": 1.67,
+    "day_high": 271.0,
+    "day_low": 262.5,
+    "fifty_two_week_high": 344.75,
+    "fifty_two_week_low": 182.2,
+    "volume": 18900000,
+    "avg_volume_20d": 16400000,
+    "market_cap_cr": 337650,
+    "pe_ratio": 7.4,
+    "pb_ratio": 1.05,
+    "dividend_yield": 4.56,
+    "debt_to_equity": 0.42,
+    "roce": 16.2,
+    "roe": 14.8,
+    "shares_held": 800,
+    "avg_buy_price": 240.0,
+    "portfolio_weight": 3.5,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 262.77,
+        "volume": 12349070
+      },
+      {
+        "date": "2026-10-05",
+        "close": 262.88,
+        "volume": 13679101
+      },
+      {
+        "date": "2026-10-06",
+        "close": 265.11,
+        "volume": 17510713
+      },
+      {
+        "date": "2026-10-07",
+        "close": 268.72,
+        "volume": 20321141
+      },
+      {
+        "date": "2026-10-08",
+        "close": 272.34,
+        "volume": 19526489
+      },
+      {
+        "date": "2026-10-09",
+        "close": 274.58,
+        "volume": 15857357
+      },
+      {
+        "date": "2026-10-10",
+        "close": 274.62,
+        "volume": 12687128
+      },
+      {
+        "date": "2026-10-11",
+        "close": 272.55,
+        "volume": 12930496
+      },
+      {
+        "date": "2026-10-12",
+        "close": 269.36,
+        "volume": 16363709
+      },
+      {
+        "date": "2026-10-13",
+        "close": 266.39,
+        "volume": 19830288
+      },
+      {
+        "date": "2026-10-14",
+        "close": 264.8,
+        "volume": 20143075
+      },
+      {
+        "date": "2026-10-15",
+        "close": 265.03,
+        "volume": 17014496
+      },
+      {
+        "date": "2026-10-16",
+        "close": 266.63,
+        "volume": 13320952
+      },
+      {
+        "date": "2026-10-17",
+        "close": 268.56,
+        "volume": 12458270
+      },
+      {
+        "date": "2026-10-18",
+        "close": 269.68,
+        "volume": 15219596
+      },
+      {
+        "date": "2026-10-19",
+        "close": 269.36,
+        "volume": 19066180
+      },
+      {
+        "date": "2026-10-20",
+        "close": 267.79,
+        "volume": 20461490
+      },
+      {
+        "date": "2026-10-21",
+        "close": 265.86,
+        "volume": 18122684
+      },
+      {
+        "date": "2026-10-22",
+        "close": 264.72,
+        "volume": 14200051
+      },
+      {
+        "date": "2026-10-23",
+        "close": 265.25,
+        "volume": 12300040
+      },
+      {
+        "date": "2026-10-24",
+        "close": 267.51,
+        "volume": 14169513
+      },
+      {
+        "date": "2026-10-25",
+        "close": 270.74,
+        "volume": 18089685
+      },
+      {
+        "date": "2026-10-26",
+        "close": 273.62,
+        "volume": 20456368
+      },
+      {
+        "date": "2026-10-27",
+        "close": 274.88,
+        "volume": 19093645
+      },
+      {
+        "date": "2026-10-28",
+        "close": 273.89,
+        "volume": 15254396
+      },
+      {
+        "date": "2026-10-29",
+        "close": 270.93,
+        "volume": 12468410
+      },
+      {
+        "date": "2026-10-30",
+        "close": 267.13,
+        "volume": 13297109
+      },
+      {
+        "date": "2026-10-31",
+        "close": 263.95,
+        "volume": 16978592
+      },
+      {
+        "date": "2026-11-01",
+        "close": 262.56,
+        "volume": 20128119
+      },
+      {
+        "date": "2026-11-02",
+        "close": 263.33,
+        "volume": 19850031
+      },
+      {
+        "date": "2026-11-03",
+        "close": 268.4,
+        "volume": 18900000
+      }
+    ]
+  },
+  {
+    "ticker": "TATAMOTORS",
+    "name": "Tata Motors Limited",
+    "sector": "Automobile",
+    "exchange": "NSE",
+    "symbol": "TATAMOTORS.NS",
+    "price": 842.1,
+    "prev_close": 849.5,
+    "change": -7.4,
+    "change_pct": -0.87,
+    "day_high": 858.0,
+    "day_low": 839.0,
+    "fifty_two_week_high": 1179.05,
+    "fifty_two_week_low": 625.0,
+    "volume": 9100000,
+    "avg_volume_20d": 8700000,
+    "market_cap_cr": 309800,
+    "pe_ratio": 9.8,
+    "pb_ratio": 3.4,
+    "dividend_yield": 0.71,
+    "debt_to_equity": 0.62,
+    "roce": 21.4,
+    "roe": 36.8,
+    "shares_held": 350,
+    "avg_buy_price": 780.0,
+    "portfolio_weight": 4.8,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 824.43,
+        "volume": 6551031
+      },
+      {
+        "date": "2026-10-05",
+        "close": 824.77,
+        "volume": 7256596
+      },
+      {
+        "date": "2026-10-06",
+        "close": 831.78,
+        "volume": 9289220
+      },
+      {
+        "date": "2026-10-07",
+        "close": 843.1,
+        "volume": 10780117
+      },
+      {
+        "date": "2026-10-08",
+        "close": 854.46,
+        "volume": 10358564
+      },
+      {
+        "date": "2026-10-09",
+        "close": 861.49,
+        "volume": 8412134
+      },
+      {
+        "date": "2026-10-10",
+        "close": 861.6,
+        "volume": 6730367
+      },
+      {
+        "date": "2026-10-11",
+        "close": 855.14,
+        "volume": 6859470
+      },
+      {
+        "date": "2026-10-12",
+        "close": 845.1,
+        "volume": 8680748
+      },
+      {
+        "date": "2026-10-13",
+        "close": 835.79,
+        "volume": 10519726
+      },
+      {
+        "date": "2026-10-14",
+        "close": 830.81,
+        "volume": 10685655
+      },
+      {
+        "date": "2026-10-15",
+        "close": 831.53,
+        "volume": 9025982
+      },
+      {
+        "date": "2026-10-16",
+        "close": 836.55,
+        "volume": 7066602
+      },
+      {
+        "date": "2026-10-17",
+        "close": 842.59,
+        "volume": 6608960
+      },
+      {
+        "date": "2026-10-18",
+        "close": 846.1,
+        "volume": 8073810
+      },
+      {
+        "date": "2026-10-19",
+        "close": 845.13,
+        "volume": 10114376
+      },
+      {
+        "date": "2026-10-20",
+        "close": 840.2,
+        "volume": 10854570
+      },
+      {
+        "date": "2026-10-21",
+        "close": 834.12,
+        "volume": 9613863
+      },
+      {
+        "date": "2026-10-22",
+        "close": 830.57,
+        "volume": 7532953
+      },
+      {
+        "date": "2026-10-23",
+        "close": 832.21,
+        "volume": 6525021
+      },
+      {
+        "date": "2026-10-24",
+        "close": 839.31,
+        "volume": 7516754
+      },
+      {
+        "date": "2026-10-25",
+        "close": 849.44,
+        "volume": 9596357
+      },
+      {
+        "date": "2026-10-26",
+        "close": 858.48,
+        "volume": 10851854
+      },
+      {
+        "date": "2026-10-27",
+        "close": 862.44,
+        "volume": 10128945
+      },
+      {
+        "date": "2026-10-28",
+        "close": 859.32,
+        "volume": 8092271
+      },
+      {
+        "date": "2026-10-29",
+        "close": 850.04,
+        "volume": 6614339
+      },
+      {
+        "date": "2026-10-30",
+        "close": 838.11,
+        "volume": 7053954
+      },
+      {
+        "date": "2026-10-31",
+        "close": 828.14,
+        "volume": 9006936
+      },
+      {
+        "date": "2026-11-01",
+        "close": 823.79,
+        "volume": 10677721
+      },
+      {
+        "date": "2026-11-02",
+        "close": 826.21,
+        "volume": 10530199
+      },
+      {
+        "date": "2026-11-03",
+        "close": 842.1,
+        "volume": 9100000
+      }
+    ]
+  },
+  {
+    "ticker": "MARUTI",
+    "name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "exchange": "NSE",
+    "symbol": "MARUTI.NS",
+    "price": 11450.0,
+    "prev_close": 11340.0,
+    "change": 110.0,
+    "change_pct": 0.97,
+    "day_high": 11520.0,
+    "day_low": 11310.0,
+    "fifty_two_week_high": 13680.0,
+    "fifty_two_week_low": 9737.55,
+    "volume": 410000,
+    "avg_volume_20d": 380000,
+    "market_cap_cr": 360100,
+    "pe_ratio": 26.5,
+    "pb_ratio": 4.2,
+    "dividend_yield": 1.1,
+    "debt_to_equity": 0.01,
+    "roce": 21.9,
+    "roe": 17.5,
+    "shares_held": 25,
+    "avg_buy_price": 10800.0,
+    "portfolio_weight": 4.7,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 11209.68,
+        "volume": 286136
+      },
+      {
+        "date": "2026-10-05",
+        "close": 11214.42,
+        "volume": 316954
+      },
+      {
+        "date": "2026-10-06",
+        "close": 11309.63,
+        "volume": 405736
+      },
+      {
+        "date": "2026-10-07",
+        "close": 11463.59,
+        "volume": 470855
+      },
+      {
+        "date": "2026-10-08",
+        "close": 11618.11,
+        "volume": 452443
+      },
+      {
+        "date": "2026-10-09",
+        "close": 11713.64,
+        "volume": 367426
+      },
+      {
+        "date": "2026-10-10",
+        "close": 11715.19,
+        "volume": 293970
+      },
+      {
+        "date": "2026-10-11",
+        "close": 11627.24,
+        "volume": 299609
+      },
+      {
+        "date": "2026-10-12",
+        "close": 11490.81,
+        "volume": 379159
+      },
+      {
+        "date": "2026-10-13",
+        "close": 11364.2,
+        "volume": 459482
+      },
+      {
+        "date": "2026-10-14",
+        "close": 11296.52,
+        "volume": 466729
+      },
+      {
+        "date": "2026-10-15",
+        "close": 11306.23,
+        "volume": 394238
+      },
+      {
+        "date": "2026-10-16",
+        "close": 11374.57,
+        "volume": 308656
+      },
+      {
+        "date": "2026-10-17",
+        "close": 11456.62,
+        "volume": 288667
+      },
+      {
+        "date": "2026-10-18",
+        "close": 11504.45,
+        "volume": 352649
+      },
+      {
+        "date": "2026-10-19",
+        "close": 11491.15,
+        "volume": 441777
+      },
+      {
+        "date": "2026-10-20",
+        "close": 11424.14,
+        "volume": 474107
+      },
+      {
+        "date": "2026-10-21",
+        "close": 11341.55,
+        "volume": 419915
+      },
+      {
+        "date": "2026-10-22",
+        "close": 11293.2,
+        "volume": 329025
+      },
+      {
+        "date": "2026-10-23",
+        "close": 11315.47,
+        "volume": 285000
+      },
+      {
+        "date": "2026-10-24",
+        "close": 11412.0,
+        "volume": 328317
+      },
+      {
+        "date": "2026-10-25",
+        "close": 11549.79,
+        "volume": 419151
+      },
+      {
+        "date": "2026-10-26",
+        "close": 11672.72,
+        "volume": 473989
+      },
+      {
+        "date": "2026-10-27",
+        "close": 11726.62,
+        "volume": 442413
+      },
+      {
+        "date": "2026-10-28",
+        "close": 11684.12,
+        "volume": 353455
+      },
+      {
+        "date": "2026-10-29",
+        "close": 11557.9,
+        "volume": 288902
+      },
+      {
+        "date": "2026-10-30",
+        "close": 11395.81,
+        "volume": 308103
+      },
+      {
+        "date": "2026-10-31",
+        "close": 11260.25,
+        "volume": 393406
+      },
+      {
+        "date": "2026-11-01",
+        "close": 11200.98,
+        "volume": 466383
+      },
+      {
+        "date": "2026-11-02",
+        "close": 11233.89,
+        "volume": 459939
+      },
+      {
+        "date": "2026-11-03",
+        "close": 11450.0,
+        "volume": 410000
+      }
+    ]
+  },
+  {
+    "ticker": "ITC",
+    "name": "ITC Limited",
+    "sector": "FMCG & Consumer",
+    "exchange": "NSE",
+    "symbol": "ITC.NS",
+    "price": 478.6,
+    "prev_close": 472.0,
+    "change": 6.6,
+    "change_pct": 1.4,
+    "day_high": 482.0,
+    "day_low": 471.5,
+    "fifty_two_week_high": 528.55,
+    "fifty_two_week_low": 399.3,
+    "volume": 12500000,
+    "avg_volume_20d": 11800000,
+    "market_cap_cr": 598400,
+    "pe_ratio": 29.2,
+    "pb_ratio": 8.1,
+    "dividend_yield": 2.85,
+    "debt_to_equity": 0.0,
+    "roce": 39.5,
+    "roe": 29.8,
+    "shares_held": 700,
+    "avg_buy_price": 435.0,
+    "portfolio_weight": 5.5,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 468.55,
+        "volume": 8885306
+      },
+      {
+        "date": "2026-10-05",
+        "close": 468.75,
+        "volume": 9842280
+      },
+      {
+        "date": "2026-10-06",
+        "close": 472.73,
+        "volume": 12599172
+      },
+      {
+        "date": "2026-10-07",
+        "close": 479.17,
+        "volume": 14621308
+      },
+      {
+        "date": "2026-10-08",
+        "close": 485.63,
+        "volume": 14049547
+      },
+      {
+        "date": "2026-10-09",
+        "close": 489.62,
+        "volume": 11409562
+      },
+      {
+        "date": "2026-10-10",
+        "close": 489.68,
+        "volume": 9128543
+      },
+      {
+        "date": "2026-10-11",
+        "close": 486.01,
+        "volume": 9303649
+      },
+      {
+        "date": "2026-10-12",
+        "close": 480.31,
+        "volume": 11773888
+      },
+      {
+        "date": "2026-10-13",
+        "close": 475.01,
+        "volume": 14268134
+      },
+      {
+        "date": "2026-10-14",
+        "close": 472.18,
+        "volume": 14493188
+      },
+      {
+        "date": "2026-10-15",
+        "close": 472.59,
+        "volume": 12242137
+      },
+      {
+        "date": "2026-10-16",
+        "close": 475.45,
+        "volume": 9584587
+      },
+      {
+        "date": "2026-10-17",
+        "close": 478.88,
+        "volume": 8963877
+      },
+      {
+        "date": "2026-10-18",
+        "close": 480.88,
+        "volume": 10950685
+      },
+      {
+        "date": "2026-10-19",
+        "close": 480.32,
+        "volume": 13718349
+      },
+      {
+        "date": "2026-10-20",
+        "close": 477.52,
+        "volume": 14722291
+      },
+      {
+        "date": "2026-10-21",
+        "close": 474.07,
+        "volume": 13039492
+      },
+      {
+        "date": "2026-10-22",
+        "close": 472.05,
+        "volume": 10217109
+      },
+      {
+        "date": "2026-10-23",
+        "close": 472.98,
+        "volume": 8850028
+      },
+      {
+        "date": "2026-10-24",
+        "close": 477.01,
+        "volume": 10195137
+      },
+      {
+        "date": "2026-10-25",
+        "close": 482.77,
+        "volume": 13015749
+      },
+      {
+        "date": "2026-10-26",
+        "close": 487.91,
+        "volume": 14718606
+      },
+      {
+        "date": "2026-10-27",
+        "close": 490.16,
+        "volume": 13738110
+      },
+      {
+        "date": "2026-10-28",
+        "close": 488.39,
+        "volume": 10975724
+      },
+      {
+        "date": "2026-10-29",
+        "close": 483.11,
+        "volume": 8971173
+      },
+      {
+        "date": "2026-10-30",
+        "close": 476.33,
+        "volume": 9567432
+      },
+      {
+        "date": "2026-10-31",
+        "close": 470.67,
+        "volume": 12216304
+      },
+      {
+        "date": "2026-11-01",
+        "close": 468.19,
+        "volume": 14482427
+      },
+      {
+        "date": "2026-11-02",
+        "close": 469.57,
+        "volume": 14282339
+      },
+      {
+        "date": "2026-11-03",
+        "close": 478.6,
+        "volume": 12500000
+      }
+    ]
+  },
+  {
+    "ticker": "HINDUNILVR",
+    "name": "Hindustan Unilever Limited",
+    "sector": "FMCG & Consumer",
+    "exchange": "NSE",
+    "symbol": "HINDUNILVR.NS",
+    "price": 2410.0,
+    "prev_close": 2428.0,
+    "change": -18.0,
+    "change_pct": -0.74,
+    "day_high": 2445.0,
+    "day_low": 2398.0,
+    "fifty_two_week_high": 3035.0,
+    "fifty_two_week_low": 2172.05,
+    "volume": 1850000,
+    "avg_volume_20d": 1920000,
+    "market_cap_cr": 566200,
+    "pe_ratio": 54.8,
+    "pb_ratio": 10.9,
+    "dividend_yield": 1.74,
+    "debt_to_equity": 0.02,
+    "roce": 27.2,
+    "roe": 20.3,
+    "shares_held": 120,
+    "avg_buy_price": 2520.0,
+    "portfolio_weight": 4.7,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 2359.42,
+        "volume": 1445744
+      },
+      {
+        "date": "2026-10-05",
+        "close": 2360.42,
+        "volume": 1601455
+      },
+      {
+        "date": "2026-10-06",
+        "close": 2380.45,
+        "volume": 2050034
+      },
+      {
+        "date": "2026-10-07",
+        "close": 2412.86,
+        "volume": 2379060
+      },
+      {
+        "date": "2026-10-08",
+        "close": 2445.38,
+        "volume": 2286028
+      },
+      {
+        "date": "2026-10-09",
+        "close": 2465.49,
+        "volume": 1856471
+      },
+      {
+        "date": "2026-10-10",
+        "close": 2465.82,
+        "volume": 1485322
+      },
+      {
+        "date": "2026-10-11",
+        "close": 2447.31,
+        "volume": 1513814
+      },
+      {
+        "date": "2026-10-12",
+        "close": 2418.59,
+        "volume": 1915751
+      },
+      {
+        "date": "2026-10-13",
+        "close": 2391.94,
+        "volume": 2321594
+      },
+      {
+        "date": "2026-10-14",
+        "close": 2377.7,
+        "volume": 2358213
+      },
+      {
+        "date": "2026-10-15",
+        "close": 2379.74,
+        "volume": 1991941
+      },
+      {
+        "date": "2026-10-16",
+        "close": 2394.12,
+        "volume": 1559526
+      },
+      {
+        "date": "2026-10-17",
+        "close": 2411.39,
+        "volume": 1458529
+      },
+      {
+        "date": "2026-10-18",
+        "close": 2421.46,
+        "volume": 1781806
+      },
+      {
+        "date": "2026-10-19",
+        "close": 2418.66,
+        "volume": 2232138
+      },
+      {
+        "date": "2026-10-20",
+        "close": 2404.56,
+        "volume": 2395491
+      },
+      {
+        "date": "2026-10-21",
+        "close": 2387.17,
+        "volume": 2121680
+      },
+      {
+        "date": "2026-10-22",
+        "close": 2377.0,
+        "volume": 1662444
+      },
+      {
+        "date": "2026-10-23",
+        "close": 2381.68,
+        "volume": 1440004
+      },
+      {
+        "date": "2026-10-24",
+        "close": 2402.0,
+        "volume": 1658869
+      },
+      {
+        "date": "2026-10-25",
+        "close": 2431.0,
+        "volume": 2117816
+      },
+      {
+        "date": "2026-10-26",
+        "close": 2456.88,
+        "volume": 2394891
+      },
+      {
+        "date": "2026-10-27",
+        "close": 2468.22,
+        "volume": 2235353
+      },
+      {
+        "date": "2026-10-28",
+        "close": 2459.28,
+        "volume": 1785880
+      },
+      {
+        "date": "2026-10-29",
+        "close": 2432.71,
+        "volume": 1459716
+      },
+      {
+        "date": "2026-10-30",
+        "close": 2398.59,
+        "volume": 1556734
+      },
+      {
+        "date": "2026-10-31",
+        "close": 2370.06,
+        "volume": 1987737
+      },
+      {
+        "date": "2026-11-01",
+        "close": 2357.59,
+        "volume": 2356462
+      },
+      {
+        "date": "2026-11-02",
+        "close": 2364.51,
+        "volume": 2323906
+      },
+      {
+        "date": "2026-11-03",
+        "close": 2410.0,
+        "volume": 1850000
+      }
+    ]
+  },
+  {
+    "ticker": "SUNPHARMA",
+    "name": "Sun Pharmaceutical Industries Limited",
+    "sector": "Pharmaceuticals & Healthcare",
+    "exchange": "NSE",
+    "symbol": "SUNPHARMA.NS",
+    "price": 1788.0,
+    "prev_close": 1845.0,
+    "change": -57.0,
+    "change_pct": -3.09,
+    "day_high": 1840.0,
+    "day_low": 1775.0,
+    "fifty_two_week_high": 1960.35,
+    "fifty_two_week_low": 1111.0,
+    "volume": 4900000,
+    "avg_volume_20d": 2100000,
+    "market_cap_cr": 429000,
+    "pe_ratio": 41.5,
+    "pb_ratio": 6.3,
+    "dividend_yield": 0.76,
+    "debt_to_equity": 0.05,
+    "roce": 17.8,
+    "roe": 16.4,
+    "shares_held": 160,
+    "avg_buy_price": 1600.0,
+    "portfolio_weight": 4.7,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1750.47,
+        "volume": 1581283
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1751.21,
+        "volume": 1751592
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1766.08,
+        "volume": 2242225
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1790.12,
+        "volume": 2602097
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1814.25,
+        "volume": 2500343
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1829.17,
+        "volume": 2030515
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1829.41,
+        "volume": 1624571
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1815.68,
+        "volume": 1655734
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1794.37,
+        "volume": 2095353
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1774.6,
+        "volume": 2539244
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1764.03,
+        "volume": 2579296
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1765.55,
+        "volume": 2178685
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1776.22,
+        "volume": 1705731
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1789.03,
+        "volume": 1595266
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1796.5,
+        "volume": 1948850
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1794.43,
+        "volume": 2441401
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1783.96,
+        "volume": 2620068
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1771.06,
+        "volume": 2320587
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1763.52,
+        "volume": 1818299
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1766.99,
+        "volume": 1575005
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1782.07,
+        "volume": 1814388
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1803.58,
+        "volume": 2316362
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1822.78,
+        "volume": 2619413
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1831.2,
+        "volume": 2444917
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1824.56,
+        "volume": 1953306
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1804.85,
+        "volume": 1596564
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1779.54,
+        "volume": 1702678
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1758.37,
+        "volume": 2174088
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1749.11,
+        "volume": 2577381
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1754.25,
+        "volume": 2541772
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1788.0,
+        "volume": 4900000
+      }
+    ]
+  },
+  {
+    "ticker": "DRREDDY",
+    "name": "Dr. Reddy's Laboratories Limited",
+    "sector": "Pharmaceuticals & Healthcare",
+    "exchange": "NSE",
+    "symbol": "DRREDDY.NS",
+    "price": 1264.0,
+    "prev_close": 1251.0,
+    "change": 13.0,
+    "change_pct": 1.04,
+    "day_high": 1276.0,
+    "day_low": 1248.0,
+    "fifty_two_week_high": 1378.0,
+    "fifty_two_week_low": 1030.0,
+    "volume": 2200000,
+    "avg_volume_20d": 1980000,
+    "market_cap_cr": 105400,
+    "pe_ratio": 18.9,
+    "pb_ratio": 3.4,
+    "dividend_yield": 0.63,
+    "debt_to_equity": 0.07,
+    "roce": 25.1,
+    "roe": 21.6,
+    "shares_held": 250,
+    "avg_buy_price": 1190.0,
+    "portfolio_weight": 5.2,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1237.47,
+        "volume": 1490924
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1237.99,
+        "volume": 1651501
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1248.5,
+        "volume": 2114098
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1265.5,
+        "volume": 2453406
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1282.56,
+        "volume": 2357466
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1293.1,
+        "volume": 1914485
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1293.27,
+        "volume": 1531738
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1283.57,
+        "volume": 1561120
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1268.51,
+        "volume": 1975618
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1254.53,
+        "volume": 2394144
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1247.06,
+        "volume": 2431907
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1248.13,
+        "volume": 2054189
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1255.67,
+        "volume": 1608261
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1264.73,
+        "volume": 1504108
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1270.01,
+        "volume": 1837487
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1268.54,
+        "volume": 2301892
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1261.15,
+        "volume": 2470350
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1252.03,
+        "volume": 2187982
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1246.69,
+        "volume": 1714396
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1249.15,
+        "volume": 1485004
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1259.81,
+        "volume": 1710709
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1275.02,
+        "volume": 2183998
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1288.59,
+        "volume": 2469732
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1294.54,
+        "volume": 2305208
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1289.85,
+        "volume": 1841689
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1275.91,
+        "volume": 1505332
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1258.02,
+        "volume": 1605382
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1243.05,
+        "volume": 2049854
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1236.51,
+        "volume": 2430102
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1240.14,
+        "volume": 2396528
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1264.0,
+        "volume": 2200000
+      }
+    ]
+  },
+  {
+    "ticker": "BHARTIARTL",
+    "name": "Bharti Airtel Limited",
+    "sector": "Telecommunications",
+    "exchange": "NSE",
+    "symbol": "BHARTIARTL.NS",
+    "price": 1612.4,
+    "prev_close": 1598.0,
+    "change": 14.4,
+    "change_pct": 0.9,
+    "day_high": 1625.0,
+    "day_low": 1592.0,
+    "fifty_two_week_high": 1779.0,
+    "fifty_two_week_low": 901.0,
+    "volume": 6800000,
+    "avg_volume_20d": 6400000,
+    "market_cap_cr": 922500,
+    "pe_ratio": 72.4,
+    "pb_ratio": 10.2,
+    "dividend_yield": 0.5,
+    "debt_to_equity": 1.72,
+    "roce": 14.8,
+    "roe": 12.9,
+    "shares_held": 280,
+    "avg_buy_price": 1410.0,
+    "portfolio_weight": 7.4,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 1578.56,
+        "volume": 4819149
+      },
+      {
+        "date": "2026-10-05",
+        "close": 1579.23,
+        "volume": 5338185
+      },
+      {
+        "date": "2026-10-06",
+        "close": 1592.63,
+        "volume": 6833449
+      },
+      {
+        "date": "2026-10-07",
+        "close": 1614.31,
+        "volume": 7930201
+      },
+      {
+        "date": "2026-10-08",
+        "close": 1636.07,
+        "volume": 7620093
+      },
+      {
+        "date": "2026-10-09",
+        "close": 1649.53,
+        "volume": 6188237
+      },
+      {
+        "date": "2026-10-10",
+        "close": 1649.74,
+        "volume": 4951074
+      },
+      {
+        "date": "2026-10-11",
+        "close": 1637.36,
+        "volume": 5046047
+      },
+      {
+        "date": "2026-10-12",
+        "close": 1618.15,
+        "volume": 6385837
+      },
+      {
+        "date": "2026-10-13",
+        "close": 1600.32,
+        "volume": 7738649
+      },
+      {
+        "date": "2026-10-14",
+        "close": 1590.79,
+        "volume": 7860712
+      },
+      {
+        "date": "2026-10-15",
+        "close": 1592.15,
+        "volume": 6639803
+      },
+      {
+        "date": "2026-10-16",
+        "close": 1601.78,
+        "volume": 5198420
+      },
+      {
+        "date": "2026-10-17",
+        "close": 1613.33,
+        "volume": 4861764
+      },
+      {
+        "date": "2026-10-18",
+        "close": 1620.07,
+        "volume": 5939354
+      },
+      {
+        "date": "2026-10-19",
+        "close": 1618.19,
+        "volume": 7440460
+      },
+      {
+        "date": "2026-10-20",
+        "close": 1608.76,
+        "volume": 7984971
+      },
+      {
+        "date": "2026-10-21",
+        "close": 1597.13,
+        "volume": 7072267
+      },
+      {
+        "date": "2026-10-22",
+        "close": 1590.32,
+        "volume": 5541483
+      },
+      {
+        "date": "2026-10-23",
+        "close": 1593.46,
+        "volume": 4800015
+      },
+      {
+        "date": "2026-10-24",
+        "close": 1607.05,
+        "volume": 5529566
+      },
+      {
+        "date": "2026-10-25",
+        "close": 1626.45,
+        "volume": 7059389
+      },
+      {
+        "date": "2026-10-26",
+        "close": 1643.76,
+        "volume": 7982973
+      },
+      {
+        "date": "2026-10-27",
+        "close": 1651.35,
+        "volume": 7451178
+      },
+      {
+        "date": "2026-10-28",
+        "close": 1645.37,
+        "volume": 5952935
+      },
+      {
+        "date": "2026-10-29",
+        "close": 1627.59,
+        "volume": 4865721
+      },
+      {
+        "date": "2026-10-30",
+        "close": 1604.77,
+        "volume": 5189116
+      },
+      {
+        "date": "2026-10-31",
+        "close": 1585.68,
+        "volume": 6625792
+      },
+      {
+        "date": "2026-11-01",
+        "close": 1577.33,
+        "volume": 7854875
+      },
+      {
+        "date": "2026-11-02",
+        "close": 1581.97,
+        "volume": 7746353
+      },
+      {
+        "date": "2026-11-03",
+        "close": 1612.4,
+        "volume": 6800000
+      }
+    ]
+  },
+  {
+    "ticker": "LT",
+    "name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Capital Goods",
+    "exchange": "NSE",
+    "symbol": "LT.NS",
+    "price": 3648.0,
+    "prev_close": 3580.0,
+    "change": 68.0,
+    "change_pct": 1.9,
+    "day_high": 3672.0,
+    "day_low": 3570.0,
+    "fifty_two_week_high": 3948.6,
+    "fifty_two_week_low": 2872.0,
+    "volume": 2980000,
+    "avg_volume_20d": 2150000,
+    "market_cap_cr": 501300,
+    "pe_ratio": 38.6,
+    "pb_ratio": 5.4,
+    "dividend_yield": 0.93,
+    "debt_to_equity": 1.28,
+    "roce": 15.2,
+    "roe": 16.1,
+    "shares_held": 120,
+    "avg_buy_price": 3320.0,
+    "portfolio_weight": 7.2,
+    "history_30d": [
+      {
+        "date": "2026-10-04",
+        "close": 3571.43,
+        "volume": 1618933
+      },
+      {
+        "date": "2026-10-05",
+        "close": 3572.94,
+        "volume": 1793296
+      },
+      {
+        "date": "2026-10-06",
+        "close": 3603.28,
+        "volume": 2295611
+      },
+      {
+        "date": "2026-10-07",
+        "close": 3652.33,
+        "volume": 2664052
+      },
+      {
+        "date": "2026-10-08",
+        "close": 3701.56,
+        "volume": 2559875
+      },
+      {
+        "date": "2026-10-09",
+        "close": 3732.0,
+        "volume": 2078860
+      },
+      {
+        "date": "2026-10-10",
+        "close": 3732.49,
+        "volume": 1663251
+      },
+      {
+        "date": "2026-10-11",
+        "close": 3704.47,
+        "volume": 1695156
+      },
+      {
+        "date": "2026-10-12",
+        "close": 3661.0,
+        "volume": 2145242
+      },
+      {
+        "date": "2026-10-13",
+        "close": 3620.66,
+        "volume": 2599702
+      },
+      {
+        "date": "2026-10-14",
+        "close": 3599.1,
+        "volume": 2640708
+      },
+      {
+        "date": "2026-10-15",
+        "close": 3602.2,
+        "volume": 2230559
+      },
+      {
+        "date": "2026-10-16",
+        "close": 3623.97,
+        "volume": 1746344
+      },
+      {
+        "date": "2026-10-17",
+        "close": 3650.11,
+        "volume": 1633248
+      },
+      {
+        "date": "2026-10-18",
+        "close": 3665.35,
+        "volume": 1995251
+      },
+      {
+        "date": "2026-10-19",
+        "close": 3661.11,
+        "volume": 2499529
+      },
+      {
+        "date": "2026-10-20",
+        "close": 3639.76,
+        "volume": 2682451
+      },
+      {
+        "date": "2026-10-21",
+        "close": 3613.45,
+        "volume": 2375839
+      },
+      {
+        "date": "2026-10-22",
+        "close": 3598.04,
+        "volume": 1861592
+      },
+      {
+        "date": "2026-10-23",
+        "close": 3605.14,
+        "volume": 1612505
+      },
+      {
+        "date": "2026-10-24",
+        "close": 3635.89,
+        "volume": 1857588
+      },
+      {
+        "date": "2026-10-25",
+        "close": 3679.79,
+        "volume": 2371513
+      },
+      {
+        "date": "2026-10-26",
+        "close": 3718.96,
+        "volume": 2681780
+      },
+      {
+        "date": "2026-10-27",
+        "close": 3736.13,
+        "volume": 2503130
+      },
+      {
+        "date": "2026-10-28",
+        "close": 3722.59,
+        "volume": 1999814
+      },
+      {
+        "date": "2026-10-29",
+        "close": 3682.38,
+        "volume": 1634578
+      },
+      {
+        "date": "2026-10-30",
+        "close": 3630.73,
+        "volume": 1743218
+      },
+      {
+        "date": "2026-10-31",
+        "close": 3587.55,
+        "volume": 2225852
+      },
+      {
+        "date": "2026-11-01",
+        "close": 3568.66,
+        "volume": 2638747
+      },
+      {
+        "date": "2026-11-02",
+        "close": 3579.15,
+        "volume": 2602290
+      },
+      {
+        "date": "2026-11-03",
+        "close": 3648.0,
+        "volume": 2980000
+      }
+    ]
+  }
+]

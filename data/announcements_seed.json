@@ -1,0 +1,231 @@
+[
+  {
+    "id": "ANN-001",
+    "ticker": "TCS",
+    "company_name": "Tata Consultancy Services Limited",
+    "timestamp": "2026-11-03T14:40:40.748840",
+    "headline": "Outcome of Board Meeting: Audited Financial Results for Q2 FY25",
+    "category": "results",
+    "priority": "HIGH",
+    "source": "NSE Regulatory Filing / BSE Corp Disclosure",
+    "source_doc_url": "primary_documents/TCS_Q2_FY25_Earnings_Call_Transcript.pdf",
+    "raw_text": "The Board of Directors approved audited financial results for Q2 FY25. Consolidated revenue at INR 64,259 Cr (+7.6% YoY, +2.6% QoQ). Operating margin at 24.1%. Net profit after tax (PAT) at INR 11,909 Cr (+5.0% YoY). Interim dividend of Rs 10 per equity share declared.",
+    "headline_numbers": {
+      "revenue_cr": 64259,
+      "revenue_yoy_pct": 7.6,
+      "revenue_qoq_pct": 2.6,
+      "ebitda_cr": 15486,
+      "ebitda_margin_pct": 24.1,
+      "ebitda_yoy_bps": -20,
+      "pbt_cr": 16140,
+      "pat_cr": 11909,
+      "pat_yoy_pct": 5.0,
+      "pat_qoq_pct": -1.1
+    },
+    "enrichment": {
+      "type": "results_cut",
+      "summary": "Revenue up 7.6% YoY with solid operating margin resilience at 24.1% amidst discretionary IT spend slowdown. Free cash flow conversion at 100.2% of PAT.",
+      "analyst_implication": "Positive operational discipline; discretionary tech recovery slower in North America but UK remains solid."
+    }
+  },
+  {
+    "id": "ANN-002",
+    "ticker": "WIPRO",
+    "company_name": "Wipro Limited",
+    "timestamp": "2026-11-03T12:40:40.748840",
+    "headline": "Appointment of Key Managerial Personnel: New Chief Financial Officer",
+    "category": "management_change",
+    "priority": "HIGH",
+    "source": "BSE Filings - Reg 30 SEBI LODR",
+    "source_doc_url": null,
+    "raw_text": "Wipro Limited informs the exchange regarding the appointment of Mr. Raghavendra Rao as Chief Financial Officer with effect from November 15, 2024, succeeding the incumbent upon retirement.",
+    "headline_numbers": null,
+    "enrichment": {
+      "type": "executive_bio",
+      "executive_name": "Raghavendra Rao",
+      "role": "Chief Financial Officer (CFO)",
+      "effective_date": "November 15, 2024",
+      "background": "22+ years enterprise finance leadership. Previously Global Finance Director at Capgemini Cloud & AI division; Ex-VP Finance at Infosys. B.Tech from IIT Kharagpur, MBA from IIM Bangalore. Chartered Accountant (All India Rank 4).",
+      "analyst_implication": "Experienced technology finance hand known for rigorous cost restructuring and M&A integration."
+    }
+  },
+  {
+    "id": "ANN-003",
+    "ticker": "SUNPHARMA",
+    "company_name": "Sun Pharmaceutical Industries Limited",
+    "timestamp": "2026-11-03T10:40:40.748840",
+    "headline": "Regulatory Update: Receipt of US FDA Warning Letter for Halol Facility",
+    "category": "litigation",
+    "priority": "HIGH",
+    "source": "NSE Corp Filings",
+    "source_doc_url": null,
+    "raw_text": "Sun Pharma receives Warning Letter from US FDA summarizing violations with respect to CGMP at its Halol facility. The company has engaged independent cGMP experts and will submit a comprehensive remediation roadmap within 15 working days. Halol contributes ~2.5% of consolidated revenues.",
+    "headline_numbers": {
+      "revenue_exposure_pct": 2.5,
+      "remediation_timeline_days": 15
+    },
+    "enrichment": {
+      "type": "litigation_impact",
+      "summary": "Halol facility placed on US FDA Warning Letter status. Remediation underway with third-party CGMP consultants.",
+      "analyst_implication": "Delays new US ANDA approvals from this site for 12-18 months; financial impact contained as Halol accounts for <2.5% of total sales."
+    }
+  },
+  {
+    "id": "ANN-004",
+    "ticker": "BHARTIARTL",
+    "company_name": "Bharti Airtel Limited",
+    "timestamp": "2026-11-03T07:40:40.748840",
+    "headline": "Strategic Investment & Acquisition: 8.4% Equity Stake in Cybersecurity Platform",
+    "category": "M&A",
+    "priority": "HIGH",
+    "source": "NSE Corporate Announcements",
+    "source_doc_url": null,
+    "raw_text": "Bharti Airtel has entered into definitive agreements to acquire an 8.4% strategic equity stake in SecureSphere Tech, an enterprise cybersecurity and cloud telemetry provider, for cash consideration of INR 185 Cr under Airtel Startup Accelerator Program.",
+    "headline_numbers": {
+      "deal_value_cr": 185,
+      "equity_stake_pct": 8.4
+    },
+    "enrichment": {
+      "type": "ma_details",
+      "target": "SecureSphere Tech",
+      "deal_value": "INR 185 Cr",
+      "stake": "8.4%",
+      "strategic_rationale": "Strengthens Airtel Business B2B cybersecurity offering for enterprise 5G network clients."
+    }
+  },
+  {
+    "id": "ANN-005",
+    "ticker": "ITC",
+    "company_name": "ITC Limited",
+    "timestamp": "2026-11-03T02:40:40.748840",
+    "headline": "Declaration of Interim Dividend of Rs 6.25 per Share & Record Date Fixing",
+    "category": "dividend",
+    "priority": "MEDIUM",
+    "source": "BSE Corp Disclosure",
+    "source_doc_url": null,
+    "raw_text": "Board of Directors of ITC Ltd declared an interim dividend of Rs 6.25 per equity share of face value Re 1 each for FY25. Record date fixed as November 12, 2024. Payout date November 28, 2024.",
+    "headline_numbers": {
+      "dividend_per_share": 6.25,
+      "face_value": 1.0,
+      "record_date": "2024-11-12",
+      "payout_cr": 7780
+    },
+    "enrichment": {
+      "type": "dividend_cut",
+      "summary": "Interim dividend of Rs 6.25/share represents annualized dividend yield of ~2.8%. Total cash outlay of INR 7,780 Cr funded from internal operational accruals."
+    }
+  },
+  {
+    "id": "ANN-006",
+    "ticker": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "timestamp": "2026-11-02T22:40:40.748840",
+    "headline": "Mega Order Inflow: Hydrocarbon Business Secures Rs 15,000 Cr Offshore Contract",
+    "category": "capex",
+    "priority": "MEDIUM",
+    "source": "NSE Newsroom",
+    "source_doc_url": null,
+    "raw_text": "The Energy Hydrocarbon vertical of L&T has secured a Mega Contract (valued > INR 15,000 Cr) from a prestigious Middle East client for engineering, procurement, construction, and installation of offshore gas processing compression platforms.",
+    "headline_numbers": {
+      "order_value_cr": 15000,
+      "classification": "Mega (>15,000 Cr)"
+    },
+    "enrichment": {
+      "type": "order_win",
+      "summary": "L&T order book expands past INR 5.1 lakh Cr. International order share increases to 42%, cementing multi-year revenue visibility."
+    }
+  },
+  {
+    "id": "ANN-007",
+    "ticker": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "timestamp": "2026-11-02T18:40:40.748840",
+    "headline": "Credit Rating Revision: CRISIL Reaffirms AAA/Stable on Long Term Debt Facilities",
+    "category": "credit_rating",
+    "priority": "MEDIUM",
+    "source": "BSE Filings",
+    "source_doc_url": null,
+    "raw_text": "CRISIL Ratings has reaffirmed its 'CRISIL AAA/Stable' rating on the non-convertible debentures and bank loan facilities of Bajaj Finance Limited aggregating INR 1,20,000 Cr, citing strong capital adequacy and dominant franchise.",
+    "headline_numbers": null,
+    "enrichment": {
+      "type": "rating_cut",
+      "summary": "Pristine AAA rating reaffirmed, maintaining low wholesale borrowing spreads despite regulatory tightening in unsecured retail lending."
+    }
+  },
+  {
+    "id": "ANN-008",
+    "ticker": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "timestamp": "2026-11-02T14:40:40.748840",
+    "headline": "Disclosures under SEBI PIT Regulations: Promoter Share Acquisition",
+    "category": "insider_trading",
+    "priority": "MEDIUM",
+    "source": "NSE PIT Disclosures",
+    "source_doc_url": null,
+    "raw_text": "Suzuki Motor Corporation (Promoter) acquired 150,000 equity shares of Maruti Suzuki India Limited from the open market between October 24 and October 26, increasing promoter holding to 58.28%.",
+    "headline_numbers": {
+      "shares_bought": 150000,
+      "promoter_stake_after_pct": 58.28
+    },
+    "enrichment": {
+      "type": "insider_action",
+      "summary": "Parent entity Suzuki Motor Corp buys ~INR 171 Cr worth shares from secondary market, signaling promoter confidence."
+    }
+  },
+  {
+    "id": "ANN-009",
+    "ticker": "INFY",
+    "company_name": "Infosys Limited",
+    "timestamp": "2026-11-02T10:40:40.748840",
+    "headline": "Notice of Q2 FY25 Conference Call for Analysts & Investors",
+    "category": "earnings_call",
+    "priority": "LOW",
+    "source": "NSE Corp Filings",
+    "source_doc_url": null,
+    "raw_text": "Infosys Limited will announce results for the second quarter ended September 30, 2024 on Thursday, October 17, 2024. Earnings call will be held at 6:00 PM IST with web webcast and dial-in details provided.",
+    "headline_numbers": null,
+    "enrichment": null
+  },
+  {
+    "id": "ANN-010",
+    "ticker": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "timestamp": "2026-11-02T06:40:40.748840",
+    "headline": "Compliance Certificate under Regulation 74(5) of SEBI (DP) Regulations",
+    "category": "unclassified",
+    "priority": "LOW",
+    "source": "BSE Filings",
+    "source_doc_url": null,
+    "raw_text": "Certificate under Regulation 74(5) of SEBI (Depositories and Participants) Regulations, 2018 for the quarter ended September 30, 2024 received from Datamatics Business Solutions Limited.",
+    "headline_numbers": null,
+    "enrichment": null
+  },
+  {
+    "id": "ANN-011",
+    "ticker": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "timestamp": "2026-11-02T02:40:40.748840",
+    "headline": "Intimation of Issue of Duplicate Share Certificates / Letter of Confirmation",
+    "category": "unclassified",
+    "priority": "LOW",
+    "source": "NSE Regulatory Filing",
+    "source_doc_url": null,
+    "raw_text": "Pursuant to Regulation 39(3) of SEBI LODR Regulations, 2015, intimation is hereby given regarding approval for issue of duplicate share certificates in lieu of lost original certificates to 14 shareholders.",
+    "headline_numbers": null,
+    "enrichment": null
+  },
+  {
+    "id": "ANN-012",
+    "ticker": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "timestamp": "2026-11-01T20:40:40.748840",
+    "headline": "Notice of Postal Ballot for Approval of Appointment of Independent Director",
+    "category": "postal_ballot",
+    "priority": "LOW",
+    "source": "BSE Filings",
+    "source_doc_url": null,
+    "raw_text": "Notice of Postal Ballot seeking consent of Members by way of Special Resolution for appointment of Ms. Meera Sanyal as Independent Director for a period of 5 years.",
+    "headline_numbers": null,
+    "enrichment": null
+  }
+]
