@@ -107,6 +107,22 @@ class TestEnhancedResearchQuality(unittest.TestCase):
             self.assertIn("TCS_Q2_FY25", s.doc_id)
             self.assertIn(s.page_number, [1, 2, 3])
 
+    def test_executive_summary_present(self):
+        """Verify Executive Summary synthesizes headline results and health."""
+        self.assertIsNotNone(self.res.executive_summary)
+        self.assertIn("Tata Consultancy Services", self.res.executive_summary.content)
+        self.assertIn("64,259", self.res.executive_summary.content)
+        self.assertIn("24.1%", self.res.executive_summary.content)
+
+    def test_unindexed_ticker_titan_safety(self):
+        """Verify unindexed ticker TITAN receives clean warning with zero fabricated figures."""
+        req_titan = ResearchQueryRequest(ticker="TITAN", query="guidance and margins")
+        res_titan = financial_analyzer.analyze_company(req_titan)
+        self.assertFalse(res_titan.grounded_in_primary_sources)
+        self.assertEqual(len(res_titan.all_cited_sources), 0)
+        self.assertGreater(len(res_titan.missing_data_disclosures), 0)
+        self.assertIn("No primary annual report or concall PDF is currently indexed for TITAN", res_titan.missing_data_disclosures[0])
+
     def test_push_functionality_intact(self):
         """ISSUE 7: Existing Push functionality remains intact."""
         summary = stock_manager.get_portfolio_summary()

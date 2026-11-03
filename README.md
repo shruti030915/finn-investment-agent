@@ -7,67 +7,61 @@
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Dark%20Terminal-0F172A.svg)](https://tailwindcss.com)
 [![Architecture](https://img.shields.io/badge/Architecture-Push%20%2B%20Pull%20RAG-indigo.svg)]()
 
-FINN is a mobile-first financial intelligence layer engineered for high-conviction public-market investors at ENAM Holdings. Public market investors are inundated with daily market noise—filings, press releases, price movements, and macro commentary. FINN operates as an autonomous cognitive filter that surfaces only what matters and buries routine compliance disclosures.
+FINN is a modern, mobile-first financial intelligence application engineered for public-market investment analysts and fund managers at ENAM Holdings. Designed with the calm simplicity of Linear and Notion and the analytical depth of institutional investment platforms, FINN operates as an autonomous cognitive filter that surfaces material corporate developments and generates primary-source research without financial hallucinations.
 
 ---
 
-## 1. Product Vision & Two Interaction Modes
+## 1. Product Vision & Core Architecture
 
-FINN operates in two complementary interaction modalities:
+FINN operates across two primary interaction workflows:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                               FINN ARCHITECTURE                                  │
 ├────────────────────────────────────────┬─────────────────────────────────────────┤
-│               PUSH MODE                │                PULL MODE                │
-│    (Proactive Market Intelligence)     │      (Deep Primary-Grounded RAG)        │
+│               PUSH WORKFLOW            │              PULL RAG WORKFLOW          │
+│       (Proactive Portfolio Intel)      │     (Deep Primary-Grounded Research)    │
 ├────────────────────────────────────────┼─────────────────────────────────────────┤
 │ • 18 NSE Large-Cap Mock Portfolio      │ • Generalizes to ANY NSE Ticker         │
-│ • EOD Price & Volume Tracking          │ • Audited Annual Reports & Concalls     │
-│ • 16-Category Filing Classifier        │ • PyMuPDF Page-by-Page Extraction       │
-│ • Heuristic Materiality Priority Engine│ • Strict Document & Page Citations      │
-│ • Windowed Daily Digest (24H / 3D / 7D)│ • Narrative vs. Numbers Evaluation      │
-│ • Configurable Price & Volume Triggers │ • Institutional Bull vs. Bear Theses    │
+│ • Historical EOD (Oct 31, 2024) Prices │ • Faithful Annual Reports & Concalls    │
+│ • 17-Category Filing Classifier        │ • PyMuPDF Page-by-Page Extraction       │
+│ • Materiality Ranking (HIGH/MED/LOW)   │ • Audited Metric Provenance Ledger      │
+│ • Daily Portfolio Briefings (24H/3D/7D)│ • Multi-Period Trajectory Tables & Trend│
+│ • Configurable Price & Volume Triggers │ • Narrative vs Numbers & Bull vs Bear   │
 └────────────────────────────────────────┴─────────────────────────────────────────┘
 ```
 
-### A. Push — Proactive Financial Intelligence
-* **Mock Portfolio**: 18 NSE-listed companies across 8 core sectors (`RELIANCE`, `TCS`, `INFY`, `WIPRO`, `HDFCBANK`, `ICICIBANK`, `SBIN`, `BAJFINANCE`, `JIOFIN`, `ONGC`, `TATAMOTORS`, `MARUTI`, `ITC`, `HINDUNILVR`, `SUNPHARMA`, `DRREDDY`, `BHARTIARTL`, `LT`).
+### A. Push — Proactive Portfolio Intelligence
+* **Portfolio Watchlist**: 18 NSE-listed companies across 8 core sectors (`RELIANCE`, `TCS`, `INFY`, `WIPRO`, `HDFCBANK`, `ICICIBANK`, `SBIN`, `BAJFINANCE`, `JIOFIN`, `ONGC`, `TATAMOTORS`, `MARUTI`, `ITC`, `HINDUNILVR`, `SUNPHARMA`, `DRREDDY`, `BHARTIARTL`, `LT`).
 * **Announcement Classification**: Classifies filings across all 17 reference categories from the ENAM Challenge Specification: `results`, `M&A`, `fund_raise`, `management_change`, `litigation`, `insider_trading`, `earnings_call`, `investor_meetings`, `credit_rating`, `dividend`, `bonus_split`, `capex`, `press_release`, `postal_ballot`, `agm_egm`, `pledging`, and `unclassified`.
-* **Priority Engine**:
-  * **HIGH**: Quarterly/Annual results, M&A/demergers, leadership shifts (CEO/CFO), critical litigation (FDA warnings).
-  * **MEDIUM**: Interim dividends, capital expenditure, debt ratings, insider buying.
-  * **LOW**: Routine compliance certificates (e.g. Reg 74(5), duplicate share certificates, postal ballot procedural notices).
-* **High-Conviction Presentation**:
-  * *Management changes* are automatically enriched with executive biographies (background, former company, qualifications).
-  * *Quarterly results* filings extract headline cuts (Revenue, EBITDA margin, PBT, PAT) with QoQ and YoY variances.
-* **Windowed Portfolio Digest**: Concise briefings addressing four specific questions:
-  1. *What happened?*
-  2. *Which company is affected?*
-  3. *Why should an investor care?*
-  4. *What is the verifiable source?*
-* **Configurable Alerts**: User-defined thresholds for daily price moves (e.g., $\ge \pm3.0\%$), unusual volume spikes (e.g., $\ge 2.0\times$ 20-day moving average), and category filters.
+* **Important Developments**: Automatically surfaces the top 3 highest priority developments with executive bio enrichment (for leadership changes) and headline financial cuts (for quarterly results).
+* **Your Daily Portfolio Update**: Windowed digest (`24H`, `3D`, `7D`) answering: What happened? Which company? Why should an investor care? What is the source?
+* **Configurable Alerts**: User-defined sliders for price moves ($\ge \pm3.0\%$) and volume spikes ($\ge 2.0\times$ 20-day MA) with one-click acknowledgement.
 
-### B. Pull — Primary-Grounded Company Research
-* **Generalizes to ANY NSE Ticker**: Researches both portfolio holdings and ad-hoc tickers (e.g., `TCS`, `RELIANCE`, `HDFCBANK`, `TITAN`, `ZOMATO`, `ASIANPAINT`).
-* **Strict Primary Evidence**: Grounds insights exclusively in audited Annual Reports, Earnings Call (concall) Transcripts, and Financial Result Disclosures. Secondary sources, news commentary, and broker notes are explicitly excluded.
-* **8-Section Institutional Report**:
-  1. *Business Snapshot*: Core segments, business model, and revenue mix.
-  2. *Financial Snapshot*: Headline numbers (Reported vs. Calculated vs. Interpreted).
-  3. *Financial Trajectory*: Multi-year operational direction and margin expansion/compression.
-  4. *Balance Sheet & Leverage*: Funding structure, debt gearing (D/E), and working-capital cycles.
-  5. *Cash Quality*: Cash conversion efficiency (Operating Cash Flow vs. Net Profit, FCF).
-  6. *Narrative vs. Numbers*: Evaluates what management promised over the last four quarters against delivered operational execution.
-  7. *Bull Case*: High-conviction investment thesis.
-  8. *Bear Case*: Critical downside risks, operational vulnerabilities, and valuation headwinds.
-* **Auditable Citations**: Every finding cites the exact document title and 1-based page number, complete with an interactive primary source inspector modal.
+### B. Pull — Primary-Grounded Investment Research
+* **Generalizes to ANY NSE Ticker**: Works for both portfolio stocks and ad-hoc tickers (e.g. `TCS`, `RELIANCE`, `HDFCBANK`, `TITAN`, `ZOMATO`).
+* **Strict Primary Evidence**: Grounds insights exclusively in company-issued Annual Reports, Earnings Call Transcripts, and Result Disclosures. Secondary news articles and broker opinions are excluded.
+* **Structured Research Report**:
+  1. *Executive Summary*: High-conviction operational highlights and trajectory.
+  2. *Business Overview*: Core industry verticals, geographical breakdown, order book TCV, and emerging technology pipelines.
+  3. *Financial Snapshot*: Headline numbers + Audited Metric Provenance Ledger (Reported vs. Calculated, exact formulas, page citations).
+  4. *Financial Performance Over Time*: Multi-period comparison table (`Q2 FY24`, `Q1 FY25`, `Q2 FY25`) with mathematically verified YoY% and QoQ% growth + visual trend charts.
+  5. *Balance Sheet & Capital Structure*: Cash reserves, debt gearing (D/E), ROE, and explicit missing data disclosures.
+  6. *Cash Flow Analysis*: Side-by-side reconciliation of PAT, Operating Cash Flow, and Free Cash Flow with cash conversion ratios and earnings quality evaluation.
+  7. *Management Guidance vs. Actual Performance*: Direct contrast between past management promises and delivered operational execution.
+  8. *Bull Case vs. Bear Case*: Distinct upside catalysts vs. downside risk factors.
+  9. *Supporting Primary Documents*: Interactive citation cards opening an in-app primary filing inspector with verbatim extracted PDF text.
+* **Anti-Hallucination Guardrail**: Queries for unindexed tickers (e.g. `TITAN`) display a clear warning with zero fabricated figures. Users can click `+ Upload filing PDF` to index any official 200+ page document into RAG immediately.
 
 ---
 
 ## 2. Technology Stack
 
-* **Frontend**: Responsive Single-Page Application with dark Bloomberg-terminal aesthetics (`#080C14`), React 18, Tailwind CSS, Lucide icons, and high-density responsive layout (optimized for mobile 375px+ and desktop 1440px+).
-* **Backend**: Python, FastAPI, Pydantic v2, Uvicorn.
+* **Frontend**: Single-Page Application inspired by Linear and Notion dark mode (`#0A0F1A`), React 18, Tailwind CSS, Lucide icons, mobile-responsive layout (375px+ to 1440px+).
+* **Backend**: Python 3.7+, FastAPI, Pydantic v2, Uvicorn.
+* **PDF Ingestion**: PyMuPDF (`fitz`) for native page-by-page text and table extraction.
+* **Vector Retriever**: Pure-Python TF-IDF and Cosine Similarity engine (zero C-library/DLL hurdles, 100% deterministic).
+* **Storage**: Lightweight JSON / SQLite persistence.
 * **PDF Extraction**: PyMuPDF (`fitz`) for page-by-page text and table extraction.
 * **Retrieval Engine**: Pure-Python TF-IDF and Cosine Similarity vector retriever (zero DLL or external C-dependency hurdles, 100% deterministic and auditable).
 * **AI Analysis**: Dual-mode engine:
@@ -185,7 +179,7 @@ npm run dev
 
 ## 6. Running the Test Suite
 
-Run the full automated test suite (21 unit and data-integrity audit tests) covering portfolio math reconciliation, all 17 filing categories, alert triggers, PyMuPDF extraction, dynamic TF-IDF retrieval, and the PDF upload pipeline:
+Run the full automated test suite (29 unit, integration, and data-integrity audit tests) covering portfolio math reconciliation, all 17 filing categories, alert triggers, PyMuPDF extraction, dynamic TF-IDF retrieval, PDF upload pipeline, and RAG quality enhancements:
 
 ```bash
 python -m unittest discover -s tests
@@ -193,7 +187,7 @@ python -m unittest discover -s tests
 
 Expected output:
 ```
-Ran 21 tests in 0.17s
+Ran 29 tests in 0.29s
 OK
 ```
 

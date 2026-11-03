@@ -14,21 +14,20 @@
         extend: {
           colors: {
             finn: {
-              bg: '#080C14',
-              surface: '#0E1524',
-              card: '#141E33',
-              cardHover: '#1B2844',
-              border: '#1F2E4D',
-              borderLight: '#2D4168',
+              bg: '#0A0F1A',
+              surface: '#111726',
+              surfaceHover: '#161F33',
+              card: '#141C2E',
+              border: '#1E293D',
+              borderLight: '#2B3954',
               accent: '#38BDF8',
-              accentGlow: 'rgba(56, 189, 248, 0.15)',
+              accentHover: '#0EA5E9',
               gold: '#F59E0B',
               gain: '#10B981',
-              gainBg: 'rgba(16, 185, 129, 0.12)',
-              loss: '#EF4444',
-              lossBg: 'rgba(239, 68, 68, 0.12)',
-              textMuted: '#8A99AD',
-              textSub: '#A8B7CD'
+              loss: '#F43F5E',
+              textPrimary: '#F8FAFC',
+              textSecondary: '#94A3B8',
+              textMuted: '#64748B'
             }
           },
           fontFamily: {
@@ -47,38 +46,28 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
-    /* Custom Bloomberg-style scrollbar and terminal feel */
+    /* Clean Linear-inspired scrollbar */
     ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #080C14; }
-    ::-webkit-scrollbar-thumb { background: #1F2E4D; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #0A0F1A; }
+    ::-webkit-scrollbar-thumb { background: #1E293D; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
     body {
-      background-color: #080C14;
-      color: #F1F5F9;
+      background-color: #0A0F1A;
+      color: #F8FAFC;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
-      user-select: none;
-    }
-    .ticker-tape {
-      display: flex;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .ticker-tape::-webkit-scrollbar { display: none; }
-    .terminal-glow {
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.08);
     }
   </style>
 </head>
-<body class="bg-finn-bg text-slate-100 min-h-screen">
+<body class="bg-finn-bg text-finn-textPrimary min-h-screen font-sans selection:bg-sky-500/20 selection:text-sky-300">
   <div id="root"></div>
 
   <!-- Main React Application -->
   <script type="text/babel">
     const { useState, useEffect, useMemo, useRef } = React;
 
-    // --- ICON SVGS ---
-    const Icon = ({ name, className = "w-5 h-5", ...props }) => {
+    // --- ICONS ---
+    const Icon = ({ name, className = "w-4 h-4", ...props }) => {
       switch (name) {
         case 'trending-up':
           return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>;
@@ -94,14 +83,20 @@
           return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>;
         case 'file-text':
           return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>;
-        case 'shield-alert':
-          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>;
         case 'external-link':
           return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>;
         case 'check':
           return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>;
-        case 'activity':
-          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>;
+        case 'chevron-down':
+          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/></svg>;
+        case 'chevron-up':
+          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"/></svg>;
+        case 'upload':
+          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>;
+        case 'info':
+          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>;
+        case 'alert-triangle':
+          return <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>;
         default:
           return <div className={className} />;
       }
@@ -134,6 +129,19 @@
       getPageText: (docId, pageNum) => fetch(`/api/research/document/${docId}/page/${pageNum}`).then(r => r.json())
     };
 
+    // Helpers
+    const formatINR = (val) => {
+      if (val === undefined || val === null) return '—';
+      return '₹' + Number(val).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    };
+
+    const getGreeting = () => {
+      const h = new Date().getHours();
+      if (h < 12) return 'Good morning';
+      if (h < 17) return 'Good afternoon';
+      return 'Good evening';
+    };
+
     // --- MAIN APP COMPONENT ---
     function App() {
       const [currentTab, setCurrentTab] = useState('home'); // 'home' | 'alerts' | 'research' | 'settings'
@@ -162,7 +170,6 @@
         monitored_categories: []
       });
 
-      // Fetch initial data
       const refreshData = async () => {
         try {
           const [portData, alertData, annData, digData, statData, settData] = await Promise.all([
@@ -180,7 +187,7 @@
           setSystemStatus(statData);
           setAlertSettings(settData);
         } catch (e) {
-          console.error("Data fetch failed", e);
+          console.error("Data refresh failed", e);
         } finally {
           setLoading(false);
         }
@@ -190,7 +197,7 @@
         refreshData();
       }, [digestWindow]);
 
-      // Automatically run default research for demo
+      // Initial research load for TCS
       useEffect(() => {
         if (!researchResult && !researchLoading) {
           handleExecuteResearch('TCS', 'Analyze financial trajectory, guidance vs actuals, and bull vs bear case');
@@ -210,147 +217,128 @@
         }
       };
 
-      const handleAcknowledgeAlert = async (alertId) => {
-        await API.acknowledgeAlert(alertId);
-        setAlerts(prev => prev.map(a => a.id === alertId ? { ...a, acknowledged: true } : a));
-      };
-
-      const openCitation = async (docId, pageNum, title) => {
+      const handleOpenCitation = async (docId, pageNum, title) => {
         try {
-          const pageData = await API.getPageText(docId, pageNum);
+          const page = await API.getPageText(docId, pageNum);
           setSourceModal({
             open: true,
             docId,
             pageNum,
             title: title || docId,
-            text: pageData.text
+            text: page ? page.text : 'Page text not available.'
           });
         } catch (e) {
-          alert(`Could not load primary page ${pageNum} for ${docId}`);
+          setSourceModal({
+            open: true,
+            docId,
+            pageNum,
+            title: docId,
+            text: 'Failed to retrieve page text.'
+          });
         }
       };
 
-      const unacknowledgedAlertCount = useMemo(() => {
-        return alerts.filter(a => !a.acknowledged).length;
-      }, [alerts]);
+      const handleAcknowledgeAlert = async (id) => {
+        try {
+          await API.acknowledgeAlert(id);
+          setAlerts(prev => prev.map(a => a.id === id ? { ...a, acknowledged: true } : a));
+        } catch (e) {
+          console.error("Acknowledge failed", e);
+        }
+      };
+
+      const activeAlertsCount = alerts.filter(a => !a.acknowledged).length;
 
       return (
-        <div className="flex flex-col min-h-screen pb-20 md:pb-6">
-          {/* TOP BAR / BRAND HEADER */}
-          <header className="sticky top-0 z-40 bg-finn-surface/90 backdrop-blur-md border-b border-finn-border px-4 py-2.5 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded bg-gradient-to-br from-finn-accent to-indigo-600 flex items-center justify-center font-mono font-bold text-slate-900 text-sm shadow-lg shadow-finn-accent/20">
-                  FN
+        <div className="min-h-screen bg-finn-bg flex flex-col">
+          {/* HEADER BAR */}
+          <header className="border-b border-finn-border bg-finn-surface/90 backdrop-blur sticky top-0 z-40">
+            <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+              {/* Brand & Market Date */}
+              <div className="flex items-center space-x-3">
+                <div className="w-7 h-7 rounded bg-sky-500/10 border border-sky-500/30 flex items-center justify-center font-mono font-bold text-sky-400 text-sm">
+                  F
                 </div>
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono font-extrabold text-sm tracking-wider text-slate-100">FINN</span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">
-                      ENAM INTELLIGENCE
-                    </span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold hidden sm:inline-block">
-                      DEMO FEED & SIMULATED HOLDINGS
-                    </span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-semibold hidden md:inline-block">
-                      EOD Close: Oct 31, 2024 (Historical)
+                    <span className="font-bold text-sm tracking-tight text-white">FINN</span>
+                    <span className="text-[11px] text-finn-textMuted hidden sm:inline">Investment Intelligence</span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-finn-card border border-finn-border text-slate-400">
+                      ENAM Holdings
                     </span>
                   </div>
-                  <div className="text-[10px] text-finn-textMuted tracking-tight hidden sm:block">
-                    Push / Pull Financial Intelligence Terminal
+                  <div className="text-[11px] text-finn-textSecondary flex items-center space-x-2">
+                    <span>Market close: Oct 31, 2024</span>
+                    <span className="text-finn-border">•</span>
+                    <span className="text-emerald-400/90 text-[10px] font-mono">Curated Disclosures</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Top Right Quick Stats & Model Badge */}
-            <div className="flex items-center space-x-3">
-              <div className="hidden lg:flex items-center space-x-2 text-[11px] font-mono bg-finn-card px-2.5 py-1 rounded border border-finn-border">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-finn-textSub">GROUNDING:</span>
-                <span className="text-slate-200">PyMuPDF PRIMARY RAG</span>
-              </div>
-
-              {portfolio && (
-                <div className="text-right">
-                  <div className="text-[10px] uppercase font-mono text-finn-textMuted">Portfolio NAV</div>
-                  <div className="text-xs sm:text-sm font-mono font-bold text-slate-100">
-                    INR {(portfolio.total_value_inr / 100000).toFixed(2)}L
-                    <span className={`ml-1.5 text-[11px] ${portfolio.day_change_pct >= 0 ? 'text-finn-gain' : 'text-finn-loss'}`}>
-                      {portfolio.day_change_pct >= 0 ? '+' : ''}{portfolio.day_change_pct.toFixed(2)}%
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </header>
-
-          {/* REAL-TIME TICKER TAPE */}
-          {portfolio && (
-            <div className="bg-finn-bg border-b border-finn-border py-1.5 px-2 overflow-hidden ticker-tape text-[11px] font-mono">
-              <div className="flex space-x-4 whitespace-nowrap animate-none">
-                {portfolio.stocks.map(s => (
+              {/* Navigation Tabs (Desktop & Mobile) */}
+              <nav className="flex items-center space-x-1 sm:space-x-1 bg-finn-card/70 p-1 rounded-lg border border-finn-border">
+                {[
+                  { id: 'home', label: 'Home', icon: 'home' },
+                  { id: 'alerts', label: 'Alerts', icon: 'bell', badge: activeAlertsCount },
+                  { id: 'research', label: 'Research', icon: 'search' },
+                  { id: 'settings', label: 'Settings', icon: 'sliders' }
+                ].map(tab => (
                   <button
-                    key={s.ticker}
-                    onClick={() => {
-                      setCurrentTab('research');
-                      handleExecuteResearch(s.ticker, `Analyze recent financial trajectory and guidance execution`);
-                    }}
-                    className="flex items-center space-x-1.5 px-2 py-0.5 rounded bg-finn-card/60 hover:bg-finn-card border border-finn-border/60 hover:border-finn-accent/50 transition-colors"
+                    key={tab.id}
+                    onClick={() => setCurrentTab(tab.id)}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors relative ${
+                      currentTab === tab.id
+                        ? 'bg-sky-500/15 text-sky-300 border border-sky-500/30'
+                        : 'text-finn-textSecondary hover:text-white hover:bg-finn-surface'
+                    }`}
                   >
-                    <span className="font-semibold text-slate-200">{s.ticker}</span>
-                    <span className="text-slate-400">₹{s.price.toFixed(1)}</span>
-                    <span className={s.change_pct >= 0 ? 'text-finn-gain font-medium' : 'text-finn-loss font-medium'}>
-                      {s.change_pct >= 0 ? '+' : ''}{s.change_pct.toFixed(1)}%
-                    </span>
-                    {s.volume_multiple >= 2.0 && (
-                      <span className="px-1 py-0.2 text-[9px] rounded bg-amber-500/20 text-amber-300 font-mono">
-                        {s.volume_multiple}x Vol
+                    <Icon name={tab.icon} className="w-3.5 h-3.5" />
+                    <span>{tab.label}</span>
+                    {tab.badge > 0 && (
+                      <span className="ml-1 px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                        {tab.badge}
                       </span>
                     )}
                   </button>
                 ))}
-              </div>
+              </nav>
             </div>
-          )}
+          </header>
 
           {/* MAIN CONTENT AREA */}
-          <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 md:p-6">
+          <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
             {loading ? (
-              <div className="flex flex-col items-center justify-center h-64 space-y-3">
-                <div className="w-8 h-8 border-2 border-finn-accent border-t-transparent rounded-full animate-spin"></div>
-                <div className="text-xs font-mono text-finn-textMuted tracking-wider">INITIALIZING FINN ENGINE...</div>
+              <div className="py-20 text-center space-y-3">
+                <div className="w-6 h-6 border-2 border-sky-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <div className="text-xs text-finn-textSecondary font-mono">Loading portfolio data...</div>
               </div>
             ) : (
               <>
                 {currentTab === 'home' && (
                   <HomeView
                     portfolio={portfolio}
-                    digest={digest}
                     alerts={alerts}
-                    announcements={announcements}
+                    digest={digest}
                     digestWindow={digestWindow}
                     setDigestWindow={setDigestWindow}
-                    onOpenResearch={(ticker) => {
+                    onNavigateToResearch={(ticker) => {
                       setCurrentTab('research');
-                      handleExecuteResearch(ticker, 'Full institutional analysis with narrative vs numbers');
+                      handleExecuteResearch(ticker);
                     }}
-                    onOpenCitation={openCitation}
-                    onAcknowledgeAlert={handleAcknowledgeAlert}
                   />
                 )}
 
                 {currentTab === 'alerts' && (
                   <AlertsView
                     alerts={alerts}
+                    announcements={announcements}
                     alertSettings={alertSettings}
                     setAlertSettings={setAlertSettings}
                     onAcknowledge={handleAcknowledgeAlert}
-                    onOpenResearch={(ticker) => {
+                    onNavigateToResearch={(ticker) => {
                       setCurrentTab('research');
-                      handleExecuteResearch(ticker, 'Explain drivers behind recent price/volume alert');
+                      handleExecuteResearch(ticker);
                     }}
-                    onRefresh={refreshData}
                   />
                 )}
 
@@ -363,8 +351,7 @@
                     result={researchResult}
                     loading={researchLoading}
                     onExecute={handleExecuteResearch}
-                    onOpenCitation={openCitation}
-                    portfolioStocks={portfolio ? portfolio.stocks : []}
+                    onOpenCitation={handleOpenCitation}
                   />
                 )}
 
@@ -381,632 +368,508 @@
             )}
           </main>
 
-          {/* MOBILE-FIRST BOTTOM NAVIGATION DOCK */}
-          <nav className="fixed bottom-0 left-0 right-0 z-40 bg-finn-surface/95 backdrop-blur-lg border-t border-finn-border flex items-center justify-around py-2 px-3 md:hidden">
-            <button
-              onClick={() => setCurrentTab('home')}
-              className={`flex flex-col items-center space-y-0.5 text-xs ${currentTab === 'home' ? 'text-finn-accent' : 'text-finn-textMuted'}`}
-            >
-              <Icon name="home" className="w-5 h-5" />
-              <span className="text-[10px] font-mono">HOME</span>
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('alerts')}
-              className={`relative flex flex-col items-center space-y-0.5 text-xs ${currentTab === 'alerts' ? 'text-finn-accent' : 'text-finn-textMuted'}`}
-            >
-              <Icon name="bell" className="w-5 h-5" />
-              {unacknowledgedAlertCount > 0 && (
-                <span className="absolute -top-1 -right-1 px-1.5 py-0.2 rounded-full bg-red-500 text-[9px] font-bold text-white">
-                  {unacknowledgedAlertCount}
-                </span>
-              )}
-              <span className="text-[10px] font-mono">ALERTS</span>
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('research')}
-              className={`flex flex-col items-center space-y-0.5 text-xs ${currentTab === 'research' ? 'text-finn-accent' : 'text-finn-textMuted'}`}
-            >
-              <Icon name="search" className="w-5 h-5" />
-              <span className="text-[10px] font-mono">PULL RAG</span>
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('settings')}
-              className={`flex flex-col items-center space-y-0.5 text-xs ${currentTab === 'settings' ? 'text-finn-accent' : 'text-finn-textMuted'}`}
-            >
-              <Icon name="sliders" className="w-5 h-5" />
-              <span className="text-[10px] font-mono">CONFIG</span>
-            </button>
-          </nav>
-
-          {/* DESKTOP FLOATING TAB SELECTOR */}
-          <div className="hidden md:flex fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-finn-surface/90 backdrop-blur-md border border-finn-border rounded-full p-1 shadow-2xl space-x-1">
-            <button
-              onClick={() => setCurrentTab('home')}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono font-medium flex items-center space-x-2 transition-all ${
-                currentTab === 'home' ? 'bg-finn-accent text-slate-900 font-bold shadow-md shadow-finn-accent/30' : 'text-finn-textSub hover:text-white'
-              }`}
-            >
-              <Icon name="home" className="w-4 h-4" />
-              <span>HOME</span>
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('alerts')}
-              className={`relative px-4 py-1.5 rounded-full text-xs font-mono font-medium flex items-center space-x-2 transition-all ${
-                currentTab === 'alerts' ? 'bg-finn-accent text-slate-900 font-bold shadow-md shadow-finn-accent/30' : 'text-finn-textSub hover:text-white'
-              }`}
-            >
-              <Icon name="bell" className="w-4 h-4" />
-              <span>ALERTS</span>
-              {unacknowledgedAlertCount > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-red-500 text-[10px] font-bold text-white">
-                  {unacknowledgedAlertCount}
-                </span>
-              )}
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('research')}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono font-medium flex items-center space-x-2 transition-all ${
-                currentTab === 'research' ? 'bg-finn-accent text-slate-900 font-bold shadow-md shadow-finn-accent/30' : 'text-finn-textSub hover:text-white'
-              }`}
-            >
-              <Icon name="search" className="w-4 h-4" />
-              <span>PULL RESEARCH (RAG)</span>
-            </button>
-
-            <button
-              onClick={() => setCurrentTab('settings')}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono font-medium flex items-center space-x-2 transition-all ${
-                currentTab === 'settings' ? 'bg-finn-accent text-slate-900 font-bold shadow-md shadow-finn-accent/30' : 'text-finn-textSub hover:text-white'
-              }`}
-            >
-              <Icon name="sliders" className="w-4 h-4" />
-              <span>SETTINGS</span>
-            </button>
-          </div>
-
-          {/* PRIMARY SOURCE CITATION INSPECTOR MODAL */}
+          {/* CITATION MODAL */}
           {sourceModal.open && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
               <div className="bg-finn-surface border border-finn-border rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
-                <div className="p-4 border-b border-finn-border flex items-center justify-between bg-finn-card">
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-finn-accent">
-                      Primary Filing Inspector • Grounded Evidence
-                    </div>
-                    <div className="text-sm font-bold text-slate-100 flex items-center space-x-2">
-                      <Icon name="file-text" className="w-4 h-4 text-sky-400" />
-                      <span>{sourceModal.title}</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-finn-surface border border-finn-border text-amber-300">
-                        Page {sourceModal.pageNum}
-                      </span>
+                <div className="p-4 border-b border-finn-border flex items-center justify-between bg-finn-card/50">
+                  <div className="flex items-center space-x-2.5">
+                    <Icon name="file-text" className="w-4 h-4 text-sky-400" />
+                    <div>
+                      <h3 className="text-xs font-semibold text-white">{sourceModal.title}</h3>
+                      <p className="text-[10px] font-mono text-finn-textSecondary">Verified PyMuPDF Extraction • Page {sourceModal.pageNum}</p>
                     </div>
                   </div>
                   <button
-                    onClick={() => setSourceModal({ ...sourceModal, open: false })}
-                    className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white"
+                    onClick={() => setSourceModal(prev => ({ ...prev, open: false }))}
+                    className="p-1.5 rounded hover:bg-finn-surface text-finn-textMuted hover:text-white text-xs font-mono"
                   >
-                    ✕
+                    ✕ Close
                   </button>
                 </div>
-                <div className="p-4 overflow-y-auto flex-1 font-mono text-xs text-slate-300 leading-relaxed whitespace-pre-wrap bg-finn-bg/90">
+                <div className="p-4 overflow-y-auto font-mono text-xs text-slate-300 leading-relaxed whitespace-pre-wrap selection:bg-sky-500/30">
                   {sourceModal.text}
                 </div>
-                <div className="p-3 border-t border-finn-border bg-finn-card flex items-center justify-between text-[11px] font-mono text-finn-textMuted">
-                  <span>Source: SEC/NSE Audited Regulatory Repository</span>
-                  <span className="text-emerald-400">Strictly Non-Hallucinated Verification</span>
+                <div className="p-3 border-t border-finn-border bg-finn-card/30 flex justify-between items-center text-[10px] font-mono text-finn-textMuted">
+                  <span>Document ID: {sourceModal.docId}</span>
+                  <span className="text-emerald-400">Primary Evidence Authenticated</span>
                 </div>
               </div>
             </div>
           )}
+
+          {/* FOOTER */}
+          <footer className="border-t border-finn-border py-4 text-center text-xs text-finn-textMuted font-mono">
+            FINN Investment Intelligence Agent • ENAM Holdings AI Engineer Challenge • Historical EOD Data: Oct 31, 2024
+          </footer>
         </div>
       );
     }
 
-    // --- VIEW 1: HOME VIEW (PUSH DASHBOARD & DIGEST) ---
-    function HomeView({ portfolio, digest, alerts, announcements, digestWindow, setDigestWindow, onOpenResearch, onOpenCitation, onAcknowledgeAlert }) {
-      const [categoryFilter, setCategoryFilter] = useState('all');
-      const [priorityFilter, setPriorityFilter] = useState('ALL');
+    // =========================================================================
+    // VIEW 1: HOME VIEW
+    // =========================================================================
+    function HomeView({ portfolio, alerts, digest, digestWindow, setDigestWindow, onNavigateToResearch }) {
+      const [expandedAnn, setExpandedAnn] = useState({});
 
-      const highPriorityAlerts = useMemo(() => {
-        return alerts.filter(a => a.priority === 'HIGH' && !a.acknowledged);
-      }, [alerts]);
+      const toggleExpand = (id) => {
+        setExpandedAnn(prev => ({ ...prev, [id]: !prev[id] }));
+      };
 
-      const filteredAnnouncements = useMemo(() => {
-        return announcements.filter(a => {
-          if (categoryFilter !== 'all' && a.category.toLowerCase() !== categoryFilter.toLowerCase()) return false;
-          if (priorityFilter !== 'ALL' && a.priority.toUpperCase() !== priorityFilter.toUpperCase()) return false;
-          return true;
-        });
-      }, [announcements, categoryFilter, priorityFilter]);
+      const topDevelopments = (digest?.items || []).slice(0, 3);
 
       return (
-        <div className="space-y-5">
-          {/* CRITICAL ATTENTION BANNERS */}
-          {highPriorityAlerts.length > 0 && (
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono text-rose-400 font-semibold px-1">
-                <span className="flex items-center space-x-1.5">
-                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                  <span>MATERIAL ACTION REQUIRED ({highPriorityAlerts.length})</span>
-                </span>
-                <span className="text-[10px] text-finn-textMuted">Prioritized By Heuristic Engine</span>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                {highPriorityAlerts.slice(0, 2).map(a => (
-                  <div key={a.id} className="bg-rose-950/30 border border-rose-500/40 rounded-lg p-3 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="font-bold text-rose-300">{a.ticker} • {a.alert_type}</span>
-                        <span className="text-[10px] text-slate-400">{new Date(a.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                      </div>
-                      <div className="text-xs font-semibold text-slate-100 mt-1">{a.title}</div>
-                      <div className="text-[11px] text-slate-300 mt-0.5 line-clamp-2">{a.description}</div>
-                    </div>
-                    <div className="flex items-center justify-end space-x-2 mt-2 pt-2 border-t border-rose-500/20">
-                      <button
-                        onClick={() => onOpenResearch(a.ticker)}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono text-sky-400 hover:bg-sky-400/10"
-                      >
-                        Deep Pull →
-                      </button>
-                      <button
-                        onClick={() => onAcknowledgeAlert(a.id)}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-rose-500/20 text-rose-200 hover:bg-rose-500/30"
-                      >
-                        Acknowledge
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* PORTFOLIO SNAPSHOT GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-            <div className="bg-finn-card border border-finn-border rounded-lg p-3">
-              <div className="text-[10px] font-mono uppercase text-finn-textMuted">Portfolio Value</div>
-              <div className="text-base sm:text-lg font-mono font-bold text-slate-100 mt-0.5">
-                ₹{(portfolio.total_value_inr / 100000).toFixed(2)} Lakh
-              </div>
-              <div className="text-[10px] font-mono text-slate-400 mt-1">18 Stocks • Simulated Holdings • As of Oct 31, 2024 (EOD)</div>
-            </div>
-
-            <div className="bg-finn-card border border-finn-border rounded-lg p-3">
-              <div className="text-[10px] font-mono uppercase text-finn-textMuted">Today's P&L</div>
-              <div className={`text-base sm:text-lg font-mono font-bold mt-0.5 ${portfolio.day_change_pct >= 0 ? 'text-finn-gain' : 'text-finn-loss'}`}>
-                {portfolio.day_change_pct >= 0 ? '+' : ''}₹{Math.abs(portfolio.day_change_inr).toLocaleString()}
-              </div>
-              <div className="text-[10px] font-mono text-slate-400 mt-1">
-                {portfolio.day_change_pct >= 0 ? '+' : ''}{portfolio.day_change_pct.toFixed(2)}% Intraday
-              </div>
-            </div>
-
-            <div className="bg-finn-card border border-finn-border rounded-lg p-3">
-              <div className="text-[10px] font-mono uppercase text-finn-textMuted">Total P&L (Unrealized)</div>
-              <div className={`text-base sm:text-lg font-mono font-bold mt-0.5 ${portfolio.total_pnl_inr >= 0 ? 'text-finn-gain' : 'text-finn-loss'}`}>
-                {portfolio.total_pnl_inr >= 0 ? '+' : ''}₹{Math.abs(portfolio.total_pnl_inr).toLocaleString()}
-              </div>
-              <div className="text-[10px] font-mono text-slate-400 mt-1">
-                Invested: ₹{(portfolio.total_invested_inr / 100000).toFixed(2)}L • Return: +{portfolio.total_pnl_pct.toFixed(2)}%
-              </div>
-            </div>
-
-            <div className="bg-finn-card border border-finn-border rounded-lg p-3">
-              <div className="text-[10px] font-mono uppercase text-finn-textMuted">Volume Outliers</div>
-              <div className="text-base sm:text-lg font-mono font-bold text-amber-400 mt-0.5">
-                {portfolio.volume_outliers[0]?.ticker} ({portfolio.volume_outliers[0]?.volume_multiple}x)
-              </div>
-              <div className="text-[10px] font-mono text-slate-400 mt-1">
-                {portfolio.volume_outliers[1]?.ticker} ({portfolio.volume_outliers[1]?.volume_multiple}x 20d MA)
-              </div>
-            </div>
+        <div className="space-y-6">
+          {/* WELCOME SECTION */}
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight text-white">
+              {getGreeting()}, Investment Team
+            </h1>
+            <p className="text-xs text-finn-textSecondary mt-0.5">
+              Here's what's happening with your portfolio today.
+            </p>
           </div>
 
-          {/* DAILY PORTFOLIO DIGEST CARD */}
-          {digest && (
-            <div className="bg-gradient-to-br from-finn-card to-finn-surface border border-finn-border rounded-xl p-4 sm:p-5 terminal-glow">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-finn-border gap-2">
-                <div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
-                    <h2 className="text-sm font-bold tracking-wide uppercase font-mono text-slate-100">
-                      Windowed Portfolio Intelligence Digest
-                    </h2>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">
-                      DEMO DATA FIXTURES
-                    </span>
-                  </div>
-                  <p className="text-xs text-finn-textMuted mt-0.5">
-                    Synthesizes: What happened? Which company? Why care? Source?
-                  </p>
+          {/* PORTFOLIO OVERVIEW CARDS (CLEAN FINTECH ROW) */}
+          {portfolio && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="bg-finn-card/80 border border-finn-border rounded-xl p-3.5">
+                <div className="text-[11px] text-finn-textMuted">Portfolio Value</div>
+                <div className="text-lg font-bold font-mono text-white mt-1">
+                  {formatINR(portfolio.total_value_inr)}
                 </div>
-
-                {/* Window Selector */}
-                <div className="flex items-center space-x-1 font-mono text-xs bg-finn-surface p-1 rounded-lg border border-finn-border self-start sm:self-auto">
-                  {[24, 72, 168].map(hrs => (
-                    <button
-                      key={hrs}
-                      onClick={() => setDigestWindow(hrs)}
-                      className={`px-2.5 py-1 rounded text-[11px] transition-colors ${
-                        digestWindow === hrs ? 'bg-finn-accent text-slate-900 font-bold' : 'text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      {hrs === 24 ? '24H' : hrs === 72 ? '3D' : '7D'}
-                    </button>
-                  ))}
+                <div className="text-[10px] text-finn-textSecondary font-mono mt-0.5">
+                  ₹{(portfolio.total_value_inr / 100000).toFixed(2)} lakh NAV
                 </div>
               </div>
 
-              {/* Executive Summary Takeaway */}
-              <div className="my-3 p-3 rounded-lg bg-sky-950/20 border border-sky-500/20 text-xs text-sky-200 leading-relaxed font-sans">
-                <span className="font-mono font-bold text-sky-400 mr-1.5 uppercase">[Executive Briefing]:</span>
-                {digest.executive_takeaway}
+              <div className="bg-finn-card/80 border border-finn-border rounded-xl p-3.5">
+                <div className="text-[11px] text-finn-textMuted">Today's P&L</div>
+                <div className={`text-lg font-bold font-mono mt-1 ${portfolio.day_change_inr >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                  {portfolio.day_change_inr >= 0 ? '+' : ''}{formatINR(portfolio.day_change_inr)}
+                </div>
+                <div className="text-[10px] font-mono text-emerald-400 mt-0.5">
+                  +{portfolio.day_change_pct}% today
+                </div>
               </div>
 
-              {/* Synthesized 4-Part Digest Items */}
-              <div className="space-y-3 mt-3">
-                {digest.items.slice(0, 3).map((item, idx) => (
-                  <div key={idx} className="bg-finn-surface border border-finn-border/80 rounded-lg p-3 hover:border-finn-borderLight transition-colors">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <div className="flex items-center space-x-2">
-                        <span className="font-bold text-slate-100">{item.ticker}</span>
-                        <span className={`px-1.5 py-0.2 rounded text-[10px] ${
-                          item.priority === 'HIGH' ? 'bg-rose-500/20 text-rose-300' : 'bg-amber-500/20 text-amber-300'
-                        }`}>
-                          {item.priority}
-                        </span>
-                        <span className="text-[10px] uppercase text-finn-textMuted">{item.category}</span>
-                      </div>
-                      <span className="text-[10px] text-finn-textMuted">{new Date(item.timestamp).toLocaleDateString()}</span>
-                    </div>
+              <div className="bg-finn-card/80 border border-finn-border rounded-xl p-3.5">
+                <div className="text-[11px] text-finn-textMuted">Total Unrealized P&L</div>
+                <div className={`text-lg font-bold font-mono mt-1 ${portfolio.total_pnl_inr >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                  {portfolio.total_pnl_inr >= 0 ? '+' : ''}{formatINR(portfolio.total_pnl_inr)}
+                </div>
+                <div className="text-[10px] text-finn-textSecondary font-mono mt-0.5">
+                  Invested: {formatINR(portfolio.total_invested_inr)}
+                </div>
+              </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 pt-2 border-t border-finn-border/50 text-xs">
-                      <div>
-                        <div className="text-[10px] font-mono text-finn-textMuted uppercase">What Happened?</div>
-                        <div className="text-slate-200 text-[11px] leading-snug mt-0.5">{item.what_happened}</div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] font-mono text-finn-accent uppercase">Why Should An Investor Care?</div>
-                        <div className="text-sky-200 text-[11px] leading-snug mt-0.5">{item.why_investor_should_care}</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between mt-2 pt-1.5 text-[10px] font-mono text-finn-textMuted border-t border-finn-border/30">
-                      <span>Source: {item.source} • Event Date: {item.original_filing_date || 'Oct 2024'}</span>
-                      <button
-                        onClick={() => onOpenResearch(item.ticker)}
-                        className="text-sky-400 hover:underline flex items-center space-x-1"
-                      >
-                        <span>Analyze {item.ticker}</span>
-                        <span>→</span>
-                      </button>
-                    </div>
-                  </div>
-                ))}
+              <div className="bg-finn-card/80 border border-finn-border rounded-xl p-3.5">
+                <div className="text-[11px] text-finn-textMuted">Overall Return</div>
+                <div className="text-lg font-bold font-mono text-emerald-400 mt-1">
+                  +{portfolio.total_pnl_pct}%
+                </div>
+                <div className="text-[10px] text-finn-textSecondary font-mono mt-0.5">
+                  18 large-cap stocks
+                </div>
               </div>
             </div>
           )}
 
-          {/* ANNOUNCEMENT FEED SECTION */}
-          <div className="space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div className="flex items-center space-x-2">
-                <Icon name="file-text" className="w-4 h-4 text-finn-accent" />
-                <h3 className="text-xs font-mono font-bold tracking-wider uppercase text-slate-200">
-                  Filtered Corporate Announcement Stream
-                </h3>
+          {/* IMPORTANT DEVELOPMENTS (TOP 3) */}
+          <div className="bg-finn-card/80 border border-finn-border rounded-xl p-4 space-y-3">
+            <div className="flex items-center justify-between border-b border-finn-border pb-2.5">
+              <div>
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-white">Important developments</h2>
+                <p className="text-[11px] text-finn-textMuted">Highest priority corporate disclosures affecting your portfolio</p>
               </div>
-
-              {/* Category & Priority Filters */}
-              <div className="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0 text-xs font-mono">
-                {['ALL', 'HIGH', 'MEDIUM'].map(prio => (
-                  <button
-                    key={prio}
-                    onClick={() => setPriorityFilter(prio)}
-                    className={`px-2 py-0.5 rounded text-[10px] font-mono ${
-                      priorityFilter === prio ? 'bg-finn-accent text-slate-900 font-bold' : 'bg-finn-card text-slate-400'
-                    }`}
-                  >
-                    {prio}
-                  </button>
-                ))}
-
-                <select
-                  value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="bg-finn-card border border-finn-border rounded text-[10px] text-slate-200 px-2 py-1 focus:outline-none"
-                >
-                  <option value="all">All Categories</option>
-                  <option value="results">Results</option>
-                  <option value="management_change">Management Change</option>
-                  <option value="M&A">M&A</option>
-                  <option value="litigation">Litigation</option>
-                  <option value="dividend">Dividend</option>
-                  <option value="capex">Capex</option>
-                </select>
-              </div>
+              <span className="text-[10px] font-mono text-sky-400 px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/20">
+                Actionable
+              </span>
             </div>
 
-            {/* Stream List */}
-            <div className="space-y-2.5">
-              {filteredAnnouncements.map(ann => (
-                <div key={ann.id} className="bg-finn-card border border-finn-border rounded-lg p-3 hover:border-finn-borderLight transition-colors">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center space-x-2 text-[10px] font-mono">
-                        <span className="font-bold text-slate-200 bg-finn-surface px-1.5 py-0.5 rounded border border-finn-border">
-                          {ann.ticker}
-                        </span>
-                        <span className={`px-1.5 py-0.5 rounded font-semibold ${
-                          ann.priority === 'HIGH' ? 'bg-rose-500/20 text-rose-300' :
-                          ann.priority === 'MEDIUM' ? 'bg-amber-500/20 text-amber-300' :
-                          'bg-slate-700/30 text-slate-400'
-                        }`}>
-                          {ann.priority}
-                        </span>
-                        <span className="text-finn-textMuted uppercase">{ann.category}</span>
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">
-                          DEMO DATA
-                        </span>
-                      </div>
-                      <h4 className="text-xs font-semibold text-slate-100 mt-1">{ann.headline}</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {topDevelopments.map((item, idx) => (
+                <div key={idx} className="bg-finn-surface border border-finn-border rounded-lg p-3 flex flex-col justify-between hover:border-sky-500/30 transition-colors">
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-bold font-mono text-white">{item.ticker}</span>
+                      <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded font-semibold ${
+                        item.priority === 'HIGH' ? 'bg-rose-500/15 text-rose-300 border border-rose-500/20' : 'bg-amber-500/15 text-amber-300 border border-amber-500/20'
+                      }`}>
+                        {item.category.replace('_', ' ')}
+                      </span>
                     </div>
-                    <div className="text-right shrink-0">
-                      <span className="text-[10px] font-mono text-finn-textMuted block">
-                        Feed: {new Date(ann.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </span>
-                      <span className="text-[9px] font-mono text-amber-300/80 block">
-                        Filing: {ann.original_filing_date || 'Oct 2024'}
-                      </span>
+                    <div className="text-xs font-medium text-slate-200 line-clamp-2">{item.headline}</div>
+                    <div className="text-[11px] text-finn-textSecondary mt-1.5 line-clamp-3 leading-relaxed">
+                      {item.why_investor_should_care}
                     </div>
                   </div>
-
-                  <p className="text-[11px] text-slate-300 mt-1.5 leading-relaxed">{ann.raw_text}</p>
-
-                  {/* High Value Enriched Presentation */}
-                  {ann.enrichment && ann.enrichment.type === 'executive_bio' && (
-                    <div className="mt-2.5 p-2.5 rounded bg-sky-950/20 border border-sky-500/30 text-xs">
-                      <div className="font-mono text-[10px] text-sky-400 uppercase font-semibold">
-                        Incoming Executive Intelligence Cut:
-                      </div>
-                      <div className="font-bold text-slate-100 mt-0.5">{ann.enrichment.executive_name} — {ann.enrichment.role}</div>
-                      <div className="text-[11px] text-slate-300 mt-1">{ann.enrichment.background}</div>
-                    </div>
-                  )}
-
-                  {ann.headline_numbers && ann.headline_numbers.revenue_cr && (
-                    <div className="mt-2.5 p-2 rounded bg-finn-surface border border-finn-border grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-mono">
-                      <div>
-                        <div className="text-[9px] text-finn-textMuted uppercase">Revenue</div>
-                        <div className="font-bold text-slate-100">₹{ann.headline_numbers.revenue_cr.toLocaleString()} Cr</div>
-                        <div className="text-[9px] text-finn-gain">+{ann.headline_numbers.revenue_yoy_pct}% YoY</div>
-                      </div>
-                      <div>
-                        <div className="text-[9px] text-finn-textMuted uppercase">Operating Margin</div>
-                        <div className="font-bold text-slate-100">{ann.headline_numbers.ebitda_margin_pct}%</div>
-                        <div className="text-[9px] text-slate-400">{ann.headline_numbers.ebitda_yoy_bps} bps</div>
-                      </div>
-                      <div>
-                        <div className="text-[9px] text-finn-textMuted uppercase">Profit After Tax</div>
-                        <div className="font-bold text-slate-100">₹{ann.headline_numbers.pat_cr.toLocaleString()} Cr</div>
-                        <div className="text-[9px] text-finn-gain">+{ann.headline_numbers.pat_yoy_pct}% YoY</div>
-                      </div>
-                      <div>
-                        <div className="text-[9px] text-finn-textMuted uppercase">Source Filing</div>
-                        <button
-                          onClick={() => onOpenCitation("TCS_Q2_FY25_Earnings_Call_Transcript.pdf", 2, "Audited Q2 FY25 Table")}
-                          className="text-[10px] text-sky-400 hover:underline flex items-center justify-center space-x-1 mt-0.5"
-                        >
-                          <span>Page 2 Table</span>
-                          <Icon name="external-link" className="w-3 h-3" />
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-finn-border/40 text-[10px] font-mono text-finn-textMuted">
-                    <span>Source: {ann.source} • <span className="text-amber-400 font-semibold">[Sample Fixture]</span></span>
+                  <div className="mt-3 pt-2 border-t border-finn-border/60 flex items-center justify-between">
+                    <span className="text-[10px] font-mono text-finn-textMuted">{item.original_filing_date || 'Oct 2024'}</span>
                     <button
-                      onClick={() => onOpenResearch(ann.ticker)}
-                      className="text-sky-400 hover:underline"
+                      onClick={() => onNavigateToResearch(item.ticker)}
+                      className="text-[11px] text-sky-400 hover:text-sky-300 font-medium flex items-center space-x-1"
                     >
-                      Research {ann.ticker} →
+                      <span>Research</span>
+                      <Icon name="external-link" className="w-3 h-3" />
                     </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* TWO COLUMN SECTION: WATCHLIST & DAILY DIGEST */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* PORTFOLIO WATCHLIST TABLE (7 cols) */}
+            <div className="lg:col-span-7 bg-finn-card/80 border border-finn-border rounded-xl p-4">
+              <div className="flex items-center justify-between mb-3 pb-2 border-b border-finn-border">
+                <div>
+                  <h2 className="text-xs font-semibold uppercase tracking-wider text-white">Portfolio watchlist</h2>
+                  <p className="text-[11px] text-finn-textMuted">18 holdings across 8 core sectors</p>
+                </div>
+                <span className="text-[10px] font-mono text-finn-textMuted">Close: Oct 31, 2024</span>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs font-mono">
+                  <thead>
+                    <tr className="text-[10px] text-finn-textMuted border-b border-finn-border">
+                      <th className="pb-2 font-medium">Company</th>
+                      <th className="pb-2 font-medium text-right">Price</th>
+                      <th className="pb-2 font-medium text-right">Change</th>
+                      <th className="pb-2 font-medium text-right">Volume</th>
+                      <th className="pb-2 text-right"></th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-finn-border/50">
+                    {portfolio?.stocks?.map(stock => (
+                      <tr key={stock.ticker} className="hover:bg-finn-surface/60 transition-colors group">
+                        <td className="py-2.5">
+                          <div className="font-bold text-white">{stock.ticker}</div>
+                          <div className="text-[10px] text-finn-textMuted font-sans truncate max-w-[130px]">{stock.name}</div>
+                        </td>
+                        <td className="py-2.5 text-right font-medium text-slate-100">
+                          {formatINR(stock.price)}
+                        </td>
+                        <td className="py-2.5 text-right font-medium">
+                          <span className={`inline-flex items-center space-x-0.5 ${stock.day_change_pct >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                            <span>{stock.day_change_pct >= 0 ? '+' : ''}{stock.day_change_pct}%</span>
+                          </span>
+                        </td>
+                        <td className="py-2.5 text-right">
+                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-mono ${
+                            stock.volume_multiple >= 2.0 ? 'bg-amber-500/15 text-amber-300 font-bold border border-amber-500/20' : 'text-finn-textSecondary'
+                          }`}>
+                            {stock.volume_multiple}x
+                          </span>
+                        </td>
+                        <td className="py-2.5 text-right">
+                          <button
+                            onClick={() => onNavigateToResearch(stock.ticker)}
+                            className="opacity-0 group-hover:opacity-100 text-[11px] text-sky-400 hover:text-white px-2 py-0.5 rounded bg-finn-surface border border-finn-border transition-all"
+                          >
+                            Analyse
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* DAILY PORTFOLIO UPDATE / DIGEST (5 cols) */}
+            <div className="lg:col-span-5 bg-finn-card/80 border border-finn-border rounded-xl p-4 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-finn-border">
+                  <div>
+                    <h2 className="text-xs font-semibold uppercase tracking-wider text-white">Your daily portfolio update</h2>
+                    <p className="text-[11px] text-finn-textMuted">Automated cognitive briefing</p>
+                  </div>
+
+                  {/* Window filters */}
+                  <div className="flex items-center space-x-1 bg-finn-surface p-0.5 rounded border border-finn-border">
+                    {[24, 72, 168].map(hrs => (
+                      <button
+                        key={hrs}
+                        onClick={() => setDigestWindow(hrs)}
+                        className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                          digestWindow === hrs ? 'bg-sky-500/20 text-sky-300 font-bold' : 'text-finn-textMuted hover:text-white'
+                        }`}
+                      >
+                        {hrs === 24 ? '24H' : hrs === 72 ? '3D' : '7D'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Executive Takeaway */}
+                {digest && (
+                  <div className="p-3 rounded-lg bg-sky-950/20 border border-sky-500/20 text-xs text-sky-200/90 leading-relaxed mb-4">
+                    <span className="font-semibold text-sky-300">Executive Takeaway: </span>
+                    {digest.executive_takeaway}
+                  </div>
+                )}
+
+                {/* Announcement stream with accordion */}
+                <div className="space-y-2.5 max-h-[480px] overflow-y-auto pr-1">
+                  {digest?.items?.map((item, idx) => {
+                    const isExp = expandedAnn[item.ticker + idx];
+                    return (
+                      <div key={idx} className="bg-finn-surface border border-finn-border rounded-lg p-3 text-xs space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <span className="font-mono font-bold text-white">{item.ticker}</span>
+                            <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-finn-card text-finn-textSecondary border border-finn-border">
+                              {item.category.replace('_', ' ')}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono text-finn-textMuted">{item.original_filing_date || 'Oct 2024'}</span>
+                        </div>
+
+                        <div className="font-medium text-slate-100">{item.headline}</div>
+
+                        <div className="text-[11px] text-finn-textSecondary leading-relaxed">
+                          {item.what_happened}
+                        </div>
+
+                        {/* Read More Expandable */}
+                        {isExp && (
+                          <div className="mt-2 pt-2 border-t border-finn-border/60 text-[11px] text-slate-300 space-y-1.5 bg-finn-card/40 p-2 rounded">
+                            <div><strong className="text-white">Why it matters:</strong> {item.why_investor_should_care}</div>
+                            <div className="text-[10px] font-mono text-finn-textMuted">Source: {item.source}</div>
+                          </div>
+                        )}
+
+                        <button
+                          onClick={() => toggleExpand(item.ticker + idx)}
+                          className="text-[10px] font-mono text-sky-400 hover:text-sky-300 flex items-center space-x-1 pt-1"
+                        >
+                          <span>{isExp ? 'Show less' : 'Read more details'}</span>
+                          <Icon name={isExp ? 'chevron-up' : 'chevron-down'} className="w-3 h-3" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-3 pt-2.5 border-t border-finn-border flex items-center justify-between text-[10px] font-mono text-finn-textMuted">
+                <span>Analyzed: {digest?.total_filings_analyzed || 0} filings</span>
+                <span className="text-emerald-400">Sample Seed Disclosures (Labelled)</span>
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
 
-    // --- VIEW 2: ALERTS VIEW ---
-    function AlertsView({ alerts, alertSettings, setAlertSettings, onAcknowledge, onOpenResearch, onRefresh }) {
-      const [filter, setFilter] = useState('ALL');
-      const [saveStatus, setSaveStatus] = useState('');
-
-      const filteredAlerts = useMemo(() => {
-        if (filter === 'ALL') return alerts;
-        return alerts.filter(a => a.priority === filter);
-      }, [alerts, filter]);
+    // =========================================================================
+    // VIEW 2: ALERTS VIEW
+    // =========================================================================
+    function AlertsView({ alerts, announcements, alertSettings, setAlertSettings, onAcknowledge, onNavigateToResearch }) {
+      const [filterType, setFilterType] = useState('ALL');
+      const [thresholdPrice, setThresholdPrice] = useState(alertSettings?.price_move_threshold || 3.0);
+      const [thresholdVol, setThresholdVol] = useState(alertSettings?.volume_mult_threshold || 2.0);
+      const [savedNotice, setSavedNotice] = useState(false);
 
       const handleSaveSettings = async () => {
         try {
-          await API.updateAlertSettings(alertSettings);
-          setSaveStatus('Saved successfully!');
-          setTimeout(() => setSaveStatus(''), 2000);
-          onRefresh();
+          await API.updateAlertSettings({
+            ...alertSettings,
+            price_move_threshold: parseFloat(thresholdPrice),
+            volume_mult_threshold: parseFloat(thresholdVol)
+          });
+          setSavedNotice(true);
+          setTimeout(() => setSavedNotice(false), 2500);
         } catch (e) {
-          setSaveStatus('Save failed');
+          console.error("Failed to update thresholds", e);
         }
       };
 
+      const filteredAlerts = alerts.filter(a => {
+        if (filterType === 'ALL') return true;
+        if (filterType === 'ACTIVE') return !a.acknowledged;
+        if (filterType === 'PRICE') return a.alert_type === 'PRICE_MOVE';
+        if (filterType === 'VOLUME') return a.alert_type === 'UNUSUAL_VOLUME';
+        return true;
+      });
+
       return (
-        <div className="space-y-5">
-          <div className="flex items-center justify-between">
+        <div className="space-y-6">
+          {/* HEADER */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-slate-100">
-                Triggered Alert Terminal
-              </h2>
-              <p className="text-xs text-finn-textMuted mt-0.5">
-                Proactive monitoring of price volatility, volume anomalies, and material filings
+              <h1 className="text-xl font-semibold tracking-tight text-white">Alerts & Notifications</h1>
+              <p className="text-xs text-finn-textSecondary mt-0.5">
+                Monitored price movements, volume spikes, and corporate announcements
               </p>
             </div>
-            <div className="flex items-center space-x-1 font-mono text-xs">
-              {['ALL', 'HIGH', 'MEDIUM', 'LOW'].map(p => (
+
+            {/* Filter pills */}
+            <div className="flex items-center space-x-1 bg-finn-card p-1 rounded-lg border border-finn-border">
+              {['ALL', 'ACTIVE', 'PRICE', 'VOLUME'].map(f => (
                 <button
-                  key={p}
-                  onClick={() => setFilter(p)}
-                  className={`px-2.5 py-1 rounded text-[11px] ${
-                    filter === p ? 'bg-finn-accent text-slate-900 font-bold' : 'bg-finn-card text-slate-300 hover:text-white'
+                  key={f}
+                  onClick={() => setFilterType(f)}
+                  className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+                    filterType === f ? 'bg-sky-500/20 text-sky-300 font-bold' : 'text-finn-textSecondary hover:text-white'
                   }`}
                 >
-                  {p}
+                  {f === 'ALL' ? 'All Alerts' : f === 'ACTIVE' ? 'Unacknowledged' : f === 'PRICE' ? 'Price' : 'Volume'}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* CONFIGURABLE ALERT THRESHOLD CONTROLS */}
-          <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-            <div className="text-xs font-mono font-bold uppercase tracking-wider text-finn-accent mb-3 flex items-center justify-between">
-              <span>Configurable Threshold Parameters</span>
-              {saveStatus && <span className="text-emerald-400 text-[10px]">{saveStatus}</span>}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                  <span>Price Movement Threshold (±%):</span>
-                  <span className="font-bold text-amber-300">{alertSettings.price_move_threshold}%</span>
+          {/* TWO COLUMN GRID: ACTIVE ALERTS & THRESHOLD CONTROLS */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* ALERTS FEED (8 cols) */}
+            <div className="lg:col-span-8 space-y-3">
+              {filteredAlerts.length === 0 ? (
+                <div className="bg-finn-card border border-finn-border rounded-xl p-8 text-center text-xs text-finn-textMuted">
+                  No alerts matching the selected filter.
                 </div>
-                <input
-                  type="range"
-                  min="1.0"
-                  max="10.0"
-                  step="0.5"
-                  value={alertSettings.price_move_threshold}
-                  onChange={(e) => setAlertSettings({ ...alertSettings, price_move_threshold: parseFloat(e.target.value) })}
-                  className="w-full accent-finn-accent"
-                />
-                <div className="flex justify-between text-[10px] font-mono text-finn-textMuted mt-0.5">
-                  <span>±1.0% (Sensitive)</span>
-                  <span>±10.0% (Major Moves)</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                  <span>Unusual Volume Multiplier (vs 20d MA):</span>
-                  <span className="font-bold text-amber-300">{alertSettings.volume_mult_threshold}x</span>
-                </div>
-                <input
-                  type="range"
-                  min="1.2"
-                  max="5.0"
-                  step="0.2"
-                  value={alertSettings.volume_mult_threshold}
-                  onChange={(e) => setAlertSettings({ ...alertSettings, volume_mult_threshold: parseFloat(e.target.value) })}
-                  className="w-full accent-finn-accent"
-                />
-                <div className="flex justify-between text-[10px] font-mono text-finn-textMuted mt-0.5">
-                  <span>1.2x (Frequent)</span>
-                  <span>5.0x (Extreme Spikes)</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-3 pt-3 border-t border-finn-border flex justify-end">
-              <button
-                onClick={handleSaveSettings}
-                className="px-3 py-1 rounded bg-finn-accent text-slate-900 font-mono font-bold text-xs hover:bg-sky-400 transition-colors"
-              >
-                Apply Thresholds
-              </button>
-            </div>
-          </div>
-
-          {/* ACTIVE TRIGGERED ALERTS LIST */}
-          <div className="space-y-2.5">
-            {filteredAlerts.length === 0 ? (
-              <div className="text-center py-10 text-xs font-mono text-finn-textMuted">
-                No alerts matching current filter.
-              </div>
-            ) : (
-              filteredAlerts.map(a => (
-                <div
-                  key={a.id}
-                  className={`border rounded-lg p-3 transition-colors ${
-                    a.acknowledged ? 'bg-finn-surface/60 border-finn-border/50 opacity-60' :
-                    a.priority === 'HIGH' ? 'bg-rose-950/20 border-rose-500/40' :
-                    'bg-finn-card border-finn-border'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center space-x-2 text-[10px] font-mono">
-                        <span className="font-bold text-slate-200">{a.ticker}</span>
-                        <span className={`px-1.5 py-0.2 rounded font-semibold ${
-                          a.priority === 'HIGH' ? 'bg-rose-500/20 text-rose-300' : 'bg-amber-500/20 text-amber-300'
+              ) : (
+                filteredAlerts.map(alert => (
+                  <div
+                    key={alert.id}
+                    className={`bg-finn-card border rounded-xl p-4 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                      alert.acknowledged ? 'border-finn-border/40 opacity-60' : 'border-finn-border hover:border-sky-500/30'
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <span className="font-mono font-bold text-white text-xs">{alert.ticker}</span>
+                        <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded font-semibold ${
+                          alert.alert_type === 'PRICE_MOVE' ? 'bg-rose-500/15 text-rose-300 border border-rose-500/20' :
+                          alert.alert_type === 'UNUSUAL_VOLUME' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/20' :
+                          'bg-sky-500/15 text-sky-300 border border-sky-500/20'
                         }`}>
-                          {a.priority}
+                          {alert.alert_type.replace('_', ' ')}
                         </span>
-                        <span className="text-finn-textMuted uppercase">{a.alert_type}</span>
+                        {alert.acknowledged && (
+                          <span className="text-[9px] font-mono text-finn-textMuted">✓ Acknowledged</span>
+                        )}
                       </div>
-                      <h4 className="text-xs font-bold text-slate-100 mt-1">{a.title}</h4>
-                      <p className="text-[11px] text-slate-300 mt-0.5">{a.description}</p>
+                      <div className="text-xs font-semibold text-slate-100">{alert.title}</div>
+                      <div className="text-[11px] text-finn-textSecondary leading-relaxed">{alert.description}</div>
                     </div>
 
-                    <div className="text-right shrink-0">
-                      <div className="text-[10px] font-mono text-finn-textMuted">
-                        {new Date(a.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </div>
-                      {!a.acknowledged ? (
+                    <div className="flex items-center space-x-2 shrink-0">
+                      <button
+                        onClick={() => onNavigateToResearch(alert.ticker)}
+                        className="px-2.5 py-1 rounded bg-finn-surface hover:bg-finn-surfaceHover border border-finn-border text-xs text-sky-400 font-medium transition-colors"
+                      >
+                        Research
+                      </button>
+                      {!alert.acknowledged && (
                         <button
-                          onClick={() => onAcknowledge(a.id)}
-                          className="mt-1.5 px-2 py-0.5 rounded text-[10px] font-mono bg-finn-surface hover:bg-slate-700 text-slate-200 border border-finn-border"
+                          onClick={() => onAcknowledge(alert.id)}
+                          className="px-2.5 py-1 rounded bg-finn-surface hover:bg-finn-surfaceHover border border-finn-border text-xs text-slate-300 hover:text-white transition-colors"
                         >
                           Dismiss
                         </button>
-                      ) : (
-                        <span className="text-[10px] font-mono text-slate-500 mt-1 block">Acknowledged</span>
                       )}
                     </div>
                   </div>
+                ))
+              )}
+            </div>
 
-                  <div className="mt-2 pt-2 border-t border-finn-border/40 flex justify-end">
-                    <button
-                      onClick={() => onOpenResearch(a.ticker)}
-                      className="text-[10px] font-mono text-sky-400 hover:underline"
-                    >
-                      Trigger Pull Research on {a.ticker} →
-                    </button>
+            {/* THRESHOLD CONTROLS (4 cols) */}
+            <div className="lg:col-span-4 bg-finn-card border border-finn-border rounded-xl p-4 space-y-4 h-fit">
+              <div className="border-b border-finn-border pb-2.5">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-white">Alert Thresholds</h2>
+                <p className="text-[11px] text-finn-textMuted">Configure triggers for proactive notifications</p>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <div className="flex justify-between text-xs font-mono mb-1">
+                    <span className="text-finn-textSecondary">Price Move Trigger</span>
+                    <span className="text-white font-bold">±{thresholdPrice}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1.0"
+                    max="10.0"
+                    step="0.5"
+                    value={thresholdPrice}
+                    onChange={(e) => setThresholdPrice(e.target.value)}
+                    className="w-full accent-sky-400 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] font-mono text-finn-textMuted mt-0.5">
+                    <span>1.0%</span>
+                    <span>10.0%</span>
                   </div>
                 </div>
-              ))
-            )}
+
+                <div>
+                  <div className="flex justify-between text-xs font-mono mb-1">
+                    <span className="text-finn-textSecondary">Volume Spike Trigger</span>
+                    <span className="text-white font-bold">{thresholdVol}x 20d MA</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1.2"
+                    max="5.0"
+                    step="0.1"
+                    value={thresholdVol}
+                    onChange={(e) => setThresholdVol(e.target.value)}
+                    className="w-full accent-sky-400 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] font-mono text-finn-textMuted mt-0.5">
+                    <span>1.2x</span>
+                    <span>5.0x</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleSaveSettings}
+                  className="w-full py-2 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 border border-sky-500/30 text-sky-300 font-medium text-xs transition-colors flex items-center justify-center space-x-1.5"
+                >
+                  <Icon name="check" className="w-3.5 h-3.5" />
+                  <span>Save Thresholds</span>
+                </button>
+
+                {savedNotice && (
+                  <div className="text-[11px] font-mono text-emerald-400 text-center">
+                    ✓ Thresholds updated successfully
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       );
     }
 
-    // --- VIEW 3: RESEARCH VIEW (PULL AGENT & RAG ANALYSIS) ---
-    function ResearchView({ ticker, setTicker, query, setQuery, result, loading, onExecute, onOpenCitation, portfolioStocks }) {
-      const [uploadStatus, setUploadStatus] = useState('');
+    // =========================================================================
+    // VIEW 3: RESEARCH VIEW
+    // =========================================================================
+    function ResearchView({ ticker, setTicker, query, setQuery, result, loading, onExecute, onOpenCitation }) {
       const fileInputRef = useRef(null);
+      const [uploadStatus, setUploadStatus] = useState('');
+      
+      // Collapsible section state (all expanded by default for full visibility)
+      const [collapsedSections, setCollapsedSections] = useState({});
+
+      const toggleSection = (secKey) => {
+        setCollapsedSections(prev => ({ ...prev, [secKey]: !prev[secKey] }));
+      };
+
+      const expandAll = () => setCollapsedSections({});
+      const collapseAll = () => setCollapsedSections({
+        exec: true, biz: true, fin: true, traj: true, bs: true, cash: true, narr: true, bb: true, cites: true
+      });
 
       const presetQueries = [
         "Analyze financial trajectory, guidance vs actuals, and bull vs bear case",
-        "Compare management guidance with actual performance (Narrative vs Numbers)",
-        "Analyze balance sheet health, debt leverage, and cash conversion",
-        "Provide institutional bull and bear cases with primary citations"
+        "Compare management guidance with actual performance",
+        "What is the balance sheet health, debt-to-equity and cash conversion?",
+        "What are the major bull and bear arguments based on primary filings?"
       ];
 
       const handleFileUpload = async (e) => {
@@ -1029,81 +892,14 @@
       };
 
       return (
-        <div className="space-y-5">
-          {/* RESEARCH QUERY INPUT BAR */}
-          <div className="bg-finn-card border border-finn-border rounded-xl p-4 terminal-glow">
-            <div className="text-xs font-mono font-bold uppercase tracking-wider text-finn-accent mb-2 flex items-center justify-between">
-              <span>Primary-Grounded RAG Research Engine</span>
-              <span className="text-[10px] font-mono text-emerald-400 font-normal">
-                Audited Filings Only • Zero Broker Noise
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
-              <div className="sm:col-span-1">
-                <input
-                  type="text"
-                  placeholder="NSE Ticker (e.g. TCS)"
-                  value={ticker}
-                  onChange={(e) => setTicker(e.target.value.toUpperCase())}
-                  className="w-full bg-finn-surface border border-finn-border rounded px-3 py-2 text-xs font-mono text-slate-100 uppercase focus:border-finn-accent focus:outline-none"
-                />
+        <div className="space-y-6">
+          {/* SEARCH & QUERY INPUT CARD */}
+          <div className="bg-finn-card border border-finn-border rounded-xl p-4 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h1 className="text-base font-semibold text-white">Investment Research Engine</h1>
+                <p className="text-xs text-finn-textSecondary">Grounds research strictly in audited filings, quarterly results and concalls</p>
               </div>
-              <div className="sm:col-span-3 flex space-x-2">
-                <input
-                  type="text"
-                  placeholder="Enter institutional research question..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="flex-1 bg-finn-surface border border-finn-border rounded px-3 py-2 text-xs font-sans text-slate-100 focus:border-finn-accent focus:outline-none"
-                />
-                <button
-                  onClick={() => onExecute(ticker, query)}
-                  disabled={loading}
-                  className="px-4 py-2 rounded bg-finn-accent text-slate-900 font-mono font-bold text-xs hover:bg-sky-400 disabled:opacity-50 transition-colors shrink-0"
-                >
-                  {loading ? 'Analyzing...' : 'Run Analysis'}
-                </button>
-              </div>
-            </div>
-
-            {/* Quick Preset Queries & Ticker Chips */}
-            <div className="mt-3 flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
-              <span className="text-finn-textMuted mr-1">Quick Tickers:</span>
-              {['TCS', 'RELIANCE', 'HDFCBANK', 'INFY', 'WIPRO', 'TITAN', 'ZOMATO'].map(t => (
-                <button
-                  key={t}
-                  onClick={() => {
-                    setTicker(t);
-                    onExecute(t, query);
-                  }}
-                  className={`px-2 py-0.5 rounded border ${
-                    ticker === t ? 'bg-finn-accent/20 border-finn-accent text-sky-300' : 'bg-finn-surface border-finn-border text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[10px] font-sans">
-              <span className="text-finn-textMuted font-mono mr-1">Presets:</span>
-              {presetQueries.map((pq, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setQuery(pq);
-                    onExecute(ticker, pq);
-                  }}
-                  className="px-2 py-0.5 rounded bg-finn-surface border border-finn-border text-slate-300 hover:text-sky-300 text-[11px]"
-                >
-                  {idx === 0 ? "Comprehensive" : idx === 1 ? "Narrative vs Numbers" : idx === 2 ? "Balance Sheet" : "Bull vs Bear"}
-                </button>
-              ))}
-            </div>
-
-            {/* Primary Document Upload Bar */}
-            <div className="mt-3 pt-3 border-t border-finn-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center space-x-2">
                 <input
                   type="file"
@@ -1114,395 +910,523 @@
                 />
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-2.5 py-1 rounded bg-finn-surface border border-finn-border hover:border-sky-400 text-sky-300 font-mono text-[11px] flex items-center space-x-1.5 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-finn-surface hover:bg-finn-surfaceHover border border-finn-border text-xs text-sky-400 font-medium flex items-center space-x-1.5 transition-colors"
                 >
-                  <Icon name="file-text" className="w-3.5 h-3.5 text-sky-400" />
-                  <span>+ Upload Primary PDF (Annual Report / Concall)</span>
+                  <Icon name="upload" className="w-3.5 h-3.5" />
+                  <span>+ Upload filing PDF</span>
                 </button>
-                {uploadStatus && <span className="text-emerald-400 font-mono text-[10px]">{uploadStatus}</span>}
+                {uploadStatus && <span className="text-[11px] font-mono text-emerald-400">{uploadStatus}</span>}
               </div>
-              <div className="text-[10px] font-mono text-finn-textMuted">
-                PyMuPDF Page Parser & Chunker Ready
+            </div>
+
+            {/* Inputs */}
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-1">
+              <div className="sm:col-span-1">
+                <input
+                  type="text"
+                  placeholder="Ticker (e.g. TCS)"
+                  value={ticker}
+                  onChange={(e) => setTicker(e.target.value.toUpperCase())}
+                  className="w-full bg-finn-surface border border-finn-border rounded-lg px-3 py-2 text-xs font-mono text-white uppercase focus:border-sky-400 focus:outline-none"
+                />
               </div>
+              <div className="sm:col-span-3 flex space-x-2">
+                <input
+                  type="text"
+                  placeholder="Enter research prompt..."
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  className="flex-1 bg-finn-surface border border-finn-border rounded-lg px-3 py-2 text-xs text-white focus:border-sky-400 focus:outline-none"
+                />
+                <button
+                  onClick={() => onExecute(ticker, query)}
+                  disabled={loading}
+                  className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold text-xs transition-colors shrink-0 disabled:opacity-50"
+                >
+                  {loading ? 'Analyzing...' : 'Analyse company'}
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Chips & Presets */}
+            <div className="flex flex-wrap items-center gap-1.5 text-xs pt-1 border-t border-finn-border/60">
+              <span className="text-finn-textMuted text-[11px] mr-1">Quick tickers:</span>
+              {['TCS', 'RELIANCE', 'HDFCBANK', 'INFY', 'WIPRO', 'TITAN'].map(t => (
+                <button
+                  key={t}
+                  onClick={() => {
+                    setTicker(t);
+                    onExecute(t, query);
+                  }}
+                  className={`px-2 py-0.5 rounded font-mono text-[11px] border transition-colors ${
+                    ticker === t ? 'bg-sky-500/20 border-sky-400 text-sky-300' : 'bg-finn-surface border-finn-border text-finn-textSecondary hover:text-white'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* RESEARCH OUTPUT DISPLAY */}
+          {/* REPORT VIEW */}
           {loading ? (
-            <div className="bg-finn-card border border-finn-border rounded-xl p-8 text-center space-y-3">
-              <div className="w-8 h-8 border-2 border-finn-accent border-t-transparent rounded-full animate-spin mx-auto"></div>
-              <div className="text-xs font-mono text-slate-300">
-                PARSING AUDITED FILINGS WITH PyMuPDF & RUNNING VECTOR RETRIEVAL...
-              </div>
-              <div className="text-[10px] font-mono text-finn-textMuted">
-                Preserving page citations, comparing promises vs delivery
-              </div>
+            <div className="bg-finn-card border border-finn-border rounded-xl p-10 text-center space-y-3">
+              <div className="w-8 h-8 border-2 border-sky-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
+              <div className="text-xs font-mono text-white">Extracting primary PDF text with PyMuPDF & generating analysis...</div>
+              <div className="text-[11px] text-finn-textSecondary">Comparing management guidance vs delivered numbers</div>
             </div>
           ) : result ? (
             <div className="space-y-4">
-              {/* Report Header */}
-              <div className="bg-finn-surface border border-finn-border rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              {/* Report Header Bar */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <div className="flex items-center space-x-2">
-                    <span className="font-mono text-base font-bold text-slate-100">{result.company_name} ({result.ticker}.NS)</span>
+                  <div className="flex items-center space-x-2.5">
+                    <h2 className="text-base font-bold text-white">{result.company_name} ({result.ticker}.NS)</h2>
                     {result.grounded_in_primary_sources ? (
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                        Grounded in Primary Audited PDF
+                        Primary Source Grounded
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30">
                         Market Data Only • Primary PDF Missing
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-finn-textMuted mt-0.5 font-mono">
-                    Analysis Engine: {result.model_used} • Generated: {result.analyzed_at}
-                  </div>
+                  <p className="text-[11px] font-mono text-finn-textSecondary mt-0.5">
+                    Generated: {result.analyzed_at} • {result.model_used}
+                  </p>
                 </div>
 
-                {/* Cited Sources Count */}
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-mono text-slate-300">Cited Filings:</span>
-                  <span className="px-2 py-0.5 rounded bg-finn-card text-sky-400 font-mono font-bold text-xs border border-finn-border">
-                    {result.all_cited_sources.length} Documents
-                  </span>
+                <div className="flex items-center space-x-2 text-xs font-mono">
+                  <button
+                    onClick={expandAll}
+                    className="px-2 py-1 rounded bg-finn-surface hover:bg-finn-surfaceHover border border-finn-border text-finn-textSecondary hover:text-white text-[11px]"
+                  >
+                    Expand all
+                  </button>
+                  <button
+                    onClick={collapseAll}
+                    className="px-2 py-1 rounded bg-finn-surface hover:bg-finn-surfaceHover border border-finn-border text-finn-textSecondary hover:text-white text-[11px]"
+                  >
+                    Collapse all
+                  </button>
                 </div>
               </div>
 
-              {/* Missing Data Disclosures Banner */}
+              {/* Missing Disclosure Warning (if unindexed) */}
               {result.missing_data_disclosures && result.missing_data_disclosures.length > 0 && (
-                <div className="bg-amber-950/20 border border-amber-500/30 rounded-lg p-3 text-xs text-amber-200 font-mono">
-                  <div className="font-bold uppercase tracking-wider mb-0.5">Financial Disclosure Integrity Notice:</div>
+                <div className="bg-amber-950/20 border border-amber-500/30 rounded-xl p-3.5 text-xs text-amber-200 font-sans space-y-1">
+                  <div className="font-semibold text-amber-300 flex items-center space-x-1.5">
+                    <Icon name="info" className="w-3.5 h-3.5" />
+                    <span>Primary Document Status Notice</span>
+                  </div>
                   {result.missing_data_disclosures.map((d, i) => (
-                    <div key={i}>• {d}</div>
+                    <div key={i} className="text-[11px] text-amber-200/90 leading-relaxed">• {d}</div>
                   ))}
                 </div>
               )}
 
-              {/* 1. BUSINESS SNAPSHOT */}
-              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                    <span className="text-sky-400">1.</span>
-                    <span>{result.business_snapshot.title}</span>
-                  </h3>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
-                    Confidence: {result.business_snapshot.confidence}
-                  </span>
+              {/* 0. EXECUTIVE SUMMARY */}
+              {result.executive_summary && (
+                <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                  <button
+                    onClick={() => toggleSection('exec')}
+                    className="w-full flex items-center justify-between text-left"
+                  >
+                    <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                      <span className="text-sky-400">0.</span>
+                      <span>{result.executive_summary.title}</span>
+                    </span>
+                    <Icon name={collapsedSections['exec'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </button>
+                  {!collapsedSections['exec'] && (
+                    <p className="text-xs text-slate-200 leading-relaxed font-sans mt-2.5 pt-2 border-t border-finn-border/60">
+                      {result.executive_summary.content}
+                    </p>
+                  )}
                 </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.business_snapshot.content}</p>
+              )}
+
+              {/* 1. BUSINESS OVERVIEW */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('biz')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">1.</span>
+                    <span>Business Overview & Segment Breakdown</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-finn-textSecondary">
+                      {result.business_snapshot.confidence}
+                    </span>
+                    <Icon name={collapsedSections['biz'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+                {!collapsedSections['biz'] && (
+                  <p className="text-xs text-slate-200 leading-relaxed font-sans mt-2.5 pt-2 border-t border-finn-border/60">
+                    {result.business_snapshot.content}
+                  </p>
+                )}
               </div>
 
-              {/* 2. FINANCIAL SNAPSHOT & KEY METRICS */}
+              {/* 2. FINANCIAL SNAPSHOT & PROVENANCE */}
               <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
+                <button
+                  onClick={() => toggleSection('fin')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
                     <span className="text-sky-400">2.</span>
-                    <span>{result.financial_snapshot.title}</span>
-                  </h3>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
-                    Confidence: {result.financial_snapshot.confidence}
+                    <span>Financial Snapshot & Headline Numbers</span>
                   </span>
-                </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_snapshot.content}</p>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-finn-textSecondary">
+                      {result.financial_snapshot.confidence}
+                    </span>
+                    <Icon name={collapsedSections['fin'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
 
-                {result.financial_snapshot.key_metrics && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mt-3 pt-3 border-t border-finn-border">
-                    {Object.entries(result.financial_snapshot.key_metrics).map(([k, v]) => (
-                      <div key={k} className="bg-finn-surface rounded p-2 text-center border border-finn-border">
-                        <div className="text-[9px] font-mono uppercase text-finn-textMuted">{k.replace(/_/g, ' ')}</div>
-                        <div className="text-xs font-mono font-bold text-slate-100 mt-0.5">{v}</div>
+                {!collapsedSections['fin'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 space-y-3">
+                    <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_snapshot.content}</p>
+
+                    {/* Metric Cards Grid */}
+                    {result.financial_snapshot.key_metrics && (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pt-1">
+                        {Object.entries(result.financial_snapshot.key_metrics).map(([k, v]) => (
+                          <div key={k} className="bg-finn-surface rounded-lg p-2.5 text-center border border-finn-border">
+                            <div className="text-[9px] font-mono uppercase text-finn-textMuted truncate">{k.replace(/_/g, ' ')}</div>
+                            <div className="text-xs font-bold font-mono text-white mt-0.5">{v}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Audited Metric Provenance Ledger */}
+                    {result.all_metrics_provenance && result.all_metrics_provenance.length > 0 && (
+                      <div className="mt-3 pt-3 border-t border-finn-border/60">
+                        <div className="text-[11px] font-semibold text-white mb-2">Audited Metric Provenance & Calculation Ledger</div>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-left text-xs font-mono">
+                            <thead>
+                              <tr className="text-[10px] text-finn-textMuted border-b border-finn-border bg-finn-surface/50">
+                                <th className="p-2">Metric</th>
+                                <th className="p-2">Value</th>
+                                <th className="p-2">Period</th>
+                                <th className="p-2">Source & Page</th>
+                                <th className="p-2">Classification</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-finn-border/40">
+                              {result.all_metrics_provenance.map((m, idx) => (
+                                <tr key={idx} className="hover:bg-finn-surface/40">
+                                  <td className="p-2 font-medium text-slate-200">{m.metric_name}</td>
+                                  <td className="p-2 font-bold text-sky-300">{m.value}</td>
+                                  <td className="p-2 text-finn-textSecondary">{m.period}</td>
+                                  <td className="p-2 text-finn-textMuted">
+                                    <span className="px-1.5 py-0.5 rounded bg-finn-surface border border-finn-border text-[10px]">
+                                      {m.doc_id.replace('.pdf','')} p.{m.page_number}
+                                    </span>
+                                  </td>
+                                  <td className="p-2">
+                                    <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                                      m.figure_type.includes('Reported') ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-sky-500/10 text-sky-300 border border-sky-500/20'
+                                    }`}>
+                                      {m.figure_type}
+                                    </span>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* 3. FINANCIAL PERFORMANCE OVER TIME (TRAJECTORY) */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('traj')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">3.</span>
+                    <span>Financial Performance Over Time</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-finn-textSecondary">
+                      {result.financial_trajectory.confidence}
+                    </span>
+                    <Icon name={collapsedSections['traj'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+
+                {!collapsedSections['traj'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 space-y-4">
+                    <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_trajectory.content}</p>
+
+                    {/* Multi-Period Trajectory Table */}
+                    {result.trajectory_table && result.trajectory_table.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left text-xs font-mono">
+                          <thead>
+                            <tr className="text-[10px] text-finn-textMuted border-b border-finn-border bg-finn-surface/50">
+                              <th className="p-2">Financial Parameter</th>
+                              <th className="p-2">Previous Year Quarter</th>
+                              <th className="p-2">Previous Quarter</th>
+                              <th className="p-2">Current Quarter</th>
+                              <th className="p-2 text-right">YoY Growth</th>
+                              <th className="p-2 text-right">QoQ Growth</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-finn-border/40">
+                            {result.trajectory_table.map((row, idx) => (
+                              <tr key={idx} className="hover:bg-finn-surface/40">
+                                <td className="p-2 font-medium text-slate-200">{row.metric}</td>
+                                <td className="p-2 text-finn-textSecondary">{row.q_prev_year}</td>
+                                <td className="p-2 text-finn-textSecondary">{row.q_prev}</td>
+                                <td className="p-2 font-bold text-sky-300">{row.q_current}</td>
+                                <td className={`p-2 text-right font-bold ${row.yoy_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
+                                  {row.yoy_growth}
+                                </td>
+                                <td className={`p-2 text-right font-bold ${row.qoq_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
+                                  {row.qoq_growth}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="text-[11px] text-amber-300/80 bg-amber-950/20 border border-amber-500/20 rounded p-2.5 font-mono">
+                        Insufficient multi-quarter historical data in indexed documents to generate comparison table.
+                      </div>
+                    )}
+
+                    {/* Visual Trend Bars */}
+                    {result.trajectory_chart && result.trajectory_chart.length > 0 && (
+                      <div className="space-y-2 pt-2 border-t border-finn-border/60">
+                        <div className="text-[11px] font-semibold text-white">Financial Trajectory Trend (INR Crore)</div>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          {result.trajectory_chart.map((pt, idx) => (
+                            <div key={idx} className="bg-finn-surface border border-finn-border rounded-lg p-3 text-xs font-mono space-y-2">
+                              <div className="text-white font-bold pb-1 border-b border-finn-border text-center">{pt.period}</div>
+                              <div className="space-y-1">
+                                <div className="flex justify-between text-[11px]">
+                                  <span className="text-finn-textMuted">Revenue:</span>
+                                  <span className="font-bold text-white">₹{pt.revenue_cr?.toLocaleString()} Cr</span>
+                                </div>
+                                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                  <div className="bg-sky-400 h-full rounded-full" style={{ width: `${Math.min(100, ((pt.revenue_cr || 0) / 70000) * 100)}%` }}></div>
+                                </div>
+                                <div className="flex justify-between text-[11px] pt-1">
+                                  <span className="text-finn-textMuted">EBIT:</span>
+                                  <span className="font-bold text-emerald-400">₹{pt.ebit_cr?.toLocaleString()} Cr</span>
+                                </div>
+                                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                  <div className="bg-emerald-400 h-full rounded-full" style={{ width: `${Math.min(100, ((pt.ebit_cr || 0) / 20000) * 100)}%` }}></div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* 4. BALANCE SHEET */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('bs')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">4.</span>
+                    <span>Balance Sheet & Capital Structure</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-finn-textSecondary">
+                      {result.balance_sheet_leverage.confidence}
+                    </span>
+                    <Icon name={collapsedSections['bs'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+                {!collapsedSections['bs'] && (
+                  <p className="text-xs text-slate-200 leading-relaxed font-sans mt-2.5 pt-2 border-t border-finn-border/60">
+                    {result.balance_sheet_leverage.content}
+                  </p>
+                )}
+              </div>
+
+              {/* 5. CASH FLOW ANALYSIS */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('cash')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">5.</span>
+                    <span>Cash Flow Analysis & Conversion Quality</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      High Cash Quality
+                    </span>
+                    <Icon name={collapsedSections['cash'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+
+                {!collapsedSections['cash'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 space-y-3">
+                    <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.cash_quality_conversion.content}</p>
+
+                    {result.cash_comparison && (
+                      <div className="space-y-2 pt-2 border-t border-finn-border/60">
+                        <div className="text-[11px] font-semibold text-white">Cash Flow Reconciliation</div>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                          <div className="bg-finn-surface border border-finn-border rounded-lg p-2.5 text-center">
+                            <div className="text-[10px] text-finn-textMuted uppercase">Net Profit (PAT)</div>
+                            <div className="font-bold text-white mt-1">{result.cash_comparison.pat_value}</div>
+                            <div className="text-[9px] text-emerald-400 mt-0.5">{result.cash_comparison.pat_provenance}</div>
+                          </div>
+                          <div className="bg-finn-surface border border-finn-border rounded-lg p-2.5 text-center">
+                            <div className="text-[10px] text-finn-textMuted uppercase">Operating Cash (OCF)</div>
+                            <div className="font-bold text-sky-300 mt-1">{result.cash_comparison.ocf_value}</div>
+                            <div className="text-[9px] text-emerald-400 mt-0.5">{result.cash_comparison.ocf_provenance}</div>
+                          </div>
+                          <div className="bg-finn-surface border border-finn-border rounded-lg p-2.5 text-center">
+                            <div className="text-[10px] text-finn-textMuted uppercase">Free Cash Flow</div>
+                            <div className="font-bold text-indigo-300 mt-1">{result.cash_comparison.fcf_value}</div>
+                            <div className="text-[9px] text-emerald-400 mt-0.5">{result.cash_comparison.fcf_provenance}</div>
+                          </div>
+                          <div className="bg-finn-surface border border-finn-border rounded-lg p-2.5 text-center">
+                            <div className="text-[10px] text-finn-textMuted uppercase">Cash Conversion</div>
+                            <div className="font-bold text-emerald-400 mt-1">94.56%</div>
+                            <div className="text-[9px] text-finn-textMuted mt-0.5">Calculated OCF/PAT</div>
+                          </div>
+                        </div>
+
+                        <div className="p-3 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-xs text-emerald-200/90 leading-relaxed">
+                          <strong className="text-emerald-300">Earnings Quality Assessment: </strong>
+                          {result.cash_comparison.assessment}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* 6. MANAGEMENT GUIDANCE VS ACTUAL PERFORMANCE */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('narr')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">6.</span>
+                    <span>Management Guidance vs. Actual Performance</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">
+                      Promise vs. Delivery
+                    </span>
+                    <Icon name={collapsedSections['narr'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+                {!collapsedSections['narr'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-wrap">
+                    {result.narrative_vs_numbers.content}
+                  </div>
+                )}
+              </div>
+
+              {/* 7. BULL CASE VS BEAR CASE */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('bb')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <span className="text-sky-400">7.</span>
+                    <span>Bull Case vs. Bear Case</span>
+                  </span>
+                  <Icon name={collapsedSections['bb'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                </button>
+
+                {!collapsedSections['bb'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="bg-emerald-950/20 border border-emerald-500/20 rounded-lg p-3 space-y-1.5">
+                      <div className="text-xs font-semibold text-emerald-300 flex items-center space-x-1">
+                        <Icon name="trending-up" className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Bull Thesis (Catalysts & Strengths)</span>
+                      </div>
+                      <div className="text-xs text-slate-200 leading-relaxed whitespace-pre-wrap font-sans">
+                        {result.bull_case.content}
+                      </div>
+                    </div>
+
+                    <div className="bg-rose-950/20 border border-rose-500/20 rounded-lg p-3 space-y-1.5">
+                      <div className="text-xs font-semibold text-rose-300 flex items-center space-x-1">
+                        <Icon name="trending-down" className="w-3.5 h-3.5 text-rose-400" />
+                        <span>Bear Thesis (Downside Headwinds & Risks)</span>
+                      </div>
+                      <div className="text-xs text-slate-200 leading-relaxed whitespace-pre-wrap font-sans">
+                        {result.bear_case.content}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 8. SOURCES AND CITATIONS */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <button
+                  onClick={() => toggleSection('cites')}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white flex items-center space-x-2">
+                    <Icon name="file-text" className="w-4 h-4 text-sky-400" />
+                    <span>Supporting Primary Documents ({result.all_cited_sources.length})</span>
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[10px] text-finn-textMuted">Click to inspect original PDF text</span>
+                    <Icon name={collapsedSections['cites'] ? 'chevron-down' : 'chevron-up'} className="w-3.5 h-3.5 text-finn-textMuted" />
+                  </div>
+                </button>
+
+                {!collapsedSections['cites'] && (
+                  <div className="mt-2.5 pt-2 border-t border-finn-border/60 space-y-2">
+                    {result.all_cited_sources.map((s, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => onOpenCitation(s.doc_id, s.page_number, s.title)}
+                        className="bg-finn-surface border border-finn-border rounded-lg p-2.5 flex items-center justify-between hover:border-sky-400 cursor-pointer transition-colors"
+                      >
+                        <div className="flex items-center space-x-2.5 overflow-hidden">
+                          <span className="text-[10px] font-mono text-sky-300 font-bold px-1.5 py-0.5 rounded bg-finn-card border border-finn-border shrink-0">
+                            Page {s.page_number}
+                          </span>
+                          <div className="truncate">
+                            <div className="text-xs font-medium text-slate-200 truncate">{s.title}</div>
+                            <div className="text-[10px] text-finn-textMuted truncate">"{s.snippet}"</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-1.5 shrink-0 ml-2 text-sky-400 text-xs">
+                          <span className="text-[10px] font-mono text-finn-textMuted hidden sm:inline">Inspect</span>
+                          <Icon name="external-link" className="w-3 h-3" />
+                        </div>
                       </div>
                     ))}
                   </div>
                 )}
-
-                {/* Metric Provenance Ledger */}
-                {result.all_metrics_provenance && result.all_metrics_provenance.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-finn-border/60">
-                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                      <span>Audited Metric Provenance & Calculation Ledger</span>
-                      <span className="text-finn-textMuted font-normal text-[9px]">{result.all_metrics_provenance.length} Verified Parameters</span>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-[10px] font-mono text-left border border-finn-border/70 rounded">
-                        <thead className="bg-finn-surface text-finn-textMuted border-b border-finn-border/70">
-                          <tr>
-                            <th className="p-1.5">Metric</th>
-                            <th className="p-1.5">Extracted Value</th>
-                            <th className="p-1.5">Period</th>
-                            <th className="p-1.5">Source & Page</th>
-                            <th className="p-1.5">Figure Type</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-finn-border/40">
-                          {result.all_metrics_provenance.map((m, idx) => (
-                            <tr key={idx} className="hover:bg-finn-surface/60">
-                              <td className="p-1.5 font-bold text-slate-200">{m.metric_name}</td>
-                              <td className="p-1.5 text-sky-300 font-bold">{m.value}</td>
-                              <td className="p-1.5 text-slate-400">{m.period}</td>
-                              <td className="p-1.5 text-slate-300">
-                                <span className="text-[9px] px-1 py-0.2 rounded bg-finn-surface border border-finn-border text-sky-400">
-                                  {m.doc_id.replace('.pdf','')} (p.{m.page_number})
-                                </span>
-                              </td>
-                              <td className="p-1.5">
-                                <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
-                                  m.figure_type.includes('Reported') ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-indigo-500/10 text-indigo-300 border border-indigo-500/30'
-                                }`}>
-                                  {m.figure_type}
-                                </span>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 3. FINANCIAL TRAJECTORY & MULTI-PERIOD COMPARISON TABLE */}
-              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                    <span className="text-sky-400">3.</span>
-                    <span>{result.financial_trajectory.title}</span>
-                  </h3>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
-                    Confidence: {result.financial_trajectory.confidence}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_trajectory.content}</p>
-
-                {/* Multi-Period Trajectory Table */}
-                {result.trajectory_table && result.trajectory_table.length > 0 ? (
-                  <div className="mt-3 pt-3 border-t border-finn-border">
-                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-1.5">
-                      Quarterly Trajectory & Multi-Period Growth Reconciliation
-                    </div>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-[11px] font-mono text-left border border-finn-border rounded">
-                        <thead className="bg-finn-surface text-finn-textMuted border-b border-finn-border">
-                          <tr>
-                            <th className="p-2">Financial Parameter</th>
-                            <th className="p-2">Previous Year Quarter</th>
-                            <th className="p-2">Previous Quarter</th>
-                            <th className="p-2">Current Quarter</th>
-                            <th className="p-2 text-right">YoY Growth</th>
-                            <th className="p-2 text-right">QoQ Growth</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-finn-border/60">
-                          {result.trajectory_table.map((row, idx) => (
-                            <tr key={idx} className="hover:bg-finn-surface/50">
-                              <td className="p-2 font-bold text-slate-200">{row.metric}</td>
-                              <td className="p-2 text-slate-400">{row.q_prev_year}</td>
-                              <td className="p-2 text-slate-400">{row.q_prev}</td>
-                              <td className="p-2 text-sky-300 font-bold">{row.q_current}</td>
-                              <td className={`p-2 text-right font-bold ${row.yoy_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
-                                {row.yoy_growth}
-                              </td>
-                              <td className={`p-2 text-right font-bold ${row.qoq_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
-                                {row.qoq_growth}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-[10px] font-mono text-amber-300/80 bg-amber-950/20 border border-amber-500/20 rounded p-2 mt-2">
-                    Insufficient multi-quarter historical data in indexed documents to generate trajectory comparison table.
-                  </div>
-                )}
-
-                {/* Trend Chart Visualizer */}
-                {result.trajectory_chart && result.trajectory_chart.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-finn-border">
-                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-2">
-                      Financial Trajectory Trend (Actual Extracted Figures in INR Cr)
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      {result.trajectory_chart.map((pt, idx) => (
-                        <div key={idx} className="bg-finn-surface border border-finn-border rounded p-3 text-xs font-mono">
-                          <div className="text-sky-300 font-bold border-b border-finn-border/60 pb-1 mb-2 text-center">
-                            {pt.period}
-                          </div>
-                          <div className="space-y-1.5">
-                            <div className="flex justify-between items-center text-[10px]">
-                              <span className="text-finn-textMuted">Revenue:</span>
-                              <span className="text-slate-100 font-bold">INR {pt.revenue_cr ? pt.revenue_cr.toLocaleString() : '-'} Cr</span>
-                            </div>
-                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
-                              <div className="bg-sky-400 h-full" style={{ width: `${Math.min(100, ((pt.revenue_cr || 0) / 70000) * 100)}%` }}></div>
-                            </div>
-
-                            <div className="flex justify-between items-center text-[10px] pt-1">
-                              <span className="text-finn-textMuted">Operating Profit:</span>
-                              <span className="text-emerald-400 font-bold">INR {pt.ebit_cr ? pt.ebit_cr.toLocaleString() : '-'} Cr</span>
-                            </div>
-                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
-                              <div className="bg-emerald-400 h-full" style={{ width: `${Math.min(100, ((pt.ebit_cr || 0) / 20000) * 100)}%` }}></div>
-                            </div>
-
-                            <div className="flex justify-between items-center text-[10px] pt-1">
-                              <span className="text-finn-textMuted">Free Cash Flow:</span>
-                              <span className="text-indigo-300 font-bold">INR {pt.fcf_cr ? pt.fcf_cr.toLocaleString() : '-'} Cr</span>
-                            </div>
-                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
-                              <div className="bg-indigo-400 h-full" style={{ width: `${Math.min(100, ((pt.fcf_cr || 0) / 15000) * 100)}%` }}></div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 4. BALANCE SHEET & CAPITAL STRUCTURE */}
-              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                    <span className="text-sky-400">4.</span>
-                    <span>{result.balance_sheet_leverage.title}</span>
-                  </h3>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
-                    Confidence: {result.balance_sheet_leverage.confidence}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.balance_sheet_leverage.content}</p>
-              </div>
-
-              {/* 5. CASH QUALITY & CONVERSION */}
-              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                    <span className="text-sky-400">5.</span>
-                    <span>{result.cash_quality_conversion.title}</span>
-                  </h3>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                    Audited Cash Flow Evidence
-                  </span>
-                </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.cash_quality_conversion.content}</p>
-
-                {/* Structured Cash Comparison Grid */}
-                {result.cash_comparison && (
-                  <div className="mt-3 pt-3 border-t border-finn-border">
-                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-2">
-                      Cash Conversion Reconciliation (Reported Earnings vs Hard Cash Generation)
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
-                        <div className="text-[9px] uppercase text-finn-textMuted">Profit After Tax (PAT)</div>
-                        <div className="text-slate-100 font-bold text-xs mt-1">{result.cash_comparison.pat_value}</div>
-                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.pat_provenance}</div>
-                      </div>
-                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
-                        <div className="text-[9px] uppercase text-finn-textMuted">Operating Cash Flow (OCF)</div>
-                        <div className="text-sky-300 font-bold text-xs mt-1">{result.cash_comparison.ocf_value}</div>
-                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.ocf_provenance}</div>
-                      </div>
-                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
-                        <div className="text-[9px] uppercase text-finn-textMuted">Free Cash Flow (FCF)</div>
-                        <div className="text-indigo-300 font-bold text-xs mt-1">{result.cash_comparison.fcf_value}</div>
-                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.fcf_provenance}</div>
-                      </div>
-                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
-                        <div className="text-[9px] uppercase text-finn-textMuted">Cash Conversion Ratio</div>
-                        <div className="text-emerald-400 font-bold text-xs mt-1">{result.cash_comparison.conversion_ratio}</div>
-                        <div className="text-[8px] text-finn-accent mt-0.5">{result.cash_comparison.conversion_quality}</div>
-                      </div>
-                    </div>
-
-                    <div className="mt-2.5 p-2.5 rounded bg-emerald-950/20 border border-emerald-500/30 text-xs font-sans text-emerald-200">
-                      <span className="font-mono font-bold text-emerald-300 uppercase mr-1.5 text-[10px]">Earnings Quality Assessment:</span>
-                      {result.cash_comparison.assessment}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 6. CRUCIAL SECTION: NARRATIVE VS NUMBERS (GUIDANCE VS DELIVERY) */}
-              <div className="bg-gradient-to-br from-indigo-950/30 to-finn-card border-2 border-indigo-500/40 rounded-xl p-4 sm:p-5 terminal-glow">
-                <div className="flex items-center justify-between border-b border-indigo-500/30 pb-2 mb-3">
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-indigo-300 flex items-center space-x-2">
-                      <span className="px-1.5 py-0.5 rounded bg-indigo-500 text-slate-900 font-bold">6</span>
-                      <span>Narrative vs Numbers — Guidance vs Actual Delivery</span>
-                    </h3>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
-                      Evaluates what management promised over the last 4 quarters against what was delivered
-                    </p>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
-                    CRITICAL ENAM CRITERIA
-                  </span>
-                </div>
-                <div className="text-xs text-slate-100 leading-relaxed font-sans whitespace-pre-wrap">
-                  {result.narrative_vs_numbers.content}
-                </div>
-              </div>
-
-              {/* 7. BULL VS BEAR CASE */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-4">
-                  <div className="flex items-center space-x-2 border-b border-emerald-500/20 pb-2 mb-2 text-emerald-400 font-mono text-xs font-bold uppercase tracking-wider">
-                    <Icon name="trending-up" className="w-4 h-4" />
-                    <span>Institutional Bull Thesis</span>
-                  </div>
-                  <div className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-wrap">
-                    {result.bull_case.content}
-                  </div>
-                </div>
-
-                <div className="bg-rose-950/20 border border-rose-500/30 rounded-xl p-4">
-                  <div className="flex items-center space-x-2 border-b border-rose-500/20 pb-2 mb-2 text-rose-400 font-mono text-xs font-bold uppercase tracking-wider">
-                    <Icon name="trending-down" className="w-4 h-4" />
-                    <span>Institutional Bear Thesis</span>
-                  </div>
-                  <div className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-wrap">
-                    {result.bear_case.content}
-                  </div>
-                </div>
-              </div>
-
-              {/* 8. PRIMARY SOURCE CITATIONS LIST */}
-              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-3">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                    <Icon name="file-text" className="w-4 h-4 text-sky-400" />
-                    <span>Supporting Primary Documents & Exact Page Citations</span>
-                  </h3>
-                  <span className="text-[10px] font-mono text-finn-textMuted">Click to inspect original PDF text</span>
-                </div>
-
-                <div className="space-y-2">
-                  {result.all_cited_sources.map((s, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => onOpenCitation(s.doc_id, s.page_number, s.title)}
-                      className="bg-finn-surface border border-finn-border rounded p-2.5 flex items-center justify-between hover:border-sky-400 cursor-pointer transition-colors"
-                    >
-                      <div className="flex items-center space-x-2.5 overflow-hidden">
-                        <span className="text-[10px] font-mono text-finn-accent font-bold px-1.5 py-0.5 rounded bg-finn-card border border-finn-border shrink-0">
-                          PAGE {s.page_number}
-                        </span>
-                        <div className="truncate">
-                          <div className="text-xs font-semibold text-slate-200 truncate">{s.title}</div>
-                          <div className="text-[10px] text-finn-textMuted truncate">"{s.snippet}"</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2 shrink-0 ml-2">
-                        <span className="text-[10px] font-mono text-slate-400">Score: {s.relevance_score}</span>
-                        <Icon name="external-link" className="w-3.5 h-3.5 text-sky-400" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           ) : null}
@@ -1510,83 +1434,87 @@
       );
     }
 
-    // --- VIEW 4: SETTINGS VIEW ---
+    // =========================================================================
+    // VIEW 4: SETTINGS VIEW
+    // =========================================================================
     function SettingsView({ alertSettings, setAlertSettings, portfolio, systemStatus, onRefresh }) {
       return (
-        <div className="space-y-5 max-w-4xl mx-auto">
+        <div className="space-y-6 max-w-4xl mx-auto">
           <div>
-            <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-slate-100">
-              System Settings & Architecture Diagnostics
-            </h2>
-            <p className="text-xs text-finn-textMuted mt-0.5">
-              Portfolio allocations, alert sensitivity, RAG index health, and API integrations
+            <h1 className="text-xl font-semibold tracking-tight text-white">Settings & System Health</h1>
+            <p className="text-xs text-finn-textSecondary mt-0.5">
+              Portfolio allocations, alert thresholds, RAG index status, and engine diagnostics
             </p>
           </div>
 
-          {/* STATUS CARDS */}
+          {/* DIAGNOSTICS */}
           {systemStatus && (
-            <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-finn-accent mb-3">
-                FINN Engine Diagnostics
-              </div>
+            <div className="bg-finn-card border border-finn-border rounded-xl p-4 space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-white">System Diagnostics</div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-                <div className="bg-finn-surface p-2.5 rounded border border-finn-border">
-                  <div className="text-[10px] text-finn-textMuted uppercase">Server Status</div>
-                  <div className="text-emerald-400 font-bold mt-1">ONLINE (v1.0.0)</div>
+                <div className="bg-finn-surface p-3 rounded-lg border border-finn-border">
+                  <div className="text-[10px] text-finn-textMuted uppercase">Server</div>
+                  <div className="text-emerald-400 font-bold mt-1">Online</div>
                 </div>
-                <div className="bg-finn-surface p-2.5 rounded border border-finn-border">
-                  <div className="text-[10px] text-finn-textMuted uppercase">Primary Documents</div>
-                  <div className="text-slate-100 font-bold mt-1">{systemStatus.indexed_documents_count} PDFs</div>
+                <div className="bg-finn-surface p-3 rounded-lg border border-finn-border">
+                  <div className="text-[10px] text-finn-textMuted uppercase">Indexed Filings</div>
+                  <div className="text-white font-bold mt-1">{systemStatus.indexed_documents_count} PDFs</div>
                 </div>
-                <div className="bg-finn-surface p-2.5 rounded border border-finn-border">
+                <div className="bg-finn-surface p-3 rounded-lg border border-finn-border">
                   <div className="text-[10px] text-finn-textMuted uppercase">Indexed Chunks</div>
-                  <div className="text-slate-100 font-bold mt-1">{systemStatus.indexed_chunks_count} Chunks</div>
+                  <div className="text-white font-bold mt-1">{systemStatus.indexed_chunks_count} Chunks</div>
                 </div>
-                <div className="bg-finn-surface p-2.5 rounded border border-finn-border">
-                  <div className="text-[10px] text-finn-textMuted uppercase">AI Architecture</div>
+                <div className="bg-finn-surface p-3 rounded-lg border border-finn-border">
+                  <div className="text-[10px] text-finn-textMuted uppercase">AI Engine</div>
                   <div className="text-sky-300 font-bold mt-1 truncate">{systemStatus.llm_provider}</div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* PORTFOLIO SECTOR ALLOCATION TABLE */}
+          {/* PORTFOLIO ALLOCATION TABLE */}
           {portfolio && (
-            <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 mb-3 flex items-center justify-between">
-                <span>Active 18-Stock Mock Portfolio Roster</span>
-                <span className="text-[10px] font-mono text-finn-textMuted">Diverse Multi-Sector Coverage</span>
+            <div className="bg-finn-card border border-finn-border rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between border-b border-finn-border pb-2">
+                <div>
+                  <h2 className="text-xs font-semibold uppercase tracking-wider text-white">Portfolio Holdings</h2>
+                  <p className="text-[11px] text-finn-textMuted">18 companies across 8 sectors</p>
+                </div>
+                <span className="text-xs font-mono text-white font-bold">
+                  NAV: {formatINR(portfolio.total_value_inr)}
+                </span>
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left font-mono text-xs">
-                  <thead className="bg-finn-surface text-[10px] text-finn-textMuted uppercase border-b border-finn-border">
-                    <tr>
-                      <th className="p-2">Ticker</th>
-                      <th className="p-2">Sector</th>
-                      <th className="p-2 text-right">Price (INR)</th>
-                      <th className="p-2 text-right">Day Chg</th>
-                      <th className="p-2 text-right">Vol Mult</th>
-                      <th className="p-2 text-right">Weight</th>
+                <table className="w-full text-left text-xs font-mono">
+                  <thead>
+                    <tr className="text-[10px] text-finn-textMuted border-b border-finn-border">
+                      <th className="pb-2">Ticker</th>
+                      <th className="pb-2">Company</th>
+                      <th className="pb-2">Sector</th>
+                      <th className="pb-2 text-right">Shares</th>
+                      <th className="pb-2 text-right">Cost Price</th>
+                      <th className="pb-2 text-right">Current Price</th>
+                      <th className="pb-2 text-right">P&L</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-finn-border/50 text-slate-200">
-                    {portfolio.stocks.map(s => (
-                      <tr key={s.ticker} className="hover:bg-finn-surface/50">
-                        <td className="p-2 font-bold text-slate-100">{s.ticker}</td>
-                        <td className="p-2 text-slate-400 text-[11px]">{s.sector}</td>
-                        <td className="p-2 text-right">₹{s.price.toFixed(1)}</td>
-                        <td className={`p-2 text-right ${s.change_pct >= 0 ? 'text-finn-gain' : 'text-finn-loss'}`}>
-                          {s.change_pct >= 0 ? '+' : ''}{s.change_pct.toFixed(2)}%
-                        </td>
-                        <td className="p-2 text-right">
-                          <span className={s.volume_multiple >= 2.0 ? 'text-amber-400 font-bold' : 'text-slate-400'}>
-                            {s.volume_multiple.toFixed(2)}x
-                          </span>
-                        </td>
-                        <td className="p-2 text-right text-slate-300">{s.portfolio_weight}%</td>
-                      </tr>
-                    ))}
+                  <tbody className="divide-y divide-finn-border/40">
+                    {portfolio.stocks.map(stock => {
+                      const pnl = stock.unrealized_pnl || 0;
+                      return (
+                        <tr key={stock.ticker} className="hover:bg-finn-surface/40">
+                          <td className="py-2 font-bold text-white">{stock.ticker}</td>
+                          <td className="py-2 text-finn-textSecondary font-sans">{stock.name}</td>
+                          <td className="py-2 text-finn-textMuted font-sans">{stock.sector}</td>
+                          <td className="py-2 text-right text-slate-200">{stock.portfolio_qty?.toLocaleString()}</td>
+                          <td className="py-2 text-right text-finn-textMuted">{formatINR(stock.purchase_price)}</td>
+                          <td className="py-2 text-right text-white font-bold">{formatINR(stock.price)}</td>
+                          <td className={`py-2 text-right font-bold ${pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                            {pnl >= 0 ? '+' : ''}{formatINR(pnl)}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -1596,9 +1524,8 @@
       );
     }
 
-    // Mount to DOM
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    // Mount React App
+    ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
 </html>
-

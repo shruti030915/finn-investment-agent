@@ -197,6 +197,7 @@ class ResearchResponse(BaseModel):
     model_used: str
     grounded_in_primary_sources: bool
     missing_data_disclosures: List[str] = []
+    executive_summary: Optional[ResearchSection] = None
     business_snapshot: ResearchSection
     financial_snapshot: ResearchSection
     financial_trajectory: ResearchSection

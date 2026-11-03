@@ -77,11 +77,7 @@ class DocumentFetcher:
 
     def get_chunks_for_ticker(self, ticker: str) -> List[Dict[str, Any]]:
         clean = ticker.upper().replace(".NS", "")
-        matches = [c for c in self._all_chunks if c["ticker"] == clean]
-        if not matches:
-            # If no specific company docs, return all chunks as broader corpus
-            matches = self._all_chunks
-        return matches
+        return [c for c in self._all_chunks if c["ticker"] == clean]
 
     def get_all_chunks(self) -> List[Dict[str, Any]]:
         return self._all_chunks

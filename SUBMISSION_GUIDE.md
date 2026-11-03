@@ -25,58 +25,52 @@ Open your browser to:
 
 ## 2. Demonstrating the Push Workflow
 
-1. **Portfolio Overview**:
-   * Open the **HOME** tab.
-   * Review the 18 NSE-listed companies across 8 sectors in the top real-time ticker tape and portfolio summary cards.
-   * Notice real-time NAV calculations, intraday gain/loss, and volume outlier tracking.
+1. **Portfolio Overview & Watchlist**:
+   * Open the **Home** tab.
+   * View the 4 key portfolio metrics: Portfolio Value (**₹81.94 lakh** / `₹81,93,516`), Today's Gain (**+₹52,441** / `+0.64%`), Total Unrealized Gain (**+₹6,66,716**), and Overall Return (**+8.86%**).
+   * Note the transparent label: `Market close: Oct 31, 2024 • Curated Disclosures`.
+   * Review the compact **Portfolio Watchlist** table showing prices, changes, and 20-day volume multiples for all 18 holdings across 8 sectors.
 
-2. **Windowed Daily Digest**:
-   * Inspect the **Windowed Portfolio Intelligence Digest** card.
-   * Toggle between **24H**, **3D**, and **7D** time windows.
-   * Observe the four core answers synthesized for each major event:
-     * *What happened?*
-     * *Which company is affected?*
-     * *Why should an investor care?*
-     * *What is the verifiable source?*
+2. **Important Developments**:
+   * Inspect the **Important developments** card at the top of the Home view.
+   * Highlights the top 3 critical events requiring investor attention (e.g. TCS Q2 FY25 results, WIPRO leadership change, BAJFINANCE volume breach) with explicit "Why it matters" rationales and quick links to research.
 
-3. **High-Value Announcement Enrichment**:
-   * Scroll down to the **Filtered Corporate Announcement Stream**.
-   * Locate the **WIPRO** management change: notice the extracted executive background bio (previous roles, education, track record).
-   * Locate the **TCS** quarterly results filing: notice the headline cuts (Revenue, EBITDA margin, PAT) with QoQ and YoY comparisons.
-   * Filter the stream by category (`results`, `M&A`, `dividend`, `litigation`, etc.) or priority (`HIGH`, `MEDIUM`, `LOW`).
+3. **Your Daily Portfolio Update**:
+   * Toggle between **24H**, **3D**, and **7D** filters.
+   * Review the high-level **Executive Takeaway** and browse disclosures.
+   * Click **Read more details** on any disclosure to expand the complete context without leaving the dashboard.
 
-4. **Configurable Triggered Alerts**:
-   * Click on the **ALERTS** tab.
-   * Observe active alerts triggered by:
-     * **Price movement breach** (e.g., WIPRO $+4.22\%$, BAJFINANCE $-3.53\%$).
-     * **Unusual volume spike** (e.g., WIPRO $2.45\times$, SUNPHARMA $2.33\times$ 20-day MA).
-     * **Material announcements** (M&A, litigation, leadership changes).
-   * Adjust the **Price Movement Threshold** slider (e.g., set to $\pm4.0\%$) and click **Apply Thresholds**; observe the alerts dynamically updating.
-   * Click **Dismiss** on an alert to test acknowledgement.
+4. **Alerts & Threshold Controls**:
+   * Click on the **Alerts** tab.
+   * View active price breach alerts (Wipro $+4.22\%$, Bajaj Finance $-3.53\%$) and volume spike alerts (Wipro $2.45\times$, Sun Pharma $2.33\times$).
+   * Adjust the **Price Move Trigger** and **Volume Spike Trigger** sliders and click **Save Thresholds**.
+   * Click **Dismiss** on an active alert to test acknowledgement.
 
 ---
 
 ## 3. Demonstrating the Pull Research Workflow
 
-1. **Select or Enter Any NSE Ticker**:
-   * Switch to the **PULL RAG** tab.
-   * Click the **TCS** chip (or type any other ticker, such as `RELIANCE`, `HDFCBANK`, `TITAN`, or `ZOMATO`).
-   * Select a research query preset or enter a custom prompt (e.g., *"Compare management guidance with actual performance"*).
-   * Click **Run Analysis**.
+1. **Enter Any NSE Ticker**:
+   * Switch to the **Research** tab.
+   * Click the **TCS** chip (or type any other ticker, such as `RELIANCE`, `HDFCBANK`, `INFY`, or unindexed tickers like `TITAN` and `ZOMATO`).
+   * Select a preset prompt or type a custom question.
+   * Click **Analyse company**.
 
-2. **Inspect the 8-Section Institutional Report**:
-   * **Business Snapshot**: Core business verticals, segment mix, and geographical exposure.
-   * **Financial Snapshot**: Current headline metrics, distinguishing Reported from Calculated metrics.
-   * **Financial Trajectory**: Multi-year direction, what is expanding, and what is compressing.
-   * **Balance Sheet & Leverage**: Funding structure, debt gearing (D/E), and working capital metrics.
-   * **Cash Quality**: Free cash flow generation and cash conversion efficiency (OCF vs. PAT).
-   * **Narrative vs. Numbers (Critical Evaluation)**: Compares what management promised over the last four quarters against delivered operational execution (e.g., North American BFSI discretionary spend slowdown).
-   * **Institutional Bull & Bear Theses**: High-conviction cases for both upside catalysts and downside risks.
+2. **Inspect the 9-Section Institutional Report**:
+   * **Executive Summary**: High-conviction operational highlights and trajectory.
+   * **Business Overview**: Segment mix (Energy +7.0%, Manufacturing +5.3%, BFSI 31.3%), geographical performance (UK +4.6%, North America -2.1%), deal TCV ($8.6B), and GenAI pipeline ($1.5B).
+   * **Financial Snapshot**: Headline metrics + **Audited Metric Provenance & Calculation Ledger** (Reported vs. Calculated, exact formulas, and page numbers).
+   * **Financial Performance Over Time**: Multi-period comparison table (`Q2 FY24`, `Q1 FY25`, `Q2 FY25`) with verified YoY% and QoQ% growth + visual trend charts.
+   * **Balance Sheet & Capital Structure**: Zero debt gearing (D/E 0.00), liquid reserves (₹43,892 Cr), ROE (51.2%), and explicit missing disclosure notice for total assets.
+   * **Cash Flow Analysis**: Side-by-side reconciliation of PAT (₹11,909 Cr), Operating Cash Flow (₹11,261 Cr), and Free Cash Flow (₹11,261 Cr) with verified calculated conversion ratio (94.56%), management standalone explanation (100.2%), and capex note.
+   * **Management Guidance vs. Actual Performance**: Direct contrast between past management promises and delivered operational execution.
+   * **Bull Case vs. Bear Case**: 4 distinct bull catalysts and 4 distinct bear headwinds.
+   * **Supporting Primary Documents**: Click any citation card to open the in-app **Primary Filing Inspector modal** with verbatim extracted PDF text.
 
-3. **Verify Auditable Primary Document Citations**:
-   * Scroll to the **Supporting Primary Documents** section at the bottom of the research view.
-   * Click on any citation item (e.g., `TCS_Q2_FY25_Earnings_Call_Transcript.pdf — Page 2`).
-   * An in-app **Primary Filing Inspector** modal will open, displaying the exact text and tables extracted from the physical PDF using PyMuPDF.
+3. **Verify Anti-Hallucination & PDF Upload**:
+   * Type **`TITAN`** or **`ZOMATO`** into the ticker search and click **Analyse company**.
+   * Observe the clear amber notice: *"Primary document not yet indexed for TITAN. Analysis is restricted to verifiable market data."* Notice zero fabricated quotes or fake figures.
+   * Click **+ Upload filing PDF** to upload any official company PDF and observe immediate PyMuPDF extraction and vector indexing.
 
 ---
 
