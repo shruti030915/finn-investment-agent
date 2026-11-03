@@ -1,5 +1,4 @@
-# FINN — Financial Investment Intelligence Agent
-### Developed for the ENAM Holdings AI Engineer Build Challenge
+
 
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com)
@@ -210,3 +209,6 @@ OK
    * If a user queries a ticker without an indexed primary document (e.g. `MARUTI` or `ZOMATO`), FINN returns an explicit warning (`"Primary document corpus missing on record"`) with zero hallucinated figures.
 5. **Direct Page Verification**: Every finding references a specific document name and 1-based page number that can be inspected directly in the UI modal.
 
+=======
+# finn-investment-agent
+>>>>>>> 9d8a512910e74f5bf79baf7ee9f9b09176867e4a
