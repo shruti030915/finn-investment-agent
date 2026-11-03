@@ -97,4 +97,51 @@ class PurePythonTFIDFRetriever:
 
         return results
 
+    def score_chunks(self, chunks: List[Dict[str, Any]], query: str) -> List[Any]:
+        """Directly scores a specific list of chunks against a targeted query string."""
+        if not chunks:
+            return []
+        docs_tokens = [tokenize(c["text"]) for c in chunks]
+        query_tokens = tokenize(query)
+        num_docs = len(docs_tokens)
+        if not query_tokens or num_docs == 0:
+            return [(0.5, c) for c in chunks]
+
+        df: Dict[str, int] = {}
+        for doc in docs_tokens:
+            for t in set(doc):
+                df[t] = df.get(t, 0) + 1
+
+        idf = {t: math.log((num_docs + 1) / (count + 1)) + 1.0 for t, count in df.items()}
+        default_idf = math.log(num_docs + 1) + 1.0
+
+        q_tf: Dict[str, float] = {}
+        for t in query_tokens:
+            q_tf[t] = q_tf.get(t, 0.0) + 1.0
+        q_len = len(query_tokens)
+        q_vec = {t: (count / q_len) * idf.get(t, default_idf) for t, count in q_tf.items()}
+        q_norm = math.sqrt(sum(v * v for v in q_vec.values())) or 1.0
+
+        scored = []
+        for doc, chunk in zip(docs_tokens, chunks):
+            d_len = len(doc) or 1
+            d_tf: Dict[str, float] = {}
+            for t in doc:
+                d_tf[t] = d_tf.get(t, 0.0) + 1.0
+
+            dot_product = 0.0
+            d_sq_sum = 0.0
+            for t, count in d_tf.items():
+                w = (count / d_len) * idf.get(t, default_idf)
+                d_sq_sum += w * w
+                if t in q_vec:
+                    dot_product += w * q_vec[t]
+
+            d_norm = math.sqrt(d_sq_sum) or 1.0
+            score = dot_product / (q_norm * d_norm)
+            scored.append((float(score), chunk))
+
+        scored.sort(key=lambda x: x[0], reverse=True)
+        return scored
+
 retriever = PurePythonTFIDFRetriever()

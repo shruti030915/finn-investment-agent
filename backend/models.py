@@ -137,12 +137,49 @@ class DocumentSourceItem(BaseModel):
     relevance_score: float
     snippet: str
 
+class MetricProvenance(BaseModel):
+    metric_name: str
+    value: str
+    unit: str
+    period: str
+    doc_id: str
+    page_number: int
+    figure_type: str  # "Reported" or "Calculated"
+    formula: Optional[str] = None
+
+class TrajectoryRow(BaseModel):
+    metric: str
+    q_prev_year: str
+    q_prev: str
+    q_current: str
+    yoy_growth: str
+    qoq_growth: str
+
+class TrendChartPoint(BaseModel):
+    period: str
+    revenue_cr: Optional[float] = None
+    ebit_cr: Optional[float] = None
+    pat_cr: Optional[float] = None
+    fcf_cr: Optional[float] = None
+
+class CashQualityComparison(BaseModel):
+    pat_value: str
+    ocf_value: str
+    fcf_value: str
+    conversion_ratio: str
+    conversion_quality: str
+    pat_provenance: str
+    ocf_provenance: str
+    fcf_provenance: str
+    assessment: str
+
 class ResearchSection(BaseModel):
     title: str
     category: str
     content: str
-    confidence: str  # REPORTED, CALCULATED, INTERPRETED
+    confidence: str  # REPORTED, CALCULATED, INTERPRETED, UNAVAILABLE
     key_metrics: Optional[Dict[str, Any]] = None
+    detailed_metrics: List[MetricProvenance] = []
     sources: List[DocumentSourceItem] = []
 
 class ResearchQueryRequest(BaseModel):
@@ -169,3 +206,7 @@ class ResearchResponse(BaseModel):
     bull_case: ResearchSection
     bear_case: ResearchSection
     all_cited_sources: List[DocumentSourceItem] = []
+    trajectory_table: List[TrajectoryRow] = []
+    trajectory_chart: List[TrendChartPoint] = []
+    cash_comparison: Optional[CashQualityComparison] = None
+    all_metrics_provenance: List[MetricProvenance] = []

@@ -1216,29 +1216,164 @@
                     ))}
                   </div>
                 )}
+
+                {/* Metric Provenance Ledger */}
+                {result.all_metrics_provenance && result.all_metrics_provenance.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-finn-border/60">
+                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                      <span>Audited Metric Provenance & Calculation Ledger</span>
+                      <span className="text-finn-textMuted font-normal text-[9px]">{result.all_metrics_provenance.length} Verified Parameters</span>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-[10px] font-mono text-left border border-finn-border/70 rounded">
+                        <thead className="bg-finn-surface text-finn-textMuted border-b border-finn-border/70">
+                          <tr>
+                            <th className="p-1.5">Metric</th>
+                            <th className="p-1.5">Extracted Value</th>
+                            <th className="p-1.5">Period</th>
+                            <th className="p-1.5">Source & Page</th>
+                            <th className="p-1.5">Figure Type</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-finn-border/40">
+                          {result.all_metrics_provenance.map((m, idx) => (
+                            <tr key={idx} className="hover:bg-finn-surface/60">
+                              <td className="p-1.5 font-bold text-slate-200">{m.metric_name}</td>
+                              <td className="p-1.5 text-sky-300 font-bold">{m.value}</td>
+                              <td className="p-1.5 text-slate-400">{m.period}</td>
+                              <td className="p-1.5 text-slate-300">
+                                <span className="text-[9px] px-1 py-0.2 rounded bg-finn-surface border border-finn-border text-sky-400">
+                                  {m.doc_id.replace('.pdf','')} (p.{m.page_number})
+                                </span>
+                              </td>
+                              <td className="p-1.5">
+                                <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                                  m.figure_type.includes('Reported') ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-indigo-500/10 text-indigo-300 border border-indigo-500/30'
+                                }`}>
+                                  {m.figure_type}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {/* 3 & 4. TRAJECTORY AND BALANCE SHEET */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                  <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                      <span className="text-sky-400">3.</span>
-                      <span>{result.financial_trajectory.title}</span>
-                    </h3>
-                  </div>
-                  <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_trajectory.content}</p>
+              {/* 3. FINANCIAL TRAJECTORY & MULTI-PERIOD COMPARISON TABLE */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
+                    <span className="text-sky-400">3.</span>
+                    <span>{result.financial_trajectory.title}</span>
+                  </h3>
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
+                    Confidence: {result.financial_trajectory.confidence}
+                  </span>
                 </div>
+                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.financial_trajectory.content}</p>
 
-                <div className="bg-finn-card border border-finn-border rounded-xl p-4">
-                  <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
-                      <span className="text-sky-400">4.</span>
-                      <span>{result.balance_sheet_leverage.title}</span>
-                    </h3>
+                {/* Multi-Period Trajectory Table */}
+                {result.trajectory_table && result.trajectory_table.length > 0 ? (
+                  <div className="mt-3 pt-3 border-t border-finn-border">
+                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-1.5">
+                      Quarterly Trajectory & Multi-Period Growth Reconciliation
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-[11px] font-mono text-left border border-finn-border rounded">
+                        <thead className="bg-finn-surface text-finn-textMuted border-b border-finn-border">
+                          <tr>
+                            <th className="p-2">Financial Parameter</th>
+                            <th className="p-2">Previous Year Quarter</th>
+                            <th className="p-2">Previous Quarter</th>
+                            <th className="p-2">Current Quarter</th>
+                            <th className="p-2 text-right">YoY Growth</th>
+                            <th className="p-2 text-right">QoQ Growth</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-finn-border/60">
+                          {result.trajectory_table.map((row, idx) => (
+                            <tr key={idx} className="hover:bg-finn-surface/50">
+                              <td className="p-2 font-bold text-slate-200">{row.metric}</td>
+                              <td className="p-2 text-slate-400">{row.q_prev_year}</td>
+                              <td className="p-2 text-slate-400">{row.q_prev}</td>
+                              <td className="p-2 text-sky-300 font-bold">{row.q_current}</td>
+                              <td className={`p-2 text-right font-bold ${row.yoy_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
+                                {row.yoy_growth}
+                              </td>
+                              <td className={`p-2 text-right font-bold ${row.qoq_growth.startsWith('-') ? 'text-rose-400' : 'text-emerald-400'}`}>
+                                {row.qoq_growth}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.balance_sheet_leverage.content}</p>
+                ) : (
+                  <div className="text-[10px] font-mono text-amber-300/80 bg-amber-950/20 border border-amber-500/20 rounded p-2 mt-2">
+                    Insufficient multi-quarter historical data in indexed documents to generate trajectory comparison table.
+                  </div>
+                )}
+
+                {/* Trend Chart Visualizer */}
+                {result.trajectory_chart && result.trajectory_chart.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-finn-border">
+                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-2">
+                      Financial Trajectory Trend (Actual Extracted Figures in INR Cr)
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {result.trajectory_chart.map((pt, idx) => (
+                        <div key={idx} className="bg-finn-surface border border-finn-border rounded p-3 text-xs font-mono">
+                          <div className="text-sky-300 font-bold border-b border-finn-border/60 pb-1 mb-2 text-center">
+                            {pt.period}
+                          </div>
+                          <div className="space-y-1.5">
+                            <div className="flex justify-between items-center text-[10px]">
+                              <span className="text-finn-textMuted">Revenue:</span>
+                              <span className="text-slate-100 font-bold">INR {pt.revenue_cr ? pt.revenue_cr.toLocaleString() : '-'} Cr</span>
+                            </div>
+                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
+                              <div className="bg-sky-400 h-full" style={{ width: `${Math.min(100, ((pt.revenue_cr || 0) / 70000) * 100)}%` }}></div>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[10px] pt-1">
+                              <span className="text-finn-textMuted">Operating Profit:</span>
+                              <span className="text-emerald-400 font-bold">INR {pt.ebit_cr ? pt.ebit_cr.toLocaleString() : '-'} Cr</span>
+                            </div>
+                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
+                              <div className="bg-emerald-400 h-full" style={{ width: `${Math.min(100, ((pt.ebit_cr || 0) / 20000) * 100)}%` }}></div>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[10px] pt-1">
+                              <span className="text-finn-textMuted">Free Cash Flow:</span>
+                              <span className="text-indigo-300 font-bold">INR {pt.fcf_cr ? pt.fcf_cr.toLocaleString() : '-'} Cr</span>
+                            </div>
+                            <div className="w-full bg-slate-800 h-1.5 rounded overflow-hidden">
+                              <div className="bg-indigo-400 h-full" style={{ width: `${Math.min(100, ((pt.fcf_cr || 0) / 15000) * 100)}%` }}></div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 4. BALANCE SHEET & CAPITAL STRUCTURE */}
+              <div className="bg-finn-card border border-finn-border rounded-xl p-4">
+                <div className="flex items-center justify-between border-b border-finn-border pb-2 mb-2">
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 flex items-center space-x-2">
+                    <span className="text-sky-400">4.</span>
+                    <span>{result.balance_sheet_leverage.title}</span>
+                  </h3>
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-finn-surface text-slate-400">
+                    Confidence: {result.balance_sheet_leverage.confidence}
+                  </span>
                 </div>
+                <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.balance_sheet_leverage.content}</p>
               </div>
 
               {/* 5. CASH QUALITY & CONVERSION */}
@@ -1249,10 +1384,46 @@
                     <span>{result.cash_quality_conversion.title}</span>
                   </h3>
                   <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                    High Cash Conversion
+                    Audited Cash Flow Evidence
                   </span>
                 </div>
                 <p className="text-xs text-slate-200 leading-relaxed font-sans">{result.cash_quality_conversion.content}</p>
+
+                {/* Structured Cash Comparison Grid */}
+                {result.cash_comparison && (
+                  <div className="mt-3 pt-3 border-t border-finn-border">
+                    <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider mb-2">
+                      Cash Conversion Reconciliation (Reported Earnings vs Hard Cash Generation)
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
+                        <div className="text-[9px] uppercase text-finn-textMuted">Profit After Tax (PAT)</div>
+                        <div className="text-slate-100 font-bold text-xs mt-1">{result.cash_comparison.pat_value}</div>
+                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.pat_provenance}</div>
+                      </div>
+                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
+                        <div className="text-[9px] uppercase text-finn-textMuted">Operating Cash Flow (OCF)</div>
+                        <div className="text-sky-300 font-bold text-xs mt-1">{result.cash_comparison.ocf_value}</div>
+                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.ocf_provenance}</div>
+                      </div>
+                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
+                        <div className="text-[9px] uppercase text-finn-textMuted">Free Cash Flow (FCF)</div>
+                        <div className="text-indigo-300 font-bold text-xs mt-1">{result.cash_comparison.fcf_value}</div>
+                        <div className="text-[8px] text-emerald-400 mt-0.5">{result.cash_comparison.fcf_provenance}</div>
+                      </div>
+                      <div className="bg-finn-surface border border-finn-border rounded p-2.5 text-center">
+                        <div className="text-[9px] uppercase text-finn-textMuted">Cash Conversion Ratio</div>
+                        <div className="text-emerald-400 font-bold text-xs mt-1">{result.cash_comparison.conversion_ratio}</div>
+                        <div className="text-[8px] text-finn-accent mt-0.5">{result.cash_comparison.conversion_quality}</div>
+                      </div>
+                    </div>
+
+                    <div className="mt-2.5 p-2.5 rounded bg-emerald-950/20 border border-emerald-500/30 text-xs font-sans text-emerald-200">
+                      <span className="font-mono font-bold text-emerald-300 uppercase mr-1.5 text-[10px]">Earnings Quality Assessment:</span>
+                      {result.cash_comparison.assessment}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* 6. CRUCIAL SECTION: NARRATIVE VS NUMBERS (GUIDANCE VS DELIVERY) */}
